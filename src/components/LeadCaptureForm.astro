@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title = "Request Quote Prep",
-  subtitle = "Share basic contact details when you are ready to connect this static form to a CRM, webhook, or form service.",
+  subtitle = "Save basic contact details in this browser so you can follow up with quotes later.",
   placementId = "bottom-lead",
   pageSlug = normalizePageSlug(Astro.url.pathname),
   endpoint = siteSettings.leadCapture?.defaultEndpoint ?? "",
@@ -25,7 +25,7 @@ const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
 ---
 
 <section class="surface-card p-6" data-lead-form data-endpoint={endpoint} data-mock-storage-key={mockStorageKey}>
-  <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Lead capture placeholder</p>
+  <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Quote follow-up</p>
   <h2 class="mt-2 text-2xl font-black text-deep-navy">{title}</h2>
   <p class="mt-2 text-sm leading-relaxed text-gray-600">{subtitle}</p>
 
@@ -65,17 +65,17 @@ const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
 
     <label class="flex items-start gap-3 text-sm leading-relaxed text-gray-600">
       <input name="consent" type="checkbox" value="yes" class="mt-1 h-4 w-4 rounded border-gray-300" required />
-      <span>I agree that this placeholder form may be connected later to a quote, CRM, webhook, or form provider and that estimates are educational only.</span>
+      <span>I agree to save these details for solar quote follow-up and understand estimates are educational only.</span>
     </label>
 
     <button type="submit" class="focus-ring rounded-xl bg-bright-orange px-6 py-3 font-bold text-white shadow-lg hover:bg-orange-600" data-lead-submit>
-      Save Lead Placeholder
+      Save Quote Follow-Up
     </button>
     <p class="text-sm font-bold" data-lead-status aria-live="polite"></p>
   </form>
 
   <div class="mt-5">
-    <DisclosureNote label="Lead capture" text={disclosureSettings.leadCaptureDisclaimer} />
+    <DisclosureNote label="Privacy" text={disclosureSettings.leadCaptureDisclaimer} />
   </div>
 </section>
 
@@ -93,7 +93,7 @@ const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
 
       if (status) {
         status.className = "text-sm font-bold text-gray-500";
-        status.textContent = endpoint ? "Submitting lead..." : "Saving mock lead locally...";
+        status.textContent = endpoint ? "Submitting quote request..." : "Saving details in this browser...";
       }
       if (submit) submit.setAttribute("disabled", "true");
 
@@ -118,14 +118,14 @@ const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
         if (status) {
           status.className = "text-sm font-bold text-soft-green";
           status.textContent = endpoint
-            ? "Lead submitted to the configured endpoint."
-            : "Mock lead saved locally. Configure an endpoint before production lead capture.";
+            ? "Quote request submitted."
+            : "Saved in this browser. No information was sent from this static preview.";
         }
         form.reset();
       } catch {
         if (status) {
           status.className = "text-sm font-bold text-bright-orange";
-          status.textContent = "Lead submission failed. Check the configured endpoint before using this in production.";
+          status.textContent = "Submission failed. Please check the configured quote endpoint.";
         }
       } finally {
         if (submit) submit.removeAttribute("disabled");

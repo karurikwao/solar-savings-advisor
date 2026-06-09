@@ -15,6 +15,10 @@ export function withTrackingParams(href: string, params: TrackingParams) {
     return href;
   }
 
+  if (href.startsWith("/")) {
+    return href;
+  }
+
   const [withoutHash, hash = ""] = href.split("#");
   const [path, query = ""] = withoutHash.split("?");
   const search = new URLSearchParams(query);
