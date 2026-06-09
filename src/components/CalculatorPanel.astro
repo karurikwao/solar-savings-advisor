@@ -21,6 +21,8 @@ const definition = getCalculatorDefinition(calculatorType);
 const profileKey = siteSettings.profile?.storageKey ?? `${siteSettings.siteId ?? "advisorSite"}.profile.v1`;
 const reportPath = siteSettings.routes?.reportPath ?? "/solar-report/";
 const disclaimer = siteSettings.calculatorDisclaimerText ?? disclosureSettings.calculatorDisclaimerText;
+const submissionEndpoint = siteSettings.leadCapture?.defaultEndpoint || "/api/submissions";
+const sourceId = siteSettings.siteId ?? "advisor-site";
 
 if (!definition) {
   throw new Error(`Calculator type "${calculatorType}" is not registered in src/lib/calculators/index.ts`);
@@ -37,6 +39,8 @@ if (!definition) {
   data-partner-id={definition.resultPartnerId}
   data-result-button-label={definition.resultButtonLabel}
   data-disclaimer={disclaimer}
+  data-submission-endpoint={submissionEndpoint}
+  data-source={sourceId}
 >
   <div class="surface-card border-bright-orange/20">
     <div class="border-b border-gray-100 bg-gradient-to-r from-orange-50 to-yellow-50 p-6">

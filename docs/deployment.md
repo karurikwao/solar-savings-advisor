@@ -1,6 +1,6 @@
 # Deployment
 
-This project builds a fully static public website.
+This project builds the Astro public website and serves it with a small Node.js runtime for submission capture and admin exports.
 
 ## Build
 
@@ -14,19 +14,41 @@ Output:
 dist/
 ```
 
-No Node.js server is required at runtime.
+The runtime command is:
+
+```bash
+npm run start
+```
 
 ## Coolify
 
-Use:
+Use the Dockerfile deployment path. The container serves both static pages and API routes on port `80`.
+
+Required environment variables:
 
 ```text
-Install Command: npm install
-Build Command: npm run build
-Output Directory: dist
+DATABASE_URL=postgres://...
+ADMIN_TOKEN=<long random token>
 ```
 
-Deploy as a static site.
+Optional environment variables:
+
+```text
+DATABASE_SSL=false
+DATABASE_POOL_SIZE=5
+```
+
+Create a PostgreSQL database resource in the same Coolify project, then connect its internal `DATABASE_URL` to the app. The app creates the `app_submissions` table on boot.
+
+## Submission Admin
+
+Saved quote follow-ups, solar reports, and calculator runs are available at:
+
+```text
+/admin/leads/
+```
+
+Use `ADMIN_TOKEN` to load records. The dashboard supports category/status filtering, admin notes, and CSV export.
 
 ## Decap CMS Local Editing
 
@@ -66,8 +88,8 @@ Coolify static hosting does not automatically provide Git Gateway authentication
 
 Without one of these, `/admin/` can load, but login/publishing will not work in production.
 
-## Static Safety Notes
+## Data Safety Notes
 
-Lead capture is a frontend placeholder unless an endpoint is configured. Add spam prevention, consent handling, privacy coverage, and provider terms before sending real leads to a webhook, CRM, or form service.
+Lead capture posts to `/api/submissions` and stores records in PostgreSQL when `DATABASE_URL` is configured. Keep consent language, privacy coverage, spam prevention, and retention/export practices aligned with production use.
 
-`/admin/` is excluded from indexing by page-level robots meta and `robots.txt`.
+`/admin/` and `/admin/leads/` are excluded from indexing by page-level robots meta and `robots.txt`.

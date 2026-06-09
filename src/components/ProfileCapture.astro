@@ -9,10 +9,13 @@ interface Props {
 
 const {
   title = "Home Energy Profile",
-  subtitle = "Saved on this device and reused by calculators and reports.",
+  subtitle = "Saved for calculators, reports, and admin follow-up.",
   compact = false,
 } = Astro.props;
 const profileKey = siteSettings.profile?.storageKey ?? `${siteSettings.siteId ?? "advisorSite"}.profile.v1`;
+const submissionEndpoint = siteSettings.leadCapture?.defaultEndpoint || "/api/submissions";
+const sourceId = siteSettings.siteId ?? "advisor-site";
+const pageSlug = Astro.url.pathname;
 const defaultOptions: Record<string, Array<[string, string]>> = {
   state: [
     ["CA", "California"],
@@ -51,7 +54,14 @@ const profileFields = siteSettings.profile?.fields?.length
     ];
 ---
 
-<section class:list={["surface-card", compact ? "p-5" : "p-6"]} data-profile-card data-profile-key={profileKey}>
+<section
+  class:list={["surface-card", compact ? "p-5" : "p-6"]}
+  data-profile-card
+  data-profile-key={profileKey}
+  data-submission-endpoint={submissionEndpoint}
+  data-source={sourceId}
+  data-page-slug={pageSlug}
+>
   <div class="mb-5 flex items-start justify-between gap-4">
     <div>
       <h2 class="text-xl font-black text-deep-navy">{title}</h2>
@@ -111,8 +121,40 @@ const profileFields = siteSettings.profile?.fields?.length
 
   document.querySelectorAll("[data-profile-card]").forEach((card) => {
     const profileKey = card.getAttribute("data-profile-key") || "advisorSite.profile.v1";
+    const submissionEndpoint = card.getAttribute("data-submission-endpoint") || "/api/submissions";
+    const source = card.getAttribute("data-source") || "advisor-site";
+    const pageSlug = card.getAttribute("data-page-slug") || window.location.pathname;
     const profile = readProfile(profileKey);
     const status = card.querySelector("[data-profile-status]");
+    let saveTimer;
+
+    const saveRemoteProfile = () => {
+      window.clearTimeout(saveTimer);
+      saveTimer = window.setTimeout(async () => {
+        try {
+          const response = await fetch(submissionEndpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              category: "profile",
+              type: "profile",
+              profile,
+              pageSlug,
+              source,
+              metadata: {
+                currentUrl: window.location.href,
+                referrer: document.referrer,
+                savedAt: new Date().toISOString(),
+              },
+            }),
+          });
+          if (!response.ok) throw new Error("profile_save_failed");
+          if (status) status.textContent = "Synced";
+        } catch {
+          if (status) status.textContent = "Saved";
+        }
+      }, 900);
+    };
 
     card.querySelectorAll("[data-profile-field]").forEach((field) => {
       const key = field.getAttribute("data-profile-field");
@@ -120,8 +162,9 @@ const profileFields = siteSettings.profile?.fields?.length
 
       const save = () => {
         if (!key) return;
-        writeProfile(profileKey, { [key]: field.value });
+        Object.assign(profile, writeProfile(profileKey, { [key]: field.value }));
         if (status) status.textContent = "Saved";
+        saveRemoteProfile();
       };
 
       field.addEventListener("input", save);

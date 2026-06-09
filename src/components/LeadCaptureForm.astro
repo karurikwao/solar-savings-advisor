@@ -13,18 +13,17 @@ interface Props {
 
 const {
   title = "Request Quote Prep",
-  subtitle = "Save basic contact details in this browser so you can follow up with quotes later.",
+  subtitle = "Send basic contact details for organized solar quote follow-up.",
   placementId = "bottom-lead",
   pageSlug = normalizePageSlug(Astro.url.pathname),
-  endpoint = siteSettings.leadCapture?.defaultEndpoint ?? "",
+  endpoint = siteSettings.leadCapture?.defaultEndpoint || "/api/submissions",
 } = Astro.props;
-const mockStorageKey = siteSettings.leadCapture?.mockStorageKey ?? `${siteSettings.siteId ?? "advisorSite"}.mockLead.v1`;
 const sourceId = siteSettings.siteId ?? "advisor-site";
 const nicheName = siteSettings.nicheName ?? "Advisor";
 const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
 ---
 
-<section class="surface-card p-6" data-lead-form data-endpoint={endpoint} data-mock-storage-key={mockStorageKey}>
+<section class="surface-card p-6" data-lead-form data-endpoint={endpoint}>
   <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Quote follow-up</p>
   <h2 class="mt-2 text-2xl font-black text-deep-navy">{title}</h2>
   <p class="mt-2 text-sm leading-relaxed text-gray-600">{subtitle}</p>
@@ -85,47 +84,60 @@ const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
     const status = wrapper.querySelector("[data-lead-status]");
     const submit = wrapper.querySelector("[data-lead-submit]");
     const endpoint = wrapper.getAttribute("data-endpoint") || "";
-    const mockStorageKey = wrapper.getAttribute("data-mock-storage-key") || "advisorSite.mockLead.v1";
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const payload = Object.fromEntries(new FormData(form).entries());
+      const fields = Object.fromEntries(new FormData(form).entries());
+      const payload = {
+        category: "quote_follow_up",
+        type: "quote_follow_up",
+        fields,
+        contact: {
+          name: fields.name,
+          email: fields.email,
+          phone: fields.phone,
+          zip: fields.zip,
+        },
+        pageSlug: fields.pageSlug,
+        placementId: fields.placementId,
+        source: fields.source,
+        metadata: {
+          currentUrl: window.location.href,
+          referrer: document.referrer,
+          submittedAt: new Date().toISOString(),
+        },
+      };
 
       if (status) {
         status.className = "text-sm font-bold text-gray-500";
-        status.textContent = endpoint ? "Submitting quote request..." : "Saving details in this browser...";
+        status.textContent = "Submitting quote follow-up...";
       }
       if (submit) submit.setAttribute("disabled", "true");
 
       try {
-        // Production integration point:
-        // Replace the blank endpoint with a webhook, CRM intake URL, or static form provider.
-        // Keep consent, disclosure, spam controls, and provider privacy terms in place before sending real leads.
-        if (endpoint) {
-          const response = await fetch(endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-          if (!response.ok) {
-            throw new Error(`Lead endpoint returned ${response.status}`);
-          }
-        } else {
-          localStorage.setItem(mockStorageKey, JSON.stringify({ ...payload, savedAt: new Date().toISOString() }));
+        if (!response.ok) {
+          const error = await response.json().catch(() => ({}));
+          throw new Error(error.error || `Lead endpoint returned ${response.status}`);
         }
 
         if (status) {
           status.className = "text-sm font-bold text-soft-green";
-          status.textContent = endpoint
-            ? "Quote request submitted."
-            : "Saved in this browser. No information was sent from this static preview.";
+          status.textContent = "Quote follow-up saved for admin review.";
         }
         form.reset();
-      } catch {
+      } catch (error) {
         if (status) {
           status.className = "text-sm font-bold text-bright-orange";
-          status.textContent = "Submission failed. Please check the configured quote endpoint.";
+          status.textContent =
+            error instanceof Error && error.message === "database_unconfigured"
+              ? "Database is not connected yet. Please try again after setup is complete."
+              : "Submission failed. Please try again in a moment.";
         }
       } finally {
         if (submit) submit.removeAttribute("disabled");

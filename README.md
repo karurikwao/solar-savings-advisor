@@ -1,8 +1,8 @@
 # Solar Savings Advisor / Advisor Site Template
 
-Solar Savings Advisor is the default example for a reusable static Astro advisor-site template. It includes calculators, educational pages, comparison pages, provider listings, affiliate/CTA placements, lead-capture placeholders, and a Git-based Decap CMS admin dashboard.
+Solar Savings Advisor is the default example for a reusable Astro advisor-site template. It includes calculators, educational pages, comparison pages, provider listings, affiliate/CTA placements, database-backed submission capture, a Git-based Decap CMS admin dashboard, and an operational lead inbox.
 
-The public website is fully static and reads JSON at build time. No Node.js server is required at runtime.
+The public website reads JSON at build time and is served by a small Node.js runtime that also exposes submission and admin export APIs.
 
 ## Tech Stack
 
@@ -11,7 +11,8 @@ The public website is fully static and reads JSON at build time. No Node.js serv
 - **Tailwind CSS v4** through PostCSS
 - **JSON-driven content**
 - **Decap CMS** static admin dashboard at `/admin/`
-- **Coolify-ready `dist/` output**
+- **PostgreSQL-backed lead/report/calculator submissions**
+- **Coolify-ready Dockerfile runtime**
 
 ## A. Running Solar Savings Advisor
 
@@ -40,6 +41,13 @@ Optional static preview:
 node scripts/serve-dist.mjs --port 4178
 ```
 
+Runtime preview after building:
+
+```bash
+npm run build
+$env:PORT="4178"; npm run start
+```
+
 The default site keeps Solar Savings Advisor routes intact:
 
 - `/`
@@ -53,15 +61,22 @@ The default site keeps Solar Savings Advisor routes intact:
 - `/solar-batteries/`
 - `/about/`, `/contact/`, `/privacy/`, `/affiliate-disclosure/`, `/disclaimer/`, `/terms/`
 - `/admin/`
+- `/admin/leads/`
 - `/robots.txt`
 - `/sitemap.xml`
 
-### Admin Dashboard
+### Admin Dashboards
 
 Decap CMS is available at:
 
 ```text
 /admin/
+```
+
+Submission tracking is available at:
+
+```text
+/admin/leads/
 ```
 
 For local Decap editing, run two terminals:
@@ -81,6 +96,13 @@ http://localhost:4321/admin/
 ```
 
 Production note: Coolify static hosting does not automatically provide Git Gateway authentication. Production CMS publishing requires Netlify Git Gateway, GitHub/GitLab/Bitbucket OAuth, or a compatible self-hosted Decap auth proxy.
+
+The lead inbox requires:
+
+```text
+DATABASE_URL=postgres://...
+ADMIN_TOKEN=<long random token>
+```
 
 ## B. Creating A New Advisor Site
 
@@ -177,6 +199,8 @@ solarSavingsAdvisor.profile.v1
 
 This lets users enter ZIP code, monthly power bill, electricity rate, sun exposure, and financing preference once and reuse those values across calculators and reports.
 
+Profile cards, calculator runs, solar reports, and quote follow-up forms also post structured records to `/api/submissions` when the database is configured.
+
 ## Monetization Placements
 
 Templates pass a `placementId` to reusable components such as:
@@ -231,27 +255,30 @@ npm run submit:indexnow
 
 Google's Indexing API is intentionally not used for normal advisor pages. Use Search Console sitemap submission for Google.
 
-## Lead Capture Placeholder
+## Submission Capture
 
-`src/components/LeadCaptureForm.astro` is a frontend placeholder. Without an endpoint it stores mock data locally using:
+`src/components/LeadCaptureForm.astro`, `src/components/ProfileCapture.astro`, `src/components/SolarReportForm.astro`, and calculator runs submit structured records through:
 
 ```text
-site.json -> leadCapture.mockStorageKey
+/api/submissions
 ```
 
-To connect production lead capture later, pass a webhook, CRM, or static form provider endpoint and add consent, spam prevention, privacy coverage, and provider terms.
+Records are stored in PostgreSQL table `app_submissions` and grouped by category: `quote_follow_up`, `profile`, `solar_report`, `calculator`, `contact`, and `other`.
+
+Admin review and CSV export are available at `/admin/leads/`.
 
 ## Deployment
 
-Coolify static deployment:
+Coolify Docker deployment:
 
 ```text
-Install Command: npm install
-Build Command: npm run build
-Output Directory: dist
+Dockerfile
+Port: 80
+DATABASE_URL=postgres://...
+ADMIN_TOKEN=<long random token>
 ```
 
-The site is static and deployable on Coolify, Netlify, Vercel static output, Nginx, Caddy, or any static host.
+Create a PostgreSQL database resource in the same Coolify project and connect its internal `DATABASE_URL` to the app.
 
 ## Documentation
 

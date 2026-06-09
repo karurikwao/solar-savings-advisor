@@ -1,0 +1,332 @@
+---
+import { siteSettings } from "@/lib/content";
+import "@/styles/global.css";
+
+const colors = siteSettings.colors;
+const brandVars = [
+  `--brand-solar-yellow:${colors.solarYellow}`,
+  `--brand-deep-navy:${colors.deepNavy}`,
+  `--brand-bright-orange:${colors.brightOrange}`,
+  `--brand-soft-green:${colors.softGreen}`,
+  `--brand-light-gray:${colors.lightGray}`,
+].join(";");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Lead Inbox | {siteSettings.siteName}</title>
+  </head>
+  <body class="min-h-screen bg-light-gray text-deep-navy" style={brandVars}>
+    <main class="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
+      <header class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Admin</p>
+          <h1 class="text-3xl font-black">Lead Inbox</h1>
+        </div>
+        <nav class="flex flex-wrap gap-2 text-sm font-bold">
+          <a class="rounded-lg border border-gray-200 bg-white px-4 py-2 hover:border-bright-orange" href="/admin/">Content Admin</a>
+          <a class="rounded-lg border border-gray-200 bg-white px-4 py-2 hover:border-bright-orange" href="/">Public Site</a>
+        </nav>
+      </header>
+
+      <section class="surface-card p-5" data-auth-panel>
+        <div class="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
+          <label class="text-sm font-bold">
+            Admin Token
+            <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-admin-token type="password" autocomplete="current-password" placeholder="Enter ADMIN_TOKEN" />
+          </label>
+          <div class="flex gap-2">
+            <button class="rounded-xl bg-deep-navy px-5 py-3 font-bold text-white hover:bg-slate-800" data-connect type="button">Connect</button>
+            <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-clear-token type="button">Clear</button>
+          </div>
+        </div>
+        <p class="mt-3 text-sm font-bold text-gray-500" data-status aria-live="polite">Enter the admin token to load saved submissions.</p>
+      </section>
+
+      <section class="grid gap-3 md:grid-cols-4" data-summary></section>
+
+      <section class="surface-card p-5">
+        <div class="grid gap-3 md:grid-cols-[1fr_1fr_auto_auto] md:items-end">
+          <label class="text-sm font-bold">
+            Category
+            <select class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-category>
+              <option value="">All categories</option>
+              <option value="quote_follow_up">Quote follow-up</option>
+              <option value="contact">Contact</option>
+              <option value="solar_report">Solar reports</option>
+              <option value="calculator">Calculator runs</option>
+              <option value="profile">Profiles</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label class="text-sm font-bold">
+            Status
+            <select class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-filter-status>
+              <option value="">All statuses</option>
+              <option value="new">New</option>
+              <option value="reviewing">Reviewing</option>
+              <option value="contacted">Contacted</option>
+              <option value="qualified">Qualified</option>
+              <option value="closed">Closed</option>
+              <option value="spam">Spam</option>
+            </select>
+          </label>
+          <button class="rounded-xl bg-bright-orange px-5 py-3 font-bold text-white hover:bg-orange-600" data-refresh type="button">Refresh</button>
+          <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-export type="button">Export CSV</button>
+        </div>
+      </section>
+
+      <section class="surface-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-left text-sm">
+            <thead class="border-b border-gray-100 bg-white text-xs uppercase tracking-wider text-gray-500">
+              <tr>
+                <th class="px-4 py-3">Created</th>
+                <th class="px-4 py-3">Category</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3">Contact</th>
+                <th class="px-4 py-3">ZIP</th>
+                <th class="px-4 py-3">Source</th>
+                <th class="px-4 py-3">Details</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 bg-white" data-rows>
+              <tr>
+                <td class="px-4 py-8 text-center text-gray-500" colspan="7">No submissions loaded.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const tokenKey = "solarSavingsAdvisor.adminToken.v1";
+      const categoryLabels = {
+        quote_follow_up: "Quote follow-up",
+        contact: "Contact",
+        solar_report: "Solar report",
+        calculator: "Calculator",
+        profile: "Profile",
+        other: "Other",
+      };
+      const statusLabels = {
+        new: "New",
+        reviewing: "Reviewing",
+        contacted: "Contacted",
+        qualified: "Qualified",
+        closed: "Closed",
+        spam: "Spam",
+      };
+      const els = {
+        token: document.querySelector("[data-admin-token]"),
+        connect: document.querySelector("[data-connect]"),
+        clearToken: document.querySelector("[data-clear-token]"),
+        status: document.querySelector("[data-status]"),
+        summary: document.querySelector("[data-summary]"),
+        category: document.querySelector("[data-category]"),
+        filterStatus: document.querySelector("[data-filter-status]"),
+        refresh: document.querySelector("[data-refresh]"),
+        export: document.querySelector("[data-export]"),
+        rows: document.querySelector("[data-rows]"),
+      };
+
+      const escapeHtml = (value) =>
+        String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+
+      const getToken = () => sessionStorage.getItem(tokenKey) || els.token?.value.trim() || "";
+      const setStatus = (message, mode = "neutral") => {
+        if (!els.status) return;
+        const color = mode === "ok" ? "text-soft-green" : mode === "error" ? "text-bright-orange" : "text-gray-500";
+        els.status.className = `mt-3 text-sm font-bold ${color}`;
+        els.status.textContent = message;
+      };
+
+      const formatDate = (value) => {
+        if (!value) return "";
+        return new Intl.DateTimeFormat(undefined, {
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+        }).format(new Date(value));
+      };
+
+      const compactJson = (value) => {
+        if (!value || typeof value !== "object") return "";
+        return JSON.stringify(value, null, 2);
+      };
+
+      const queryParams = () => {
+        const params = new URLSearchParams();
+        if (els.category?.value) params.set("category", els.category.value);
+        if (els.filterStatus?.value) params.set("status", els.filterStatus.value);
+        params.set("limit", "250");
+        return params;
+      };
+
+      const apiFetch = async (url, options = {}) => {
+        const token = getToken();
+        if (!token) throw new Error("missing_token");
+        const response = await fetch(url, {
+          ...options,
+          headers: {
+            ...(options.headers || {}),
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error || `request_${response.status}`);
+        return data;
+      };
+
+      const renderSummary = (counts) => {
+        const byCategory = counts.reduce((acc, item) => {
+          acc[item.category] = (acc[item.category] || 0) + item.count;
+          return acc;
+        }, {});
+        const cards = ["quote_follow_up", "solar_report", "calculator", "contact"].map((category) => `
+          <article class="surface-card p-4">
+            <p class="text-xs font-black uppercase tracking-wider text-gray-500">${escapeHtml(categoryLabels[category])}</p>
+            <p class="mt-2 text-3xl font-black">${Number(byCategory[category] || 0).toLocaleString()}</p>
+          </article>
+        `);
+        if (els.summary) els.summary.innerHTML = cards.join("");
+      };
+
+      const renderRows = (rows) => {
+        if (!els.rows) return;
+        if (!rows.length) {
+          els.rows.innerHTML = `<tr><td class="px-4 py-8 text-center text-gray-500" colspan="7">No matching submissions.</td></tr>`;
+          return;
+        }
+
+        els.rows.innerHTML = rows.map((row) => {
+          const contact = [row.contactName, row.contactEmail, row.contactPhone].filter(Boolean).join("<br>");
+          const source = [row.pageSlug, row.placementId, row.interest].filter(Boolean).map(escapeHtml).join("<br>");
+          return `
+            <tr data-row="${escapeHtml(row.id)}" class="align-top">
+              <td class="whitespace-nowrap px-4 py-4 font-bold">${escapeHtml(formatDate(row.createdAt))}</td>
+              <td class="px-4 py-4">${escapeHtml(categoryLabels[row.category] || row.category)}</td>
+              <td class="px-4 py-4">
+                <select class="w-36 rounded-lg border border-gray-200 px-3 py-2" data-row-status>
+                  ${Object.entries(statusLabels).map(([value, label]) => `<option value="${value}"${row.status === value ? " selected" : ""}>${label}</option>`).join("")}
+                </select>
+              </td>
+              <td class="px-4 py-4">${contact || "<span class=\"text-gray-400\">No contact</span>"}</td>
+              <td class="px-4 py-4">${escapeHtml(row.zip)}</td>
+              <td class="px-4 py-4 text-gray-600">${source}</td>
+              <td class="min-w-80 px-4 py-4">
+                <details class="rounded-lg border border-gray-200 bg-light-gray p-3">
+                  <summary class="cursor-pointer font-bold">View details</summary>
+                  <textarea class="mt-3 h-20 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm" data-row-notes placeholder="Admin notes">${escapeHtml(row.adminNotes)}</textarea>
+                  <button class="mt-2 rounded-lg bg-deep-navy px-4 py-2 text-sm font-bold text-white" data-save-row type="button">Save</button>
+                  <pre class="mt-3 max-h-96 overflow-auto rounded-lg bg-white p-3 text-xs">${escapeHtml(compactJson({ resultSummary: row.resultSummary, payload: row.payload }))}</pre>
+                </details>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      };
+
+      const loadRows = async () => {
+        try {
+          const token = getToken();
+          if (!token) {
+            setStatus("Enter the admin token to load saved submissions.");
+            return;
+          }
+          sessionStorage.setItem(tokenKey, token);
+          setStatus("Loading submissions...");
+          const data = await apiFetch(`/api/admin/submissions?${queryParams().toString()}`);
+          renderSummary(data.counts || []);
+          renderRows(data.rows || []);
+          setStatus(`Loaded ${(data.rows || []).length.toLocaleString()} submissions.`, "ok");
+        } catch (error) {
+          const message = error instanceof Error ? error.message : "load_failed";
+          if (message === "missing_token" || message === "admin_auth_required") {
+            setStatus("Admin token is required.", "error");
+          } else if (message === "admin_token_unconfigured") {
+            setStatus("ADMIN_TOKEN is not configured on the server.", "error");
+          } else if (message === "database_unconfigured") {
+            setStatus("DATABASE_URL is not configured on the server.", "error");
+          } else {
+            setStatus("Could not load submissions.", "error");
+          }
+        }
+      };
+
+      els.connect?.addEventListener("click", loadRows);
+      els.refresh?.addEventListener("click", loadRows);
+      els.category?.addEventListener("change", loadRows);
+      els.filterStatus?.addEventListener("change", loadRows);
+      els.clearToken?.addEventListener("click", () => {
+        sessionStorage.removeItem(tokenKey);
+        if (els.token) els.token.value = "";
+        setStatus("Admin token cleared.");
+        renderRows([]);
+        renderSummary([]);
+      });
+      els.export?.addEventListener("click", async () => {
+        const token = getToken();
+        if (!token) {
+          setStatus("Admin token is required before exporting.", "error");
+          return;
+        }
+        try {
+          setStatus("Preparing CSV export...");
+          const response = await fetch(`/api/admin/submissions.csv?${queryParams().toString()}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (!response.ok) throw new Error("export_failed");
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = `solar-submissions-${new Date().toISOString().slice(0, 10)}.csv`;
+          document.body.append(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+          setStatus("CSV export downloaded.", "ok");
+        } catch {
+          setStatus("Could not export CSV.", "error");
+        }
+      });
+      els.rows?.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-save-row]");
+        if (!button) return;
+        const row = button.closest("[data-row]");
+        const id = row?.getAttribute("data-row");
+        if (!id) return;
+        const status = row.querySelector("[data-row-status]")?.value || "new";
+        const adminNotes = row.querySelector("[data-row-notes]")?.value || "";
+        try {
+          await apiFetch(`/api/admin/submissions/${encodeURIComponent(id)}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ status, adminNotes }),
+          });
+          setStatus("Submission updated.", "ok");
+        } catch {
+          setStatus("Could not update submission.", "error");
+        }
+      });
+
+      const savedToken = sessionStorage.getItem(tokenKey);
+      if (savedToken && els.token) {
+        els.token.value = savedToken;
+        loadRows();
+      }
+    </script>
+  </body>
+</html>

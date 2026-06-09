@@ -106,7 +106,6 @@ collections:
             fields:
               - { label: Enabled, name: enabled, widget: boolean, default: true }
               - { label: Default Endpoint, name: defaultEndpoint, widget: string, required: false }
-              - { label: Mock Storage Key, name: mockStorageKey, widget: string }
           - label: Analytics Placeholder
             name: analytics
             widget: object

@@ -73,7 +73,6 @@ export interface SiteSettings {
   leadCapture?: {
     enabled?: boolean;
     defaultEndpoint?: string;
-    mockStorageKey?: string;
   };
   analytics?: {
     enabled?: boolean;

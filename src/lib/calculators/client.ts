@@ -71,6 +71,40 @@ function renderResult(panel: HTMLElement, definition: CalculatorDefinition, rows
     `<div class="mt-4 rounded-xl border border-solar-yellow/30 bg-solar-yellow/10 p-4 text-xs leading-relaxed text-gray-600"><strong class="text-deep-navy">Educational estimate:</strong> ${escapeHtml(disclaimer)}</div><a class="mt-4 block rounded-xl bg-deep-navy px-6 py-3 text-center font-bold text-white" href="${escapeHtml(reportHref(panel, definition))}">${escapeHtml(buttonLabel)}</a>`;
 }
 
+async function saveCalculatorRun(panel: HTMLElement, definition: CalculatorDefinition, values: CalculatorValues, rows: Array<[string, string]>) {
+  const endpoint = panel.dataset.submissionEndpoint || "/api/submissions";
+  if (!endpoint) return;
+
+  try {
+    await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        category: "calculator",
+        type: "calculator",
+        calculatorType: definition.type,
+        fields: values,
+        resultSummary: {
+          calculatorType: definition.type,
+          rows: rows.map(([label, value]) => ({ label, value })),
+        },
+        pageSlug: normalizePageSlug(window.location.pathname),
+        placementId: panel.dataset.resultPlacementId || "calculator-results",
+        source: panel.dataset.source || "advisor-site",
+        offerId: definition.resultOfferId || panel.dataset.offerId || "free-solar-report",
+        partnerId: definition.resultPartnerId || panel.dataset.partnerId || "solar-savings-advisor",
+        metadata: {
+          currentUrl: window.location.href,
+          referrer: document.referrer,
+          calculatedAt: new Date().toISOString(),
+        },
+      }),
+    });
+  } catch {
+    // Calculator results should remain available even if submission tracking is temporarily offline.
+  }
+}
+
 function hydratePanel(panel: HTMLElement) {
   if (panel.dataset.hydrated === "true") return;
   panel.dataset.hydrated = "true";
@@ -104,7 +138,13 @@ function hydratePanel(panel: HTMLElement) {
   });
 
   calculateButton.addEventListener("click", () => {
-    renderResult(panel, definition, definition.calculate(values));
+    panel.querySelectorAll<HTMLInputElement | HTMLSelectElement>("[data-field]").forEach((input) => {
+      const fieldId = input.dataset.field || "";
+      if (fieldId) values[fieldId] = input.value;
+    });
+    const rows = definition.calculate(values);
+    renderResult(panel, definition, rows);
+    void saveCalculatorRun(panel, definition, { ...values }, rows);
   });
 }
 

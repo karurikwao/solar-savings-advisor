@@ -69,8 +69,7 @@
   },
   "leadCapture": {
     "enabled": true,
-    "defaultEndpoint": "",
-    "mockStorageKey": "businessPhoneAdvisor.mockLead.v1"
+    "defaultEndpoint": "/api/submissions"
   },
   "analytics": {
     "enabled": false,

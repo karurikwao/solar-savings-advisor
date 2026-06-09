@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "start": "node server.mjs",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro sync && tsc --noEmit",
     "create:niche": "node scripts/create-niche.mjs",
@@ -14,6 +15,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.0",
     "astro": "^6.4.4",
+    "pg": "^8.21.0",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {

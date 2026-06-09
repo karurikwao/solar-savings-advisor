@@ -2,7 +2,7 @@
   "affiliateDisclosureText": "SolarSavingsAdvisor.com may earn compensation when users request quotes or click partner links. This does not affect our editorial guidance.",
   "estimateDisclaimer": "Solar savings estimates are for educational purposes only. Actual savings, incentives, system costs, payback periods, and available offers vary by location, utility rates, roof condition, installer pricing, financing terms, and policy changes.",
   "calculatorDisclaimerText": "Solar calculator results are educational estimates only and are not quotes, guarantees, tax advice, utility forecasts, or installation recommendations. Verify costs, incentives, production assumptions, and financing terms with licensed professionals.",
-  "leadCaptureDisclaimer": "On this static preview, details are saved in this browser only and are not sent to Solar Savings Advisor until a secure quote endpoint is configured.",
+  "leadCaptureDisclaimer": "Submitted quote follow-up details are saved for admin review and export. Calculator estimates remain educational and are not binding quotes.",
   "installerListingDisclaimer": "Installer and provider listings are informational directory examples. The site does not claim to own, operate, endorse, or legally represent listed companies.",
   "adminDisclosureText": "Use the admin dashboard to edit content and monetization files through a Git-backed workflow. Public pages read the files at build time."
 }

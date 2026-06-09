@@ -2,7 +2,7 @@
   "affiliateDisclosureText": "BusinessPhoneAdvisor.example may earn compensation from partner links or quote requests.",
   "estimateDisclaimer": "Business phone content and estimates are educational only. Verify current pricing, taxes, fees, integrations, and contract terms with providers.",
   "calculatorDisclaimerText": "Calculator results are educational estimates only and are not quotes, procurement advice, or contract recommendations.",
-  "leadCaptureDisclaimer": "This static placeholder does not send personal information anywhere unless a production endpoint is configured.",
+  "leadCaptureDisclaimer": "Submitted quote follow-up details are saved for admin review and export. Calculator estimates remain educational and are not binding quotes.",
   "installerListingDisclaimer": "Provider listings are informational directory examples. The site does not claim to own, operate, endorse, or legally represent listed companies.",
   "adminDisclosureText": "Use the admin dashboard to edit content and monetization files through a Git-backed workflow."
 }
