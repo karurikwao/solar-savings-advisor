@@ -1,6 +1,6 @@
 # Solar Savings Advisor / Advisor Site Template
 
-Solar Savings Advisor is the default example for a reusable Astro advisor-site template. It includes calculators, educational pages, comparison pages, provider listings, affiliate/CTA placements, database-backed submission capture, a Git-based Decap CMS admin dashboard, and an operational lead inbox.
+Solar Savings Advisor is the default example for a reusable Astro advisor-site template. It includes calculators, educational pages, comparison pages, provider listings, affiliate/CTA placements, database-backed submission capture, an authenticated admin dashboard, and runtime ad snippet controls.
 
 The public website reads JSON at build time and is served by a small Node.js runtime that also exposes submission and admin export APIs.
 
@@ -10,8 +10,9 @@ The public website reads JSON at build time and is served by a small Node.js run
 - **TypeScript** strict mode
 - **Tailwind CSS v4** through PostCSS
 - **JSON-driven content**
-- **Decap CMS** static admin dashboard at `/admin/`
+- **Authenticated admin dashboard** at `/admin/`
 - **PostgreSQL-backed lead/report/calculator submissions**
+- **Database-backed custom ad snippets**
 - **Coolify-ready Dockerfile runtime**
 
 ## A. Running Solar Savings Advisor
@@ -65,43 +66,37 @@ The default site keeps Solar Savings Advisor routes intact:
 - `/robots.txt`
 - `/sitemap.xml`
 
-### Admin Dashboards
+### Admin Dashboard
 
-Decap CMS is available at:
+The production admin entrypoint is:
 
 ```text
 /admin/
 ```
 
-Submission tracking is available at:
+It redirects to:
 
 ```text
 /admin/leads/
 ```
 
-For local Decap editing, run two terminals:
+The dashboard supports email/password sign-in, password reset, lead review/export, and ad placement snippet overrides.
 
-```bash
-npm run dev
-```
-
-```bash
-npx decap-server
-```
-
-Then open:
-
-```text
-http://localhost:4321/admin/
-```
-
-Production note: Coolify static hosting does not automatically provide Git Gateway authentication. Production CMS publishing requires Netlify Git Gateway, GitHub/GitLab/Bitbucket OAuth, or a compatible self-hosted Decap auth proxy.
-
-The lead inbox requires:
+The admin dashboard requires:
 
 ```text
 DATABASE_URL=postgres://...
 ADMIN_TOKEN=<long random token>
+ADMIN_EMAIL=admin@example.com
+ADMIN_INITIAL_PASSWORD=<temporary first password>
+```
+
+Password reset email requires:
+
+```text
+RESEND_API_KEY=re_...
+RESEND_FROM_EMAIL="Solar Savings Advisor <onboarding@resend.dev>"
+APP_BASE_URL=https://your-domain.example
 ```
 
 ## B. Creating A New Advisor Site
@@ -218,6 +213,8 @@ The resolver chooses the highest-priority eligible ad or offer based on enabled 
 
 External monetized links use `rel="sponsored nofollow noopener"`.
 
+Runtime ad snippets can be managed in the admin dashboard. When a placement has an enabled custom snippet, the public `AdSlot` component fetches it from `/api/ads/:placementId` and uses it instead of the build-time fallback card.
+
 ## SEO And Indexing
 
 Build-time SEO settings live in:
@@ -265,7 +262,7 @@ Google's Indexing API is intentionally not used for normal advisor pages. Use Se
 
 Records are stored in PostgreSQL table `app_submissions` and grouped by category: `quote_follow_up`, `profile`, `solar_report`, `calculator`, `contact`, and `other`.
 
-Admin review and CSV export are available at `/admin/leads/`.
+Admin review, CSV export, account login, password reset, and ad snippet controls are available at `/admin/leads/`.
 
 ## Deployment
 
@@ -276,6 +273,11 @@ Dockerfile
 Port: 80
 DATABASE_URL=postgres://...
 ADMIN_TOKEN=<long random token>
+ADMIN_EMAIL=admin@example.com
+ADMIN_INITIAL_PASSWORD=<temporary first password>
+RESEND_API_KEY=re_...
+RESEND_FROM_EMAIL="Solar Savings Advisor <onboarding@resend.dev>"
+APP_BASE_URL=https://your-domain.example
 ```
 
 Create a PostgreSQL database resource in the same Coolify project and connect its internal `DATABASE_URL` to the app.

@@ -18,94 +18,174 @@ const brandVars = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Lead Inbox | {siteSettings.siteName}</title>
+    <title>Admin Dashboard | {siteSettings.siteName}</title>
   </head>
   <body class="min-h-screen bg-light-gray text-deep-navy" style={brandVars}>
     <main class="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
       <header class="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Admin</p>
-          <h1 class="text-3xl font-black">Lead Inbox</h1>
+          <h1 class="text-3xl font-black">Solar Savings Dashboard</h1>
         </div>
         <nav class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="rounded-lg border border-gray-200 bg-white px-4 py-2 hover:border-bright-orange" href="/admin/">Content Admin</a>
           <a class="rounded-lg border border-gray-200 bg-white px-4 py-2 hover:border-bright-orange" href="/">Public Site</a>
+          <a class="rounded-lg border border-gray-200 bg-white px-4 py-2 hover:border-bright-orange" href="/admin/">Admin Home</a>
         </nav>
       </header>
 
-      <section class="surface-card p-5" data-auth-panel>
-        <div class="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
-          <label class="text-sm font-bold">
-            Admin Token
-            <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-admin-token type="password" autocomplete="current-password" placeholder="Enter ADMIN_TOKEN" />
-          </label>
-          <div class="flex gap-2">
-            <button class="rounded-xl bg-deep-navy px-5 py-3 font-bold text-white hover:bg-slate-800" data-connect type="button">Connect</button>
-            <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-clear-token type="button">Clear</button>
+      <section class="surface-card p-5" data-auth-view>
+        <div class="grid gap-6 lg:grid-cols-[1fr_1fr]">
+          <form class="grid gap-3" data-login-form>
+            <div>
+              <p class="text-xs font-black uppercase tracking-wider text-gray-500">Sign In</p>
+              <h2 class="text-2xl font-black">Admin access</h2>
+            </div>
+            <label class="text-sm font-bold">
+              Email
+              <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-login-email type="email" autocomplete="username" />
+            </label>
+            <label class="text-sm font-bold">
+              Password
+              <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-login-password type="password" autocomplete="current-password" />
+            </label>
+            <button class="rounded-xl bg-deep-navy px-5 py-3 font-bold text-white hover:bg-slate-800" type="submit">Sign In</button>
+          </form>
+
+          <div class="grid gap-4">
+            <form class="grid gap-3 rounded-xl border border-gray-200 bg-white p-4" data-reset-request-form>
+              <div>
+                <p class="text-xs font-black uppercase tracking-wider text-gray-500">Lost Password</p>
+                <h2 class="text-xl font-black">Email a reset link</h2>
+              </div>
+              <label class="text-sm font-bold">
+                Admin Email
+                <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-reset-email type="email" autocomplete="email" />
+              </label>
+              <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" type="submit">Send Reset Link</button>
+            </form>
+
+            <form class="grid gap-3 rounded-xl border border-gray-200 bg-white p-4" data-reset-form hidden>
+              <div>
+                <p class="text-xs font-black uppercase tracking-wider text-gray-500">Reset Password</p>
+                <h2 class="text-xl font-black">Set a new password</h2>
+              </div>
+              <label class="text-sm font-bold">
+                New Password
+                <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-new-password type="password" autocomplete="new-password" />
+              </label>
+              <button class="rounded-xl bg-bright-orange px-5 py-3 font-bold text-white hover:bg-orange-600" type="submit">Update Password</button>
+            </form>
           </div>
         </div>
-        <p class="mt-3 text-sm font-bold text-gray-500" data-status aria-live="polite">Enter the admin token to load saved submissions.</p>
+        <p class="mt-4 text-sm font-bold text-gray-500" data-auth-status aria-live="polite">Checking admin session...</p>
       </section>
 
-      <section class="grid gap-3 md:grid-cols-4" data-summary></section>
-
-      <section class="surface-card p-5">
-        <div class="grid gap-3 md:grid-cols-[1fr_1fr_auto_auto] md:items-end">
-          <label class="text-sm font-bold">
-            Category
-            <select class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-category>
-              <option value="">All categories</option>
-              <option value="quote_follow_up">Quote follow-up</option>
-              <option value="contact">Contact</option>
-              <option value="solar_report">Solar reports</option>
-              <option value="calculator">Calculator runs</option>
-              <option value="profile">Profiles</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
-          <label class="text-sm font-bold">
-            Status
-            <select class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-filter-status>
-              <option value="">All statuses</option>
-              <option value="new">New</option>
-              <option value="reviewing">Reviewing</option>
-              <option value="contacted">Contacted</option>
-              <option value="qualified">Qualified</option>
-              <option value="closed">Closed</option>
-              <option value="spam">Spam</option>
-            </select>
-          </label>
-          <button class="rounded-xl bg-bright-orange px-5 py-3 font-bold text-white hover:bg-orange-600" data-refresh type="button">Refresh</button>
-          <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-export type="button">Export CSV</button>
+      <section data-dashboard hidden>
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p class="text-sm font-bold text-gray-500" data-user-label></p>
+            <div class="mt-3 flex flex-wrap gap-2" role="tablist" aria-label="Admin dashboard sections">
+              <button class="rounded-xl bg-deep-navy px-5 py-3 font-bold text-white" data-tab="leads" type="button">Leads</button>
+              <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-tab="ads" type="button">Ads</button>
+              <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-tab="account" type="button">Account</button>
+            </div>
+          </div>
+          <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-sign-out type="button">Sign Out</button>
         </div>
-      </section>
 
-      <section class="surface-card overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="min-w-full text-left text-sm">
-            <thead class="border-b border-gray-100 bg-white text-xs uppercase tracking-wider text-gray-500">
-              <tr>
-                <th class="px-4 py-3">Created</th>
-                <th class="px-4 py-3">Category</th>
-                <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3">Contact</th>
-                <th class="px-4 py-3">ZIP</th>
-                <th class="px-4 py-3">Source</th>
-                <th class="px-4 py-3">Details</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100 bg-white" data-rows>
-              <tr>
-                <td class="px-4 py-8 text-center text-gray-500" colspan="7">No submissions loaded.</td>
-              </tr>
-            </tbody>
-          </table>
+        <div data-panel="leads">
+          <section class="grid gap-3 md:grid-cols-4" data-summary></section>
+
+          <section class="surface-card mt-6 p-5">
+            <div class="grid gap-3 md:grid-cols-[1fr_1fr_auto_auto] md:items-end">
+              <label class="text-sm font-bold">
+                Category
+                <select class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-category>
+                  <option value="">All categories</option>
+                  <option value="quote_follow_up">Quote follow-up</option>
+                  <option value="contact">Contact</option>
+                  <option value="solar_report">Solar reports</option>
+                  <option value="calculator">Calculator runs</option>
+                  <option value="profile">Profiles</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label class="text-sm font-bold">
+                Status
+                <select class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-filter-status>
+                  <option value="">All statuses</option>
+                  <option value="new">New</option>
+                  <option value="reviewing">Reviewing</option>
+                  <option value="contacted">Contacted</option>
+                  <option value="qualified">Qualified</option>
+                  <option value="closed">Closed</option>
+                  <option value="spam">Spam</option>
+                </select>
+              </label>
+              <button class="rounded-xl bg-bright-orange px-5 py-3 font-bold text-white hover:bg-orange-600" data-refresh type="button">Refresh</button>
+              <button class="rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange" data-export type="button">Export CSV</button>
+            </div>
+            <p class="mt-3 text-sm font-bold text-gray-500" data-leads-status aria-live="polite"></p>
+          </section>
+
+          <section class="surface-card mt-6 overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left text-sm">
+                <thead class="border-b border-gray-100 bg-white text-xs uppercase tracking-wider text-gray-500">
+                  <tr>
+                    <th class="px-4 py-3">Created</th>
+                    <th class="px-4 py-3">Category</th>
+                    <th class="px-4 py-3">Status</th>
+                    <th class="px-4 py-3">Contact</th>
+                    <th class="px-4 py-3">ZIP</th>
+                    <th class="px-4 py-3">Source</th>
+                    <th class="px-4 py-3">Details</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 bg-white" data-rows>
+                  <tr>
+                    <td class="px-4 py-8 text-center text-gray-500" colspan="7">No submissions loaded.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <div data-panel="ads" hidden>
+          <section class="surface-card p-5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p class="text-xs font-black uppercase tracking-wider text-gray-500">Ad Controls</p>
+                <h2 class="text-2xl font-black">Placement snippets</h2>
+              </div>
+              <button class="rounded-xl bg-bright-orange px-5 py-3 font-bold text-white hover:bg-orange-600" data-refresh-ads type="button">Refresh Ads</button>
+            </div>
+            <p class="mt-3 text-sm font-bold text-gray-500" data-ads-status aria-live="polite"></p>
+          </section>
+          <section class="mt-6 grid gap-4" data-ads-list></section>
+        </div>
+
+        <div data-panel="account" hidden>
+          <section class="surface-card p-5">
+            <p class="text-xs font-black uppercase tracking-wider text-gray-500">Account</p>
+            <h2 class="text-2xl font-black">Signed-in admin</h2>
+            <dl class="mt-5 grid gap-3 text-sm sm:grid-cols-2">
+              <div class="rounded-xl border border-gray-200 bg-white p-4">
+                <dt class="font-black uppercase tracking-wider text-gray-500">Email</dt>
+                <dd class="mt-1 font-bold" data-account-email></dd>
+              </div>
+              <div class="rounded-xl border border-gray-200 bg-white p-4">
+                <dt class="font-black uppercase tracking-wider text-gray-500">Role</dt>
+                <dd class="mt-1 font-bold" data-account-role></dd>
+              </div>
+            </dl>
+          </section>
         </div>
       </section>
     </main>
 
     <script>
-      const tokenKey = "solarSavingsAdvisor.adminToken.v1";
       const categoryLabels = {
         quote_follow_up: "Quote follow-up",
         contact: "Contact",
@@ -122,17 +202,34 @@ const brandVars = [
         closed: "Closed",
         spam: "Spam",
       };
+      const state = { user: null, resetToken: new URLSearchParams(location.search).get("reset") || "" };
       const els = {
-        token: document.querySelector("[data-admin-token]"),
-        connect: document.querySelector("[data-connect]"),
-        clearToken: document.querySelector("[data-clear-token]"),
-        status: document.querySelector("[data-status]"),
+        authView: document.querySelector("[data-auth-view]"),
+        dashboard: document.querySelector("[data-dashboard]"),
+        authStatus: document.querySelector("[data-auth-status]"),
+        loginForm: document.querySelector("[data-login-form]"),
+        loginEmail: document.querySelector("[data-login-email]"),
+        loginPassword: document.querySelector("[data-login-password]"),
+        resetRequestForm: document.querySelector("[data-reset-request-form]"),
+        resetEmail: document.querySelector("[data-reset-email]"),
+        resetForm: document.querySelector("[data-reset-form]"),
+        newPassword: document.querySelector("[data-new-password]"),
+        userLabel: document.querySelector("[data-user-label]"),
+        signOut: document.querySelector("[data-sign-out]"),
+        tabs: document.querySelectorAll("[data-tab]"),
+        panels: document.querySelectorAll("[data-panel]"),
         summary: document.querySelector("[data-summary]"),
         category: document.querySelector("[data-category]"),
         filterStatus: document.querySelector("[data-filter-status]"),
         refresh: document.querySelector("[data-refresh]"),
         export: document.querySelector("[data-export]"),
         rows: document.querySelector("[data-rows]"),
+        leadsStatus: document.querySelector("[data-leads-status]"),
+        adsStatus: document.querySelector("[data-ads-status]"),
+        refreshAds: document.querySelector("[data-refresh-ads]"),
+        adsList: document.querySelector("[data-ads-list]"),
+        accountEmail: document.querySelector("[data-account-email]"),
+        accountRole: document.querySelector("[data-account-role]"),
       };
 
       const escapeHtml = (value) =>
@@ -143,12 +240,65 @@ const brandVars = [
           .replaceAll('"', "&quot;")
           .replaceAll("'", "&#039;");
 
-      const getToken = () => sessionStorage.getItem(tokenKey) || els.token?.value.trim() || "";
-      const setStatus = (message, mode = "neutral") => {
-        if (!els.status) return;
+      const setStatus = (element, message, mode = "neutral") => {
+        if (!element) return;
         const color = mode === "ok" ? "text-soft-green" : mode === "error" ? "text-bright-orange" : "text-gray-500";
-        els.status.className = `mt-3 text-sm font-bold ${color}`;
-        els.status.textContent = message;
+        element.className = `mt-3 text-sm font-bold ${color}`;
+        element.textContent = message;
+      };
+
+      const apiJson = async (url, options = {}) => {
+        const response = await fetch(url, {
+          credentials: "same-origin",
+          ...options,
+          headers: {
+            ...(options.headers || {}),
+            ...(options.body && !(options.body instanceof FormData) ? { "Content-Type": "application/json" } : {}),
+          },
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error || `request_${response.status}`);
+        return data;
+      };
+
+      const showAuth = (message = "Sign in to continue.", mode = "neutral") => {
+        if (els.authView) els.authView.hidden = false;
+        if (els.dashboard) els.dashboard.hidden = true;
+        if (els.resetForm) els.resetForm.hidden = !state.resetToken;
+        setStatus(els.authStatus, message, mode);
+      };
+
+      const showDashboard = (user) => {
+        state.user = user;
+        if (els.authView) els.authView.hidden = true;
+        if (els.dashboard) els.dashboard.hidden = false;
+        if (els.userLabel) els.userLabel.textContent = `Signed in as ${user.email}`;
+        if (els.accountEmail) els.accountEmail.textContent = user.email;
+        if (els.accountRole) els.accountRole.textContent = user.role || "admin";
+        switchTab("leads");
+        loadRows();
+      };
+
+      const switchTab = (tab) => {
+        els.tabs.forEach((button) => {
+          const selected = button.getAttribute("data-tab") === tab;
+          button.className = selected
+            ? "rounded-xl bg-deep-navy px-5 py-3 font-bold text-white"
+            : "rounded-xl border border-gray-200 bg-white px-5 py-3 font-bold hover:border-bright-orange";
+        });
+        els.panels.forEach((panel) => {
+          panel.hidden = panel.getAttribute("data-panel") !== tab;
+        });
+        if (tab === "ads") loadAds();
+      };
+
+      const checkSession = async () => {
+        try {
+          const data = await apiJson("/api/admin/auth/session");
+          showDashboard(data.user);
+        } catch {
+          showAuth(state.resetToken ? "Enter a new password to complete reset." : "Sign in to continue.");
+        }
       };
 
       const formatDate = (value) => {
@@ -174,21 +324,6 @@ const brandVars = [
         return params;
       };
 
-      const apiFetch = async (url, options = {}) => {
-        const token = getToken();
-        if (!token) throw new Error("missing_token");
-        const response = await fetch(url, {
-          ...options,
-          headers: {
-            ...(options.headers || {}),
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error || `request_${response.status}`);
-        return data;
-      };
-
       const renderSummary = (counts) => {
         const byCategory = counts.reduce((acc, item) => {
           acc[item.category] = (acc[item.category] || 0) + item.count;
@@ -211,7 +346,7 @@ const brandVars = [
         }
 
         els.rows.innerHTML = rows.map((row) => {
-          const contact = [row.contactName, row.contactEmail, row.contactPhone].filter(Boolean).join("<br>");
+          const contact = [row.contactName, row.contactEmail, row.contactPhone].filter(Boolean).map(escapeHtml).join("<br>");
           const source = [row.pageSlug, row.placementId, row.interest].filter(Boolean).map(escapeHtml).join("<br>");
           return `
             <tr data-row="${escapeHtml(row.id)}" class="align-top">
@@ -240,53 +375,125 @@ const brandVars = [
 
       const loadRows = async () => {
         try {
-          const token = getToken();
-          if (!token) {
-            setStatus("Enter the admin token to load saved submissions.");
-            return;
-          }
-          sessionStorage.setItem(tokenKey, token);
-          setStatus("Loading submissions...");
-          const data = await apiFetch(`/api/admin/submissions?${queryParams().toString()}`);
+          setStatus(els.leadsStatus, "Loading submissions...");
+          const data = await apiJson(`/api/admin/submissions?${queryParams().toString()}`);
           renderSummary(data.counts || []);
           renderRows(data.rows || []);
-          setStatus(`Loaded ${(data.rows || []).length.toLocaleString()} submissions.`, "ok");
+          setStatus(els.leadsStatus, `Loaded ${(data.rows || []).length.toLocaleString()} submissions.`, "ok");
         } catch (error) {
-          const message = error instanceof Error ? error.message : "load_failed";
-          if (message === "missing_token" || message === "admin_auth_required") {
-            setStatus("Admin token is required.", "error");
-          } else if (message === "admin_token_unconfigured") {
-            setStatus("ADMIN_TOKEN is not configured on the server.", "error");
-          } else if (message === "database_unconfigured") {
-            setStatus("DATABASE_URL is not configured on the server.", "error");
-          } else {
-            setStatus("Could not load submissions.", "error");
-          }
+          setStatus(els.leadsStatus, error.message === "database_unconfigured" ? "DATABASE_URL is not configured." : "Could not load submissions.", "error");
         }
       };
 
-      els.connect?.addEventListener("click", loadRows);
+      const renderAds = (rows) => {
+        if (!els.adsList) return;
+        if (!rows.length) {
+          els.adsList.innerHTML = `<div class="surface-card p-5 text-sm font-bold text-gray-500">No placements found.</div>`;
+          return;
+        }
+
+        els.adsList.innerHTML = rows.map((row) => `
+          <article class="surface-card p-5" data-ad-row="${escapeHtml(row.placementId)}">
+            <div class="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
+              <div>
+                <p class="text-xs font-black uppercase tracking-wider text-gray-500">${escapeHtml(row.templateArea)}</p>
+                <h3 class="text-xl font-black">${escapeHtml(row.label)}</h3>
+                <p class="mt-1 text-sm font-bold text-gray-500">${escapeHtml(row.placementId)}</p>
+              </div>
+              <label class="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold">
+                <input data-ad-enabled type="checkbox"${row.enabled ? " checked" : ""} />
+                Enabled
+              </label>
+            </div>
+            <div class="mt-4 grid gap-3 lg:grid-cols-[1fr_1fr]">
+              <label class="text-sm font-bold">
+                Label
+                <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-ad-label value="${escapeHtml(row.label)}" />
+              </label>
+              <label class="text-sm font-bold">
+                Template Area
+                <input class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" data-ad-template value="${escapeHtml(row.templateArea)}" />
+              </label>
+            </div>
+            <label class="mt-4 block text-sm font-bold">
+              Custom Ad Snippet
+              <textarea class="mt-1.5 h-40 w-full rounded-xl border border-gray-200 px-4 py-3 font-mono text-xs" data-ad-snippet spellcheck="false" placeholder="Ad network HTML or script snippet">${escapeHtml(row.snippet)}</textarea>
+            </label>
+            <label class="mt-4 block text-sm font-bold">
+              Notes
+              <textarea class="mt-1.5 h-20 w-full rounded-xl border border-gray-200 px-4 py-3 text-sm" data-ad-notes>${escapeHtml(row.notes)}</textarea>
+            </label>
+            <button class="mt-4 rounded-xl bg-deep-navy px-5 py-3 font-bold text-white hover:bg-slate-800" data-save-ad type="button">Save Placement</button>
+          </article>
+        `).join("");
+      };
+
+      const loadAds = async () => {
+        try {
+          setStatus(els.adsStatus, "Loading ad placements...");
+          const data = await apiJson("/api/admin/ad-placements");
+          renderAds(data.rows || []);
+          setStatus(els.adsStatus, `Loaded ${(data.rows || []).length.toLocaleString()} placements.`, "ok");
+        } catch {
+          setStatus(els.adsStatus, "Could not load ad placements.", "error");
+        }
+      };
+
+      els.loginForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        try {
+          setStatus(els.authStatus, "Signing in...");
+          const data = await apiJson("/api/admin/auth/login", {
+            method: "POST",
+            body: JSON.stringify({ email: els.loginEmail?.value || "", password: els.loginPassword?.value || "" }),
+          });
+          showDashboard(data.user);
+        } catch {
+          showAuth("Email or password was not accepted.", "error");
+        }
+      });
+
+      els.resetRequestForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        try {
+          await apiJson("/api/admin/auth/request-reset", {
+            method: "POST",
+            body: JSON.stringify({ email: els.resetEmail?.value || "" }),
+          });
+          showAuth("If that email is an admin, a reset link was sent.", "ok");
+        } catch {
+          showAuth("Could not request a reset link.", "error");
+        }
+      });
+
+      els.resetForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        try {
+          const data = await apiJson("/api/admin/auth/reset-password", {
+            method: "POST",
+            body: JSON.stringify({ token: state.resetToken, password: els.newPassword?.value || "" }),
+          });
+          history.replaceState({}, "", "/admin/leads/");
+          showDashboard(data.user);
+        } catch (error) {
+          showAuth(error.message === "password_too_short" ? "Use at least 10 characters." : "Reset link is invalid or expired.", "error");
+        }
+      });
+
+      els.signOut?.addEventListener("click", async () => {
+        await apiJson("/api/admin/auth/logout", { method: "POST" }).catch(() => {});
+        state.user = null;
+        showAuth("Signed out.", "ok");
+      });
+      els.tabs.forEach((button) => button.addEventListener("click", () => switchTab(button.getAttribute("data-tab") || "leads")));
       els.refresh?.addEventListener("click", loadRows);
       els.category?.addEventListener("change", loadRows);
       els.filterStatus?.addEventListener("change", loadRows);
-      els.clearToken?.addEventListener("click", () => {
-        sessionStorage.removeItem(tokenKey);
-        if (els.token) els.token.value = "";
-        setStatus("Admin token cleared.");
-        renderRows([]);
-        renderSummary([]);
-      });
+      els.refreshAds?.addEventListener("click", loadAds);
       els.export?.addEventListener("click", async () => {
-        const token = getToken();
-        if (!token) {
-          setStatus("Admin token is required before exporting.", "error");
-          return;
-        }
         try {
-          setStatus("Preparing CSV export...");
-          const response = await fetch(`/api/admin/submissions.csv?${queryParams().toString()}`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
+          setStatus(els.leadsStatus, "Preparing CSV export...");
+          const response = await fetch(`/api/admin/submissions.csv?${queryParams().toString()}`, { credentials: "same-origin" });
           if (!response.ok) throw new Error("export_failed");
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -297,9 +504,9 @@ const brandVars = [
           link.click();
           link.remove();
           URL.revokeObjectURL(url);
-          setStatus("CSV export downloaded.", "ok");
+          setStatus(els.leadsStatus, "CSV export downloaded.", "ok");
         } catch {
-          setStatus("Could not export CSV.", "error");
+          setStatus(els.leadsStatus, "Could not export CSV.", "error");
         }
       });
       els.rows?.addEventListener("click", async (event) => {
@@ -308,25 +515,43 @@ const brandVars = [
         const row = button.closest("[data-row]");
         const id = row?.getAttribute("data-row");
         if (!id) return;
-        const status = row.querySelector("[data-row-status]")?.value || "new";
-        const adminNotes = row.querySelector("[data-row-notes]")?.value || "";
         try {
-          await apiFetch(`/api/admin/submissions/${encodeURIComponent(id)}`, {
+          await apiJson(`/api/admin/submissions/${encodeURIComponent(id)}`, {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ status, adminNotes }),
+            body: JSON.stringify({
+              status: row.querySelector("[data-row-status]")?.value || "new",
+              adminNotes: row.querySelector("[data-row-notes]")?.value || "",
+            }),
           });
-          setStatus("Submission updated.", "ok");
+          setStatus(els.leadsStatus, "Submission updated.", "ok");
         } catch {
-          setStatus("Could not update submission.", "error");
+          setStatus(els.leadsStatus, "Could not update submission.", "error");
+        }
+      });
+      els.adsList?.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-save-ad]");
+        if (!button) return;
+        const row = button.closest("[data-ad-row]");
+        const placementId = row?.getAttribute("data-ad-row");
+        if (!placementId) return;
+        try {
+          await apiJson(`/api/admin/ad-placements/${encodeURIComponent(placementId)}`, {
+            method: "PUT",
+            body: JSON.stringify({
+              enabled: Boolean(row.querySelector("[data-ad-enabled]")?.checked),
+              label: row.querySelector("[data-ad-label]")?.value || placementId,
+              templateArea: row.querySelector("[data-ad-template]")?.value || "",
+              snippet: row.querySelector("[data-ad-snippet]")?.value || "",
+              notes: row.querySelector("[data-ad-notes]")?.value || "",
+            }),
+          });
+          setStatus(els.adsStatus, "Ad placement saved.", "ok");
+        } catch {
+          setStatus(els.adsStatus, "Could not save ad placement.", "error");
         }
       });
 
-      const savedToken = sessionStorage.getItem(tokenKey);
-      if (savedToken && els.token) {
-        els.token.value = savedToken;
-        loadRows();
-      }
+      checkSession();
     </script>
   </body>
 </html>

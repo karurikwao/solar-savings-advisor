@@ -1,6 +1,6 @@
 # Deployment
 
-This project builds the Astro public website and serves it with a small Node.js runtime for submission capture and admin exports.
+This project builds the Astro public website and serves it with a small Node.js runtime for submission capture, admin login, password reset, lead exports, and runtime ad snippets.
 
 ## Build
 
@@ -29,6 +29,8 @@ Required environment variables:
 ```text
 DATABASE_URL=postgres://...
 ADMIN_TOKEN=<long random token>
+ADMIN_EMAIL=admin@example.com
+ADMIN_INITIAL_PASSWORD=<temporary first password>
 ```
 
 Optional environment variables:
@@ -36,49 +38,30 @@ Optional environment variables:
 ```text
 DATABASE_SSL=false
 DATABASE_POOL_SIZE=5
+ADMIN_SESSION_TTL_HOURS=168
+ADMIN_PASSWORD_RESET_MINUTES=60
+APP_BASE_URL=https://your-domain.example
+RESEND_API_KEY=re_...
+RESEND_FROM_EMAIL="Solar Savings Advisor <onboarding@resend.dev>"
 ```
 
-Create a PostgreSQL database resource in the same Coolify project, then connect its internal `DATABASE_URL` to the app. The app creates the `app_submissions` table on boot.
+Create a PostgreSQL database resource in the same Coolify project, then connect its internal `DATABASE_URL` to the app. The app creates submission, admin user/session/reset, and ad placement tables on boot.
 
-## Submission Admin
+## Admin Dashboard
 
-Saved quote follow-ups, solar reports, and calculator runs are available at:
+The public footer links quietly to `/admin/`, which redirects to:
 
 ```text
 /admin/leads/
 ```
 
-Use `ADMIN_TOKEN` to load records. The dashboard supports category/status filtering, admin notes, and CSV export.
+Use the configured admin email/password to sign in. The dashboard supports category/status filtering, admin notes, CSV export, password-reset email through Resend, and custom ad snippets for placement IDs.
 
-## Decap CMS Local Editing
-
-`local_backend: true` is enabled in:
-
-```text
-public/admin/config.yml
-```
-
-Run two terminals from the project root:
-
-```bash
-npm run dev
-```
-
-```bash
-npx decap-server
-```
-
-Open:
-
-```text
-http://localhost:4321/admin/
-```
-
-Local Decap editing writes directly to repository files.
+`ADMIN_TOKEN` remains available for authenticated API automation through the `Authorization: Bearer <token>` header.
 
 ## Production CMS Authentication
 
-Coolify static hosting does not automatically provide Git Gateway authentication. Production CMS publishing requires one of:
+Coolify static hosting does not automatically provide Git Gateway authentication. If a Git-based content CMS is reintroduced later, production CMS publishing requires one of:
 
 - Netlify Identity plus Netlify Git Gateway
 - Decap GitHub backend with a GitHub OAuth app/proxy
@@ -86,7 +69,7 @@ Coolify static hosting does not automatically provide Git Gateway authentication
 - Decap Bitbucket backend with Bitbucket OAuth
 - A compatible self-hosted OAuth/auth proxy
 
-Without one of these, `/admin/` can load, but login/publishing will not work in production.
+The production `/admin/` path is reserved for the app-owned dashboard redirect. If Decap is needed later, expose it on a separate path such as `/admin/cms/` with a configured OAuth backend.
 
 ## Data Safety Notes
 

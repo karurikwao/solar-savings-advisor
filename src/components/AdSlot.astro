@@ -23,28 +23,66 @@ const ctaVariant = slot?.type === "offer" ? "green" : "orange";
       border,
       compact ? "min-h-44 p-5" : "min-h-56 p-8",
     ]}
+    data-dynamic-ad-slot
     data-placement-id={placementId}
     data-selected-type={slot.type}
     data-selected-id={slot.id}
   >
-    <p class:list={["mb-2 text-xs font-bold uppercase tracking-wider", accent]}>
-      {slot.disclosureLabel}
-    </p>
-    <h3 class:list={["font-bold text-deep-navy", compact ? "text-lg" : "text-2xl"]}>
-      {slot.title}
-    </h3>
-    <p class="mt-2 text-sm leading-relaxed text-gray-600">{slot.subtitle}</p>
-    <div class="mt-5">
-      <CTAButton
-        href={slot.destinationUrl}
-        label={slot.buttonText}
-        variant={ctaVariant}
-        placementId={placementId}
-        pageSlug={pageSlug}
-        offerId={slot.id}
-        partnerId={slot.partnerId}
-      />
+    <div data-ad-fallback>
+      <p class:list={["mb-2 text-xs font-bold uppercase tracking-wider", accent]}>
+        {slot.disclosureLabel}
+      </p>
+      <h3 class:list={["font-bold text-deep-navy", compact ? "text-lg" : "text-2xl"]}>
+        {slot.title}
+      </h3>
+      <p class="mt-2 text-sm leading-relaxed text-gray-600">{slot.subtitle}</p>
+      <div class="mt-5">
+        <CTAButton
+          href={slot.destinationUrl}
+          label={slot.buttonText}
+          variant={ctaVariant}
+          placementId={placementId}
+          pageSlug={pageSlug}
+          offerId={slot.id}
+          partnerId={slot.partnerId}
+        />
+      </div>
+      <p class="mt-4 text-xs text-gray-500">Partner: {slot.partnerName}</p>
     </div>
-    <p class="mt-4 text-xs text-gray-500">Partner: {slot.partnerName}</p>
   </aside>
+  <script is:inline>
+    {`
+      (() => {
+        const script = document.currentScript;
+        const shell = script?.previousElementSibling;
+        if (!shell?.matches?.("[data-dynamic-ad-slot]") || shell.dataset.customAdChecked) return;
+        shell.dataset.customAdChecked = "true";
+        const placementId = shell.dataset.placementId || "";
+        if (!placementId) return;
+
+        const runScripts = (container) => {
+          container.querySelectorAll("script").forEach((oldScript) => {
+            const nextScript = document.createElement("script");
+            Array.from(oldScript.attributes).forEach((attr) => nextScript.setAttribute(attr.name, attr.value));
+            nextScript.textContent = oldScript.textContent;
+            oldScript.replaceWith(nextScript);
+          });
+        };
+
+        fetch("/api/ads/" + encodeURIComponent(placementId), { credentials: "same-origin" })
+          .then((response) => response.ok ? response.json() : null)
+          .then((data) => {
+            if (!data?.enabled || !data.snippet) return;
+            const custom = document.createElement("div");
+            custom.className = "custom-ad-snippet";
+            custom.innerHTML = data.snippet;
+            shell.replaceChildren(custom);
+            shell.dataset.selectedType = "custom-ad";
+            shell.dataset.selectedId = placementId;
+            runScripts(custom);
+          })
+          .catch(() => {});
+      })();
+    `}
+  </script>
 )}
