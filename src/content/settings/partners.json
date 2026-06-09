@@ -1,0 +1,22 @@
+{
+  "partners": [
+    {
+      "id": "installer-partners",
+      "name": "Installer Partners",
+      "description": "Placeholder partner group for future quote request integrations.",
+      "url": "/installers/",
+      "logoText": "IP",
+      "disclosureLabel": "May compensate us for quote requests",
+      "enabled": true
+    },
+    {
+      "id": "solar-savings-advisor",
+      "name": "Solar Savings Advisor",
+      "description": "In-house calculators, guides, and solar readiness report.",
+      "url": "/solar-report/",
+      "logoText": "SSA",
+      "disclosureLabel": "Educational tools",
+      "enabled": true
+    }
+  ]
+}

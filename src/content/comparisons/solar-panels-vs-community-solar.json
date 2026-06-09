@@ -1,0 +1,71 @@
+{
+  "id": "solar-panels-vs-community-solar",
+  "title": "Solar Panels vs Community Solar",
+  "path": "solar-panels-vs-community-solar",
+  "description": "Community solar can help renters or shaded homes benefit from solar without rooftop panels.",
+  "optionA": "Rooftop Solar",
+  "optionB": "Community Solar",
+  "winnerSide": "tie",
+  "winnerSummary": "Rooftop solar can create more control and savings, while community solar is useful when your home is not a good solar candidate.",
+  "prosA": [
+    "Direct system control",
+    "Potential home value benefit",
+    "Can pair with batteries"
+  ],
+  "consA": [
+    "Requires suitable roof",
+    "Higher commitment",
+    "Installation process"
+  ],
+  "prosB": [
+    "No roof required",
+    "May work for renters",
+    "Lower friction"
+  ],
+  "consB": [
+    "Less control",
+    "Program availability varies",
+    "Savings may be lower"
+  ],
+  "bestForA": "Homeowners with a sunny roof and long-term plans.",
+  "bestForB": "Renters, shaded homes, or homeowners avoiding installation.",
+  "costConsiderations": "Compare subscription terms, bill credits, roof system quotes, and cancellation rules.",
+  "tableRows": [
+    {
+      "feature": "Roof Required",
+      "optionA": "Yes",
+      "optionB": "No",
+      "winner": "B"
+    },
+    {
+      "feature": "Battery Option",
+      "optionA": "Yes",
+      "optionB": "No",
+      "winner": "A"
+    },
+    {
+      "feature": "Availability",
+      "optionA": "Installer dependent",
+      "optionB": "Program dependent",
+      "winner": "tie"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can renters use community solar?",
+      "answer": "Often yes, depending on local program availability and utility rules."
+    }
+  ],
+  "monetizationPlacementId": "comparison-affiliate",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar financing resources",
+    "Consumer Financial Protection Bureau financing education",
+    "EnergySage solar equipment and financing education"
+  ]
+}

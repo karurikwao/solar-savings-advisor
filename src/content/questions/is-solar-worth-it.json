@@ -1,0 +1,74 @@
+{
+  "id": "is-solar-worth-it",
+  "title": "Is Solar Worth It?",
+  "description": "An honest look at when solar panels make financial sense and when they might not.",
+  "category": "General",
+  "path": "is-solar-worth-it",
+  "quickAnswer": "Solar may be worth it if your electric bill is high, your roof gets strong sunlight, your utility credits exported energy fairly, and you expect to stay in the home long enough for bill savings to outweigh ownership costs.",
+  "bestFor": [
+    "Monthly electric bill is over $150",
+    "Roof gets good sun exposure",
+    "You plan to stay in your home for 10+ years",
+    "You can use available incentives"
+  ],
+  "notBestFor": [
+    "Monthly electric bill is under $75",
+    "Roof has heavy shade",
+    "Roof needs major repairs soon",
+    "You plan to move within 5 years"
+  ],
+  "scenario": {
+    "title": "Example Savings Scenario",
+    "details": [
+      "$200/month electric bill",
+      "7 kW system estimate",
+      "Monthly savings estimate of $140-$170",
+      "Estimated payback of 7-10 years"
+    ]
+  },
+  "factors": [
+    "Electricity rate",
+    "Roof orientation and shade",
+    "Available incentives",
+    "Financing choice",
+    "Net metering policy",
+    "Roof age and electrical panel readiness",
+    "Installer workmanship and warranty coverage",
+    "Whether a lease, loan, or cash purchase controls the system"
+  ],
+  "faqs": [
+    {
+      "question": "How do I know if my roof is good for solar?",
+      "answer": "A good solar roof has minimal shade, usable roof space, and solid structural condition. An installer can verify the details."
+    },
+    {
+      "question": "What if I move before payback?",
+      "answer": "Solar may increase resale value, but market impact varies. A paid-off system is typically easier for buyers to understand than a lease."
+    },
+    {
+      "question": "What bill size usually makes solar worth reviewing?",
+      "answer": "Homes spending roughly $125-$150 or more per month on electricity are often worth reviewing, but the exact answer depends on local rates, shade, roof condition, and financing terms."
+    },
+    {
+      "question": "Should I replace my roof before adding solar?",
+      "answer": "If the roof is near the end of its life, price a roof replacement before signing a solar contract. Removing and reinstalling panels later can add avoidable cost."
+    }
+  ],
+  "relatedQuestions": [
+    "how-many-solar-panels-do-i-need",
+    "should-i-lease-or-buy-solar-panels",
+    "is-a-solar-battery-worth-it"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

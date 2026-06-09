@@ -1,0 +1,22 @@
+{
+  "id": "solar-savings-calculator",
+  "title": "Solar Savings Calculator",
+  "description": "Estimate your monthly, yearly, and 25-year savings from switching to solar energy.",
+  "calculatorType": "solar-savings",
+  "icon": "sun",
+  "path": "solar-savings-calculator",
+  "category": "Solar",
+  "resultPlacementId": "calculator-results",
+  "sidebarPlacementId": "tools-detail-sidebar",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar energy resources",
+    "NREL PVWatts and solar production education",
+    "EnergySage solar cost and savings education"
+  ]
+}

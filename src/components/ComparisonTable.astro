@@ -1,0 +1,37 @@
+---
+interface Row {
+  feature: string;
+  optionA: string;
+  optionB: string;
+  winner: "A" | "B" | "tie";
+}
+
+interface Props {
+  titleA: string;
+  titleB: string;
+  rows: Row[];
+}
+
+const { titleA, titleB, rows } = Astro.props;
+---
+
+<div class="my-8 overflow-x-auto rounded-xl shadow-md">
+  <table class="w-full min-w-[680px] border-collapse bg-white text-sm">
+    <thead class="bg-deep-navy text-white">
+      <tr>
+        <th class="px-6 py-4 text-left">Feature</th>
+        <th class="px-6 py-4 text-center">{titleA}</th>
+        <th class="px-6 py-4 text-center">{titleB}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr class="border-b border-gray-100">
+          <td class="px-6 py-4 font-bold text-deep-navy">{row.feature}</td>
+          <td class:list={["px-6 py-4 text-center", row.winner === "A" ? "bg-green-50 font-bold text-soft-green" : "text-gray-600"]}>{row.optionA}</td>
+          <td class:list={["px-6 py-4 text-center", row.winner === "B" ? "bg-green-50 font-bold text-soft-green" : "text-gray-600"]}>{row.optionB}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

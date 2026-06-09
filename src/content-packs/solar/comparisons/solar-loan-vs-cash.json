@@ -1,0 +1,87 @@
+{
+  "id": "solar-loan-vs-cash",
+  "title": "Solar Loan vs Cash Purchase",
+  "path": "solar-loan-vs-cash",
+  "description": "Buying solar with cash offers the best ROI, but a solar loan allows you to go solar with less upfront cost.",
+  "optionA": "Cash Purchase",
+  "optionB": "Solar Loan",
+  "winnerSide": "A",
+  "winnerSummary": "Cash purchase usually delivers the highest long-term savings because you avoid interest, but a solar loan can preserve cash and still provide ownership benefits.",
+  "prosA": [
+    "Highest long-term savings",
+    "No interest",
+    "Immediate ownership",
+    "No monthly payment"
+  ],
+  "consA": [
+    "High upfront cost",
+    "Ties up cash",
+    "You handle ownership responsibilities"
+  ],
+  "prosB": [
+    "Lower upfront cost",
+    "Ownership benefits",
+    "Can be cash-flow positive",
+    "Fixed monthly payment"
+  ],
+  "consB": [
+    "Interest increases total cost",
+    "Credit approval required",
+    "Longer payback"
+  ],
+  "bestForA": "Homeowners with available cash who want maximum lifetime savings.",
+  "bestForB": "Homeowners who want ownership without paying the full cost upfront.",
+  "costConsiderations": "Compare total installed cost, interest, dealer fees, tax credit eligibility, monthly payment, and the opportunity cost of using cash. Ask lenders whether the quoted APR includes a dealer fee because two loans with the same payment can have different true costs.",
+  "tableRows": [
+    {
+      "feature": "Upfront Cost",
+      "optionA": "High",
+      "optionB": "Low",
+      "winner": "B"
+    },
+    {
+      "feature": "Total Cost",
+      "optionA": "Lowest",
+      "optionB": "Higher with interest",
+      "winner": "A"
+    },
+    {
+      "feature": "Ownership",
+      "optionA": "Immediate",
+      "optionB": "Immediate",
+      "winner": "tie"
+    },
+    {
+      "feature": "Monthly Payment",
+      "optionA": "None",
+      "optionB": "Required",
+      "winner": "A"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can I pay off a solar loan early?",
+      "answer": "Many solar loans allow early payoff, but always check for prepayment penalties."
+    },
+    {
+      "question": "Is the lowest monthly payment the best solar loan?",
+      "answer": "Not necessarily. A low payment can come from a longer term or dealer fee. Compare total repayment, APR, term length, and prepayment rules."
+    },
+    {
+      "question": "Does paying cash change tax credit eligibility?",
+      "answer": "Payment method alone does not usually determine federal tax credit eligibility, but ownership, qualifying costs, and tax liability matter. Verify with a tax professional."
+    }
+  ],
+  "monetizationPlacementId": "comparison-affiliate",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar financing resources",
+    "Consumer Financial Protection Bureau financing education",
+    "EnergySage solar equipment and financing education"
+  ]
+}

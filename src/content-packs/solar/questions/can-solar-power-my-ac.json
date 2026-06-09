@@ -1,0 +1,56 @@
+{
+  "id": "can-solar-power-my-ac",
+  "title": "Can Solar Power My AC?",
+  "description": "A properly sized solar system can offset air conditioning usage, especially in sunny climates.",
+  "category": "General",
+  "path": "can-solar-power-my-ac",
+  "quickAnswer": "Yes, solar can help power your AC, but air conditioning is energy-intensive and should be included in system sizing.",
+  "bestFor": [
+    "High summer bills",
+    "Sunny roof",
+    "Efficient AC system"
+  ],
+  "notBestFor": [
+    "Very inefficient AC",
+    "Limited roof space",
+    "Heavy shade"
+  ],
+  "scenario": {
+    "title": "AC Usage Example",
+    "details": [
+      "Summer bill increases",
+      "Solar production also peaks in summer",
+      "Battery may help with evening AC use"
+    ]
+  },
+  "factors": [
+    "AC efficiency",
+    "Summer kWh usage",
+    "Roof production",
+    "Time-of-use rates",
+    "Battery interest"
+  ],
+  "faqs": [
+    {
+      "question": "Will solar run AC during an outage?",
+      "answer": "Only with proper battery and backup equipment. Standard grid-tied solar shuts down during outages for safety."
+    }
+  ],
+  "relatedQuestions": [
+    "how-many-solar-panels-do-i-need",
+    "is-a-solar-battery-worth-it",
+    "is-solar-worth-it"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

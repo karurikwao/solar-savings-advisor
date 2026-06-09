@@ -1,0 +1,57 @@
+{
+  "id": "does-solar-increase-home-value",
+  "title": "Does Solar Increase Home Value?",
+  "description": "Solar can increase home value in some markets, especially when the system is owned rather than leased.",
+  "category": "Home Value",
+  "path": "does-solar-increase-home-value",
+  "quickAnswer": "Solar may increase home value, but the impact varies by market, system ownership, age, savings, and buyer preferences.",
+  "bestFor": [
+    "Owned systems",
+    "High-savings markets",
+    "Strong warranties",
+    "Simple transferable documents"
+  ],
+  "notBestFor": [
+    "Leased systems with transfer friction",
+    "Old equipment",
+    "Poor production data"
+  ],
+  "scenario": {
+    "title": "Home Value Example",
+    "details": [
+      "Owned system",
+      "Documented utility savings",
+      "Buyer sees lower monthly ownership cost"
+    ]
+  },
+  "factors": [
+    "Ownership type",
+    "System age",
+    "Local market",
+    "Warranty transfer",
+    "Electricity savings"
+  ],
+  "faqs": [
+    {
+      "question": "Are leased panels harder to sell with?",
+      "answer": "They can be. Buyers may need to assume the lease, so review transfer terms before signing."
+    }
+  ],
+  "relatedQuestions": [
+    "solar-lease-vs-solar-loan",
+    "is-solar-worth-it",
+    "how-long-do-solar-panels-last"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

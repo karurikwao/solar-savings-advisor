@@ -1,0 +1,73 @@
+{
+  "id": "california",
+  "stateName": "California",
+  "stateDescription": "California leads the nation in solar installations with high electricity rates and strong battery interest.",
+  "avgCostPerWatt": "$2.80-$3.80",
+  "typicalPayback": "6-10 years",
+  "keyIncentives": [
+    "Federal solar tax credit (verify current amount)",
+    "SGIP battery incentive availability varies",
+    "Property tax exclusion for solar installations"
+  ],
+  "sampleInstallers": [
+    {
+      "name": "SunPower",
+      "rating": 4.8,
+      "services": [
+        "Residential Solar",
+        "Referral Programs"
+      ],
+      "financing": [
+        "Loan",
+        "Cash",
+        "Lease"
+      ],
+      "description": "Nationwide premium residential solar provider."
+    },
+    {
+      "name": "Tesla Solar",
+      "rating": 4.2,
+      "services": [
+        "Solar Panels",
+        "Solar Roof",
+        "Powerwall"
+      ],
+      "financing": [
+        "Loan",
+        "Cash"
+      ],
+      "description": "Direct solar with battery backup integration."
+    },
+    {
+      "name": "NRG Clean Power",
+      "rating": 4.6,
+      "services": [
+        "Residential Solar",
+        "Battery Storage"
+      ],
+      "financing": [
+        "Cash",
+        "Loan"
+      ],
+      "description": "California installer with solar-plus-storage options."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Should California homeowners consider batteries?",
+      "answer": "Often yes, especially under lower export credit structures. Compare battery quotes carefully."
+    }
+  ],
+  "quotePlacementId": "installer-quote",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "DSIRE state and utility incentive database",
+    "U.S. Department of Energy solar consumer resources",
+    "Public installer profile and market information reviewed for educational context"
+  ]
+}

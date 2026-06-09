@@ -1,0 +1,56 @@
+{
+  "id": "can-i-go-off-grid-with-solar",
+  "title": "Can I Go Off-Grid with Solar?",
+  "description": "Going off-grid usually requires a larger solar system, significant battery storage, and backup planning.",
+  "category": "Off-Grid",
+  "path": "can-i-go-off-grid-with-solar",
+  "quickAnswer": "You can go off-grid with solar, but it is much more expensive and complex than a standard grid-tied system.",
+  "bestFor": [
+    "Remote properties",
+    "High grid connection costs",
+    "Strong backup needs"
+  ],
+  "notBestFor": [
+    "Typical suburban homes",
+    "Lowest-cost goals",
+    "Limited battery budget"
+  ],
+  "scenario": {
+    "title": "Off-Grid Example",
+    "details": [
+      "Large battery bank",
+      "Backup generator often still needed",
+      "Careful load management required"
+    ]
+  },
+  "factors": [
+    "Daily kWh use",
+    "Battery autonomy",
+    "Seasonal production",
+    "Backup source",
+    "Critical loads"
+  ],
+  "faqs": [
+    {
+      "question": "Is off-grid cheaper?",
+      "answer": "Usually no. Grid-tied solar is often more cost-effective for homes already connected to reliable utility service."
+    }
+  ],
+  "relatedQuestions": [
+    "is-a-solar-battery-worth-it",
+    "battery-backup-vs-generator",
+    "can-solar-power-my-ac"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

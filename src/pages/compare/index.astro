@@ -1,0 +1,29 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { comparisons, siteSettings } from "@/lib/content";
+
+const nicheName = siteSettings.nicheName ?? "Advisor";
+---
+
+<BaseLayout title={`${nicheName} Comparisons`} description={`Compare ${nicheName.toLowerCase()} options side by side.`}>
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">{nicheName} Comparisons</h1>
+      <p class="mt-4 max-w-2xl text-lg text-gray-300">Side-by-side guidance for the decisions that affect cost, terms, provider fit, and long-term value.</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[2fr_1fr]">
+    <div class="grid gap-5 sm:grid-cols-2">
+      {comparisons.map((item) => (
+        <a href={`/compare/${item.path}/`} class="surface-card p-6 transition hover:-translate-y-1 hover:shadow-xl">
+          <h2 class="text-xl font-black text-deep-navy">{item.title}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
+          <p class="mt-4 text-sm font-bold text-soft-green">{item.winnerSummary}</p>
+        </a>
+      ))}
+    </div>
+    <AdSlot placementId="compare-index-hero" />
+  </section>
+</BaseLayout>

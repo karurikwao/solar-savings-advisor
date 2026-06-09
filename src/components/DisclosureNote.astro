@@ -1,0 +1,14 @@
+---
+import { disclosureSettings, siteSettings } from "@/lib/content";
+
+interface Props {
+  text?: string;
+  label?: string;
+}
+
+const { text = disclosureSettings.estimateDisclaimer ?? siteSettings.estimateDisclaimer, label = "Disclosure" } = Astro.props;
+---
+
+<div class="rounded-xl border border-solar-yellow/20 bg-solar-yellow/10 p-4 text-sm text-gray-700">
+  <strong class="text-deep-navy">{label}:</strong> {text}
+</div>

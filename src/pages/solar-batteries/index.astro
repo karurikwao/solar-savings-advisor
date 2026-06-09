@@ -1,0 +1,58 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import CTAButton from "@/components/CTAButton.astro";
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { comparisons } from "@/lib/content";
+
+const batteryComparisons = comparisons.filter((item) =>
+  item.id.includes("battery") || item.id.includes("powerwall") || item.id.includes("generator")
+);
+---
+
+<BaseLayout title="Solar Batteries" description="Compare solar batteries, backup options, and battery cost considerations.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">Solar Batteries</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">Understand backup power, solar-plus-storage sizing, and where batteries change the economics.</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <article>
+      <div class="surface-card p-6">
+        <h2 class="text-2xl font-black text-deep-navy">When a Battery Can Make Sense</h2>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          {[
+            "Frequent outages or medical backup needs",
+            "Time-of-use rates with expensive evening power",
+            "Low export credits for excess solar",
+            "Interest in resilience more than pure payback",
+          ].map((item) => <div class="rounded-xl bg-green-50 p-4 text-sm font-bold text-deep-navy">{item}</div>)}
+        </div>
+        <div class="mt-6">
+          <CTAButton href="/tools/battery-backup-calculator/" label="Estimate Battery Size" variant="green" placementId="guide-banner" offerId="free-solar-report" partnerId="solar-savings-advisor" />
+        </div>
+      </div>
+
+      <section class="my-8">
+        <h2 class="text-2xl font-black text-deep-navy">Battery Comparisons</h2>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          {batteryComparisons.map((item) => (
+            <a href={`/compare/${item.path}/`} class="surface-card p-5 transition hover:-translate-y-1 hover:shadow-xl">
+              <h3 class="font-black text-deep-navy">{item.title}</h3>
+              <p class="mt-2 text-sm text-gray-600">{item.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <DisclosureNote />
+    </article>
+
+    <aside class="space-y-6">
+      <AdSlot placementId="guide-banner" compact />
+      <AdSlot placementId="bottom-lead" compact />
+    </aside>
+  </section>
+</BaseLayout>

@@ -1,0 +1,11 @@
+{
+  "id": "business-phone-savings-calculator",
+  "title": "Business Phone Savings Calculator",
+  "description": "Estimate savings from switching to a lower-cost business phone provider.",
+  "calculatorType": "generic-savings",
+  "icon": "phone",
+  "path": "business-phone-savings-calculator",
+  "category": "Business Phone",
+  "resultPlacementId": "calculator-results",
+  "sidebarPlacementId": "tools-detail-sidebar"
+}

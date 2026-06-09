@@ -1,0 +1,14 @@
+{
+  "id": "contact-center-providers",
+  "stateName": "Contact Center Providers",
+  "stateDescription": "Provider categories for teams that need queues, analytics, recordings, and customer support workflows.",
+  "avgCostPerWatt": "$40-$100/agent/mo",
+  "typicalPayback": "2-8 weeks setup",
+  "keyIncentives": ["Confirm recording and compliance needs", "Ask about CRM integration", "Review onboarding and support scope"],
+  "sampleInstallers": [
+    { "name": "Five9", "rating": 4.3, "services": ["Contact Center", "Analytics", "Dialer"], "financing": ["Annual", "Custom"], "description": "Cloud contact center platform for sales and support teams." },
+    { "name": "Dialpad", "rating": 4.4, "services": ["Voice", "AI notes", "Contact Center"], "financing": ["Monthly", "Annual"], "description": "Business communications platform with AI-assisted calling features." }
+  ],
+  "faqs": [{ "question": "Is contact center software different from VoIP?", "answer": "Often yes. Contact center plans usually add queueing, reporting, routing, and supervisor tools." }],
+  "quotePlacementId": "installer-quote"
+}

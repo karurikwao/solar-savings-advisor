@@ -1,0 +1,28 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import AdvisorReportForm from "@/components/AdvisorReportForm.astro";
+import LeadCaptureForm from "@/components/LeadCaptureForm.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Free Solar Report" description="Generate a frontend-only personalized solar readiness report.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <Breadcrumbs items={[{ label: "Solar Report" }]} />
+      <h1 class="text-4xl font-black md:text-5xl">Free Solar Readiness Report</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">Estimate fit score, savings, system size, and next steps from your saved home details.</p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <AdvisorReportForm />
+    <div class="mt-10">
+      <LeadCaptureForm
+        title="Save This Home for Quote Follow-Up"
+        subtitle="This is a frontend placeholder for future webhook, CRM, or form-service lead capture."
+        placementId="bottom-lead"
+        pageSlug="solar-report"
+      />
+    </div>
+  </section>
+</BaseLayout>

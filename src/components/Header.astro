@@ -1,0 +1,77 @@
+---
+import Icon from "@/components/Icon.astro";
+import { navigationSettings, siteSettings } from "@/lib/content";
+
+const navLinks = (navigationSettings.primary ?? siteSettings.nav).filter((link) => {
+  return siteSettings.admin?.showInNavigation || !link.href.startsWith("/admin");
+});
+const primary = siteSettings.logo?.primaryText ?? siteSettings.siteName;
+const suffix = siteSettings.logo?.secondaryText ?? "";
+const iconName = siteSettings.logo?.icon ?? "sun";
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur">
+  <div class="container-wide">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-bright-orange to-solar-yellow text-white shadow-md">
+          <Icon name={iconName} class="h-5 w-5" />
+        </span>
+        <span>
+          <span class="block text-lg font-black leading-tight text-deep-navy">{primary}</span>
+          {suffix && <span class="block text-[10px] font-bold uppercase tracking-wider text-bright-orange">{suffix}</span>}
+        </span>
+      </a>
+
+      <button
+        class="focus-ring rounded-lg p-2 text-deep-navy lg:hidden"
+        type="button"
+        data-menu-toggle
+        aria-label="Toggle menu"
+      >
+        <span class="block h-0.5 w-6 bg-current"></span>
+        <span class="mt-1.5 block h-0.5 w-6 bg-current"></span>
+        <span class="mt-1.5 block h-0.5 w-6 bg-current"></span>
+      </button>
+
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
+              link.highlight
+                ? "bg-bright-orange text-white shadow-sm hover:bg-orange-600"
+                : "text-deep-navy hover:bg-light-gray",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+    <nav class="hidden border-t border-gray-100 py-3 lg:hidden" data-mobile-menu>
+      <div class="flex flex-col gap-1">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "rounded-lg px-4 py-3 text-sm font-semibold",
+              link.highlight ? "bg-bright-orange text-center text-white" : "text-deep-navy hover:bg-light-gray",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll("[data-menu-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelector("[data-mobile-menu]")?.classList.toggle("hidden");
+    });
+  });
+</script>

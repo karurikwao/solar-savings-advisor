@@ -1,0 +1,79 @@
+{
+  "id": "tesla-powerwall-vs-enphase",
+  "title": "Tesla Powerwall vs Enphase",
+  "path": "tesla-powerwall-vs-enphase",
+  "description": "Two popular battery ecosystems with different strengths in capacity, modularity, and installer networks.",
+  "optionA": "Tesla Powerwall",
+  "optionB": "Enphase IQ Battery",
+  "winnerSide": "tie",
+  "winnerSummary": "Powerwall often appeals to whole-home backup buyers, while Enphase can be attractive for modular solar-plus-storage systems.",
+  "prosA": [
+    "Large capacity",
+    "Strong brand",
+    "Whole-home backup options"
+  ],
+  "consA": [
+    "Availability varies",
+    "Ecosystem fit matters",
+    "Installer choice may vary"
+  ],
+  "prosB": [
+    "Modular sizing",
+    "Microinverter ecosystem",
+    "Flexible expansion"
+  ],
+  "consB": [
+    "May need multiple units",
+    "Cost varies by design",
+    "System complexity"
+  ],
+  "bestForA": "Homes wanting larger battery capacity in fewer units.",
+  "bestForB": "Homes wanting modular expansion and Enphase ecosystem compatibility.",
+  "costConsiderations": "Compare installed cost, backup loads, warranty, monitoring, and inverter compatibility.",
+  "tableRows": [
+    {
+      "feature": "Modularity",
+      "optionA": "Moderate",
+      "optionB": "High",
+      "winner": "B"
+    },
+    {
+      "feature": "Capacity per unit",
+      "optionA": "High",
+      "optionB": "Moderate",
+      "winner": "A"
+    },
+    {
+      "feature": "Best fit",
+      "optionA": "Whole-home backup",
+      "optionB": "Modular storage",
+      "winner": "tie"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Which battery is cheaper?",
+      "answer": "Installed cost depends on design, labor, incentives, and backup scope. Compare full quotes."
+    },
+    {
+      "question": "Can battery brands be mixed later?",
+      "answer": "Battery expansion is usually easiest within the same ecosystem. Mixing brands can require additional equipment or may not be supported by the installer."
+    },
+    {
+      "question": "What matters more than brand?",
+      "answer": "Backup circuit design, usable capacity, inverter compatibility, installer experience, warranty support, and monitoring quality can matter as much as the battery brand."
+    }
+  ],
+  "monetizationPlacementId": "comparison-affiliate",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar financing resources",
+    "Consumer Financial Protection Bureau financing education",
+    "EnergySage solar equipment and financing education"
+  ]
+}

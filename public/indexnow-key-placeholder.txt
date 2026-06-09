@@ -1,0 +1,1 @@
+Set src/content/settings/seo.json -> indexNowKey, then create public/<indexNowKey>.txt with the key as the only file contents before running npm run submit:indexnow.

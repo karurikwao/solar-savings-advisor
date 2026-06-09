@@ -1,0 +1,71 @@
+{
+  "id": "sunrun-vs-tesla-solar",
+  "title": "Sunrun vs Tesla Solar",
+  "path": "sunrun-vs-tesla-solar",
+  "description": "Compare two large solar providers by ownership options, equipment ecosystem, service model, and quote details.",
+  "optionA": "Sunrun",
+  "optionB": "Tesla Solar",
+  "winnerSide": "tie",
+  "winnerSummary": "The better choice depends on local service quality, quote terms, equipment fit, and financing preference.",
+  "prosA": [
+    "Large installer network",
+    "Lease and PPA options",
+    "Storage options"
+  ],
+  "consA": [
+    "Contract terms vary",
+    "Local experience matters",
+    "Compare escalators carefully"
+  ],
+  "prosB": [
+    "Tesla ecosystem",
+    "Powerwall integration",
+    "Direct brand experience"
+  ],
+  "consB": [
+    "Availability varies",
+    "Service reviews vary by market",
+    "Less personalized in some cases"
+  ],
+  "bestForA": "Homeowners comparing lease, PPA, and purchase options.",
+  "bestForB": "Homeowners interested in Tesla panels, Solar Roof, or Powerwall.",
+  "costConsiderations": "Compare total installed cost, financing, warranties, production guarantees, battery integration, and service timelines.",
+  "tableRows": [
+    {
+      "feature": "Lease/PPA options",
+      "optionA": "Common",
+      "optionB": "Limited",
+      "winner": "A"
+    },
+    {
+      "feature": "Battery ecosystem",
+      "optionA": "Available",
+      "optionB": "Powerwall",
+      "winner": "B"
+    },
+    {
+      "feature": "Best choice",
+      "optionA": "Depends on quote",
+      "optionB": "Depends on quote",
+      "winner": "tie"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Should I get multiple quotes?",
+      "answer": "Yes. Compare at least three installer quotes before signing a solar contract."
+    }
+  ],
+  "monetizationPlacementId": "comparison-affiliate",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar financing resources",
+    "Consumer Financial Protection Bureau financing education",
+    "EnergySage solar equipment and financing education"
+  ]
+}

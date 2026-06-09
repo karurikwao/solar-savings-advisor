@@ -1,0 +1,56 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import CalculatorPanel from "@/components/CalculatorPanel.astro";
+import InternalLinks from "@/components/InternalLinks.astro";
+import ProfileCapture from "@/components/ProfileCapture.astro";
+import TrustBar from "@/components/TrustBar.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { isPublished, siteSettings } from "@/lib/content";
+import { articleSchema } from "@/lib/schema";
+import { getToolPath, tools } from "@/lib/tools";
+
+export function getStaticPaths() {
+  return tools.filter(isPublished).map((tool) => ({ params: { slug: getToolPath(tool) }, props: { tool } }));
+}
+
+const { tool } = Astro.props;
+const pagePath = `/tools/${getToolPath(tool)}/`;
+const schema = articleSchema({
+  siteName: siteSettings.siteName,
+  siteUrl: siteSettings.siteUrl,
+  path: pagePath,
+  title: tool.title,
+  description: tool.description,
+  lastUpdated: tool.lastUpdated,
+  reviewedBy: tool.reviewedBy,
+  sources: tool.sources,
+});
+---
+
+<BaseLayout title={tool.title} description={tool.description} canonicalPath={pagePath} robots={tool.noindex ? "noindex,nofollow" : undefined} schema={schema}>
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <Breadcrumbs items={[{ label: "Tools", href: "/tools/" }, { label: tool.title }]} />
+      <h1 class="text-4xl font-black md:text-5xl">{tool.title}</h1>
+      <p class="mt-4 max-w-2xl text-lg text-gray-300">{tool.description}</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[1fr_320px]">
+    <div>
+      <TrustBar lastUpdated={tool.lastUpdated} reviewedBy={tool.reviewedBy} factChecked={tool.factChecked} sources={tool.sources} />
+      <CalculatorPanel
+        calculatorType={tool.calculatorType}
+        title={tool.title}
+        description={tool.description}
+        resultPlacementId={tool.resultPlacementId ?? "calculator-results"}
+      />
+      <InternalLinks currentType="tool" currentId={tool.id} />
+    </div>
+    <aside class="space-y-6">
+      <ProfileCapture compact />
+      <AdSlot placementId={tool.sidebarPlacementId ?? "tools-detail-sidebar"} compact />
+    </aside>
+  </section>
+</BaseLayout>

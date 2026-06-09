@@ -1,0 +1,11 @@
+{
+  "id": "phone-provider-cost-comparison",
+  "title": "Phone Provider Cost Comparison",
+  "description": "Compare two provider options across setup and monthly costs.",
+  "calculatorType": "generic-cost-comparison",
+  "icon": "scale",
+  "path": "phone-provider-cost-comparison",
+  "category": "Business Phone",
+  "resultPlacementId": "calculator-results",
+  "sidebarPlacementId": "tools-detail-sidebar"
+}

@@ -1,0 +1,29 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { questions, siteSettings } from "@/lib/content";
+
+const nicheName = siteSettings.nicheName ?? "Advisor";
+---
+
+<BaseLayout title={`${nicheName} Questions`} description={`Plain-English answers to common ${nicheName.toLowerCase()} questions.`}>
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">{nicheName} Questions</h1>
+      <p class="mt-4 max-w-2xl text-lg text-gray-300">Short, practical answers for people comparing options, costs, providers, and next steps.</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[2fr_1fr]">
+    <div class="grid gap-5 sm:grid-cols-2">
+      {questions.map((question) => (
+        <a href={`/questions/${question.path}/`} class="surface-card p-6 transition hover:-translate-y-1 hover:shadow-xl">
+          <p class="text-xs font-bold uppercase tracking-wider text-bright-orange">{question.category}</p>
+          <h2 class="mt-2 text-xl font-black text-deep-navy">{question.title}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">{question.description}</p>
+        </a>
+      ))}
+    </div>
+    <AdSlot placementId="questions-index-hero" />
+  </section>
+</BaseLayout>

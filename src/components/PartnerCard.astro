@@ -1,0 +1,38 @@
+---
+import type { PartnerData } from "@/lib/types";
+import { isExternalHref, normalizePageSlug, withTrackingParams } from "@/lib/tracking";
+
+interface Props {
+  partner: PartnerData;
+  placementId?: string;
+  pageSlug?: string;
+}
+
+const { partner, placementId = "partner-card", pageSlug = normalizePageSlug(Astro.url.pathname) } = Astro.props;
+const trackedHref = withTrackingParams(partner.url, {
+  placementId,
+  pageSlug,
+  partnerId: partner.id,
+});
+const opensExternally = isExternalHref(trackedHref, Astro.url.origin);
+---
+
+<a
+  href={trackedHref}
+  class="surface-card block p-5 transition hover:-translate-y-1 hover:shadow-xl"
+  data-placement-id={placementId}
+  data-partner-id={partner.id}
+  target={opensExternally ? "_blank" : undefined}
+  rel={opensExternally ? "sponsored nofollow noopener" : undefined}
+>
+  <div class="flex items-start gap-4">
+    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-bright-orange to-solar-yellow text-sm font-black text-white">
+      {partner.logoText}
+    </div>
+    <div>
+      <h3 class="font-bold text-deep-navy">{partner.name}</h3>
+      <p class="mt-1 text-sm text-gray-600">{partner.description}</p>
+      <p class="mt-2 text-xs text-bright-orange">{partner.disclosureLabel}</p>
+    </div>
+  </div>
+</a>

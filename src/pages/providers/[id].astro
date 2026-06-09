@@ -1,0 +1,122 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import AffiliateOfferCard from "@/components/AffiliateOfferCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import CTAButton from "@/components/CTAButton.astro";
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import FAQ from "@/components/FAQ.astro";
+import InternalLinks from "@/components/InternalLinks.astro";
+import TrustBar from "@/components/TrustBar.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { disclosureSettings, getAdSlot, installers, isPublished, siteSettings } from "@/lib/content";
+import { articleSchema, installerDirectorySchema } from "@/lib/schema";
+
+export function getStaticPaths() {
+  return installers.filter(isPublished).map((page) => ({ params: { id: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
+const directory = siteSettings.providerDirectory ?? {};
+const quoteSlot = getAdSlot(page.quotePlacementId);
+const quoteHref = quoteSlot?.destinationUrl ?? siteSettings.routes?.reportPath ?? "/solar-report/";
+const quoteLabel = quoteSlot?.buttonText ?? "Request Quote Prep";
+const pagePath = `/providers/${page.id}/`;
+const schema = [
+  articleSchema({
+    siteName: siteSettings.siteName,
+    siteUrl: siteSettings.siteUrl,
+    path: pagePath,
+    title: `${providerLabel} in ${page.stateName}`,
+    description: page.stateDescription,
+    lastUpdated: page.lastUpdated,
+    reviewedBy: page.reviewedBy,
+    sources: page.sources,
+  }),
+  installerDirectorySchema(siteSettings.siteUrl, page, pagePath),
+];
+---
+
+<BaseLayout title={`${providerLabel} in ${page.stateName}`} description={page.stateDescription} canonicalPath={pagePath} robots={page.noindex ? "noindex,nofollow" : undefined} schema={schema}>
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <Breadcrumbs items={[{ label: providerLabel, href: "/providers/" }, { label: page.stateName }]} />
+      <h1 class="text-4xl font-black md:text-5xl">{providerLabel} in {page.stateName}</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">{page.stateDescription}</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <article>
+      <TrustBar lastUpdated={page.lastUpdated} reviewedBy={page.reviewedBy} factChecked={page.factChecked} sources={page.sources} />
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl bg-yellow-50 p-5">
+          <p class="text-xs font-bold uppercase tracking-wider text-bright-orange">{directory.metricOneLabel ?? "Avg cost / watt"}</p>
+          <p class="mt-2 text-2xl font-black text-deep-navy">{page.avgCostPerWatt}</p>
+        </div>
+        <div class="rounded-xl bg-green-50 p-5">
+          <p class="text-xs font-bold uppercase tracking-wider text-soft-green">{directory.metricTwoLabel ?? "Typical payback"}</p>
+          <p class="mt-2 text-2xl font-black text-deep-navy">{page.typicalPayback}</p>
+        </div>
+        <div class="rounded-xl bg-blue-50 p-5">
+          <p class="text-xs font-bold uppercase tracking-wider text-deep-navy">Listings</p>
+          <p class="mt-2 text-2xl font-black text-deep-navy">{page.sampleInstallers.length}</p>
+        </div>
+      </div>
+
+      <section class="my-8">
+        <h2 class="text-2xl font-black text-deep-navy">{directory.notesLabel ?? "Key Market Notes"}</h2>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+          {page.keyIncentives.map((item) => <li class="rounded-xl border border-gray-200 p-4 text-sm text-gray-700">{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="my-8">
+        <h2 class="text-2xl font-black text-deep-navy">{directory.listingsLabel ?? "Sample Listings"}</h2>
+        <div class="mt-4 grid gap-5">
+          {page.sampleInstallers.map((installer) => (
+            <article class="surface-card p-6">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <h3 class="text-xl font-black text-deep-navy">{installer.name}</h3>
+                  <p class="mt-1 text-sm font-bold text-soft-green">Rating: {installer.rating} / 5</p>
+                  <p class="mt-3 text-sm leading-relaxed text-gray-600">{installer.description}</p>
+                </div>
+                <CTAButton
+                  href={quoteHref}
+                  label={quoteLabel}
+                  variant="green"
+                  class="shrink-0"
+                  placementId={page.quotePlacementId}
+                  pageSlug={page.id}
+                  offerId={quoteSlot?.id ?? "installer-quote"}
+                  partnerId={quoteSlot?.partnerId ?? "installer-partners"}
+                />
+              </div>
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                <div>
+                  <p class="text-xs font-black uppercase tracking-wider text-deep-navy">{directory.servicesLabel ?? "Services"}</p>
+                  <p class="mt-2 text-sm text-gray-600">{installer.services.join(", ")}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-black uppercase tracking-wider text-deep-navy">{directory.financingLabel ?? "Financing"}</p>
+                  <p class="mt-2 text-sm text-gray-600">{installer.financing.join(", ")}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <AdSlot placementId={page.quotePlacementId} compact />
+      <FAQ items={page.faqs} />
+      <InternalLinks currentType="provider" currentId={page.id} />
+      <DisclosureNote text={disclosureSettings.installerListingDisclaimer} />
+    </article>
+
+    <aside class="space-y-6">
+      <AffiliateOfferCard placementId={page.quotePlacementId} />
+      <AdSlot placementId="providers-detail-bottom" compact />
+    </aside>
+  </section>
+</BaseLayout>

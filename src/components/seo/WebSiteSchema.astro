@@ -1,0 +1,20 @@
+---
+import JsonLd from "@/components/seo/JsonLd.astro";
+import { seoSettings, siteSettings } from "@/lib/content";
+
+const siteUrl = seoSettings.siteUrl || siteSettings.siteUrl;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteSettings.siteName,
+  url: siteUrl,
+  description: seoSettings.defaultDescription || siteSettings.description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/questions/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+---
+
+<JsonLd data={schema} />

@@ -1,0 +1,102 @@
+{
+  "slots": [
+    {
+      "placementId": "home-hero",
+      "enabled": true,
+      "title": "Get a free solar readiness estimate",
+      "subtitle": "Save your ZIP and bill once, then reuse them across every calculator.",
+      "buttonText": "Calculate My Savings",
+      "destinationUrl": "/tools/solar-savings-calculator/",
+      "partnerId": "solar-savings-advisor",
+      "partnerName": "Solar Savings Advisor",
+      "disclosureLabel": "Educational estimate",
+      "priority": 100,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "placementId": "calculator-results",
+      "enabled": true,
+      "title": "Want a more accurate estimate?",
+      "subtitle": "Generate a personalized solar readiness report from the details you already entered.",
+      "buttonText": "Get My Solar Report",
+      "destinationUrl": "/solar-report/",
+      "partnerId": "solar-savings-advisor",
+      "partnerName": "Solar Savings Advisor",
+      "disclosureLabel": "Frontend-only report",
+      "priority": 90,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "placementId": "question-inline",
+      "enabled": true,
+      "title": "Check your own numbers",
+      "subtitle": "Use the calculator before reading installer quotes.",
+      "buttonText": "Check My Solar Savings",
+      "destinationUrl": "/tools/solar-savings-calculator/",
+      "partnerId": "solar-savings-advisor",
+      "partnerName": "Solar Savings Advisor",
+      "disclosureLabel": "Estimate only",
+      "priority": 80,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "placementId": "comparison-affiliate",
+      "enabled": true,
+      "title": "Compare real installer quotes",
+      "subtitle": "Use side-by-side quote review before choosing a solar company.",
+      "buttonText": "Compare Installers",
+      "destinationUrl": "/installers/",
+      "partnerId": "installer-partners",
+      "partnerName": "Installer partners",
+      "disclosureLabel": "Lead generation",
+      "priority": 75,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "placementId": "installer-quote",
+      "enabled": true,
+      "title": "Ready to compare solar installers?",
+      "subtitle": "Review services, financing, and questions before making contact.",
+      "buttonText": "Compare Solar Installers",
+      "destinationUrl": "/solar-report/",
+      "partnerId": "installer-partners",
+      "partnerName": "Installer partners",
+      "disclosureLabel": "Listings are informational",
+      "priority": 70,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "placementId": "guide-banner",
+      "enabled": true,
+      "title": "Turn the guide into a home-specific plan",
+      "subtitle": "Answer a few questions and get a simple next-step report.",
+      "buttonText": "Start Free Report",
+      "destinationUrl": "/solar-report/",
+      "partnerId": "solar-savings-advisor",
+      "partnerName": "Solar Savings Advisor",
+      "disclosureLabel": "Educational report",
+      "priority": 65,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "placementId": "bottom-lead",
+      "enabled": true,
+      "title": "Get your personalized solar report",
+      "subtitle": "Reuse your saved ZIP, bill, roof, and financing details.",
+      "buttonText": "Get My Solar Report",
+      "destinationUrl": "/solar-report/",
+      "partnerId": "solar-savings-advisor",
+      "partnerName": "Solar Savings Advisor",
+      "disclosureLabel": "No signup required",
+      "priority": 60,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    }
+  ]
+}

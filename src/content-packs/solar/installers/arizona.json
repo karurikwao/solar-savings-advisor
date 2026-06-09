@@ -1,0 +1,59 @@
+{
+  "id": "arizona",
+  "stateName": "Arizona",
+  "stateDescription": "Arizona has excellent sun exposure, but utility rate plans and export credits affect solar value.",
+  "avgCostPerWatt": "$2.30-$3.20",
+  "typicalPayback": "7-11 years",
+  "keyIncentives": [
+    "Federal solar tax credit (verify current amount)",
+    "State tax credit availability should be verified",
+    "Utility export policies vary"
+  ],
+  "sampleInstallers": [
+    {
+      "name": "Vivint Solar",
+      "rating": 4.1,
+      "services": [
+        "Residential Solar",
+        "System Monitoring"
+      ],
+      "financing": [
+        "Loan",
+        "Lease",
+        "PPA"
+      ],
+      "description": "Focus on custom solar system design."
+    },
+    {
+      "name": "Apex Solar",
+      "rating": 4.2,
+      "services": [
+        "Solar Panels",
+        "Maintenance"
+      ],
+      "financing": [
+        "Lease",
+        "Loan"
+      ],
+      "description": "Affordable solar in desert sun markets."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is Arizona good for solar?",
+      "answer": "The sunlight is excellent, but utility rates and export credits still need careful review."
+    }
+  ],
+  "quotePlacementId": "installer-quote",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "DSIRE state and utility incentive database",
+    "U.S. Department of Energy solar consumer resources",
+    "Public installer profile and market information reviewed for educational context"
+  ]
+}

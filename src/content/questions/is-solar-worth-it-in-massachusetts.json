@@ -1,0 +1,59 @@
+{
+  "id": "is-solar-worth-it-in-massachusetts",
+  "title": "Is Solar Worth It in Massachusetts?",
+  "description": "Massachusetts can be a strong solar market, but the numbers depend on your bill, roof, utility, and current incentives.",
+  "category": "State-Specific",
+  "path": "is-solar-worth-it-in-massachusetts",
+  "quickAnswer": "Solar may be worth it in Massachusetts for homeowners with higher electric bills, suitable roof space, and the ability to use current incentives.",
+  "bestFor": [
+    "High electric bills",
+    "Good roof exposure",
+    "Longer ownership timeline",
+    "Interest in battery backup"
+  ],
+  "notBestFor": [
+    "Very low usage",
+    "Heavily shaded roofs",
+    "Short ownership timeline",
+    "Roof replacement needed soon"
+  ],
+  "scenario": {
+    "title": "Massachusetts Example",
+    "details": [
+      "$180/month bill",
+      "Moderate sun exposure",
+      "Battery optional depending on outage needs",
+      "Verify SMART, utility, and federal incentive details"
+    ]
+  },
+  "factors": [
+    "Utility rate",
+    "Roof age",
+    "Snow and shade patterns",
+    "Federal and state incentives",
+    "Financing terms"
+  ],
+  "faqs": [
+    {
+      "question": "Should I verify Massachusetts incentives?",
+      "answer": "Yes. Incentive rules and budgets change, so confirm current details with a tax professional, installer, or official program source."
+    }
+  ],
+  "relatedQuestions": [
+    "is-solar-worth-it",
+    "do-solar-panels-work-in-winter",
+    "is-a-solar-battery-worth-it"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

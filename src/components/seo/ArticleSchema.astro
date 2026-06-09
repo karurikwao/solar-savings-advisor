@@ -1,0 +1,29 @@
+---
+import JsonLd from "@/components/seo/JsonLd.astro";
+import { seoSettings, siteSettings } from "@/lib/content";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  type?: "Article" | "Guide";
+  lastUpdated?: string;
+  reviewedBy?: string;
+}
+
+const { title, description, path, type = "Article", lastUpdated, reviewedBy } = Astro.props;
+const siteUrl = seoSettings.siteUrl || siteSettings.siteUrl;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": type,
+  headline: title,
+  description,
+  mainEntityOfPage: new URL(path, siteUrl).toString(),
+  dateModified: lastUpdated,
+  author: { "@type": "Organization", name: siteSettings.siteName },
+  publisher: { "@type": "Organization", name: siteSettings.siteName },
+  reviewedBy: reviewedBy ? { "@type": "Organization", name: reviewedBy } : undefined,
+};
+---
+
+<JsonLd data={schema} />

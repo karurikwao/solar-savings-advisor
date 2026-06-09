@@ -1,0 +1,34 @@
+{
+  "offers": [
+    {
+      "id": "phone-system-checklist",
+      "enabled": true,
+      "title": "Business Phone Buying Checklist",
+      "subtitle": "Estimate costs and see what to ask before comparing VoIP providers.",
+      "buttonText": "Start Cost Estimate",
+      "destinationUrl": "/tools/business-phone-savings-calculator/",
+      "partnerId": "advisor-site",
+      "partnerName": "Business Phone Advisor",
+      "disclosureLabel": "Educational estimate",
+      "placementIds": ["home-hero", "tools-index-hero", "calculator-results", "question-inline", "guide-banner", "bottom-lead", "global-footer"],
+      "priority": 100,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "id": "phone-provider-comparison",
+      "enabled": true,
+      "title": "Compare Phone Providers",
+      "subtitle": "Review provider categories, capabilities, and contract questions.",
+      "buttonText": "Compare Providers",
+      "destinationUrl": "/providers/",
+      "partnerId": "phone-provider-partners",
+      "partnerName": "Phone Provider Partners",
+      "disclosureLabel": "Lead generation",
+      "placementIds": ["compare-index-hero", "comparison-affiliate", "compare-table", "providers-index-hero", "installer-quote", "providers-detail-bottom", "partner-card"],
+      "priority": 90,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    }
+  ]
+}

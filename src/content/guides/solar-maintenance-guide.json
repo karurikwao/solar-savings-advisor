@@ -1,0 +1,44 @@
+{
+  "id": "solar-maintenance-guide",
+  "title": "Solar Maintenance Guide",
+  "description": "How to keep solar panels performing well over time.",
+  "path": "solar-maintenance-guide",
+  "keyTakeaways": [
+    "Monitor production",
+    "Keep records",
+    "Inspect after major weather",
+    "Avoid unsafe roof work"
+  ],
+  "sections": [
+    {
+      "title": "Monitoring",
+      "content": "Use your monitoring app to catch sudden production drops."
+    },
+    {
+      "title": "Cleaning",
+      "content": "Rain often handles normal dust. Ask your installer before cleaning panels yourself."
+    },
+    {
+      "title": "Service Records",
+      "content": "Keep warranty, inspection, and service documents for future buyers or repairs."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do solar panels need frequent maintenance?",
+      "answer": "Usually not, but monitoring and occasional inspection help catch issues early."
+    }
+  ],
+  "bannerPlacementId": "guide-banner",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar homeowner resources",
+    "IRS residential clean energy credit guidance",
+    "DSIRE state and utility incentive database"
+  ]
+}

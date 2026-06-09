@@ -1,0 +1,68 @@
+{
+  "id": "is-a-solar-battery-worth-it",
+  "title": "Is a Solar Battery Worth It?",
+  "description": "A battery can provide backup power and improve self-consumption, but it adds cost.",
+  "category": "Batteries",
+  "path": "is-a-solar-battery-worth-it",
+  "quickAnswer": "A solar battery may be worth it if outages are common, backup power matters, or your utility rewards using stored solar instead of exporting it.",
+  "bestFor": [
+    "Frequent outages",
+    "Time-of-use rates",
+    "Low export credits",
+    "Backup power needs"
+  ],
+  "notBestFor": [
+    "Rare outages",
+    "High battery quote",
+    "Simple shortest-payback goal"
+  ],
+  "scenario": {
+    "title": "Battery Example",
+    "details": [
+      "Essential loads backup",
+      "One or two battery units",
+      "Useful when evening rates are high"
+    ]
+  },
+  "factors": [
+    "Outage frequency",
+    "Battery capacity",
+    "Utility rate plan",
+    "Solar export value",
+    "Backup load needs",
+    "Backup needs during outages",
+    "Time-of-use electric rates",
+    "Utility export credit rules"
+  ],
+  "faqs": [
+    {
+      "question": "Can one battery power a whole home?",
+      "answer": "Usually only for limited time. Whole-home backup often requires multiple batteries and load management."
+    },
+    {
+      "question": "Does a battery always improve payback?",
+      "answer": "Not always. Batteries can improve resilience and may help under time-of-use rates, but they often lengthen simple payback when backup value is not included."
+    },
+    {
+      "question": "Can I add a battery later?",
+      "answer": "Often yes, but compatibility depends on the inverter, electrical design, and space near the service equipment."
+    }
+  ],
+  "relatedQuestions": [
+    "battery-backup-vs-generator",
+    "can-i-go-off-grid-with-solar",
+    "tesla-powerwall-vs-enphase"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

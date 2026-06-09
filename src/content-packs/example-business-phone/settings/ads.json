@@ -1,0 +1,32 @@
+{
+  "slots": [
+    {
+      "placementId": "home-hero",
+      "enabled": true,
+      "title": "Estimate your business phone savings",
+      "subtitle": "Compare current phone spend against a modern VoIP or UCaaS setup.",
+      "buttonText": "Open Calculator",
+      "destinationUrl": "/tools/business-phone-savings-calculator/",
+      "partnerId": "advisor-site",
+      "partnerName": "Business Phone Advisor",
+      "disclosureLabel": "Educational estimate",
+      "priority": 90,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "placementId": "bottom-lead",
+      "enabled": true,
+      "title": "Prepare for provider quotes",
+      "subtitle": "Use the checklist before signing a communications contract.",
+      "buttonText": "Compare Providers",
+      "destinationUrl": "/providers/",
+      "partnerId": "phone-provider-partners",
+      "partnerName": "Phone Provider Partners",
+      "disclosureLabel": "Partner comparison",
+      "priority": 70,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    }
+  ]
+}

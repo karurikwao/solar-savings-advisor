@@ -1,0 +1,131 @@
+---
+import { siteSettings } from "@/lib/content";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  compact?: boolean;
+}
+
+const {
+  title = "Home Energy Profile",
+  subtitle = "Saved on this device and reused by calculators and reports.",
+  compact = false,
+} = Astro.props;
+const profileKey = siteSettings.profile?.storageKey ?? `${siteSettings.siteId ?? "advisorSite"}.profile.v1`;
+const defaultOptions: Record<string, Array<[string, string]>> = {
+  state: [
+    ["CA", "California"],
+    ["TX", "Texas"],
+    ["FL", "Florida"],
+    ["AZ", "Arizona"],
+    ["MA", "Massachusetts"],
+    ["NY", "New York"],
+    ["CO", "Colorado"],
+    ["NC", "North Carolina"],
+    ["NJ", "New Jersey"],
+    ["IL", "Illinois"],
+    ["other", "Other"],
+  ],
+  sunExposure: [
+    ["low", "Low"],
+    ["medium", "Medium"],
+    ["high", "High"],
+  ],
+  financingPreference: [
+    ["cash", "Cash"],
+    ["loan", "Loan"],
+    ["lease", "Lease/PPA"],
+    ["unsure", "Not sure"],
+  ],
+};
+const profileFields = siteSettings.profile?.fields?.length
+  ? siteSettings.profile.fields
+  : [
+      { id: "zip", label: "ZIP Code", type: "text", placeholder: "90210" },
+      { id: "state", label: "State", type: "select", placeholder: "Select state" },
+      { id: "monthlyBill", label: "Monthly Power Bill", type: "text", placeholder: "150" },
+      { id: "electricityRate", label: "Electricity Rate", type: "text", placeholder: "0.15" },
+      { id: "sunExposure", label: "Roof Sun", type: "select", placeholder: "Select sun" },
+      { id: "financingPreference", label: "Financing", type: "select", placeholder: "Select financing" },
+    ];
+---
+
+<section class:list={["surface-card", compact ? "p-5" : "p-6"]} data-profile-card data-profile-key={profileKey}>
+  <div class="mb-5 flex items-start justify-between gap-4">
+    <div>
+      <h2 class="text-xl font-black text-deep-navy">{title}</h2>
+      <p class="mt-1 text-sm text-gray-600">{subtitle}</p>
+    </div>
+    <span class="rounded-full bg-soft-green/10 px-3 py-1 text-xs font-bold text-soft-green" data-profile-status>
+      Ready
+    </span>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    {profileFields.map((field) => {
+      const options = field.options ?? defaultOptions[field.id] ?? [];
+      const isSelect = field.type === "select" && options.length > 0;
+      const lowerId = field.id.toLowerCase();
+      const inputMode = lowerId.includes("zip")
+        ? "numeric"
+        : ["bill", "rate", "cost", "size", "usage", "miles"].some((token) => lowerId.includes(token))
+          ? "decimal"
+          : undefined;
+      return (
+        <label class="block text-sm font-bold text-deep-navy">
+          {field.label}
+          {isSelect ? (
+            <select data-profile-field={field.id} class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3">
+              <option value="">{field.placeholder ?? "Select"}</option>
+              {options.map(([value, label]) => <option value={value}>{label}</option>)}
+            </select>
+          ) : (
+            <input
+              data-profile-field={field.id}
+              class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3"
+              placeholder={field.placeholder}
+              inputmode={inputMode}
+            />
+          )}
+        </label>
+      );
+    })}
+  </div>
+</section>
+
+<script>
+  const readProfile = (profileKey) => {
+    try {
+      return JSON.parse(localStorage.getItem(profileKey) || "{}");
+    } catch {
+      return {};
+    }
+  };
+
+  const writeProfile = (profileKey, updates) => {
+    const next = { ...readProfile(profileKey), ...updates };
+    localStorage.setItem(profileKey, JSON.stringify(next));
+    return next;
+  };
+
+  document.querySelectorAll("[data-profile-card]").forEach((card) => {
+    const profileKey = card.getAttribute("data-profile-key") || "advisorSite.profile.v1";
+    const profile = readProfile(profileKey);
+    const status = card.querySelector("[data-profile-status]");
+
+    card.querySelectorAll("[data-profile-field]").forEach((field) => {
+      const key = field.getAttribute("data-profile-field");
+      if (key && profile[key]) field.value = profile[key];
+
+      const save = () => {
+        if (!key) return;
+        writeProfile(profileKey, { [key]: field.value });
+        if (status) status.textContent = "Saved";
+      };
+
+      field.addEventListener("input", save);
+      field.addEventListener("change", save);
+    });
+  });
+</script>

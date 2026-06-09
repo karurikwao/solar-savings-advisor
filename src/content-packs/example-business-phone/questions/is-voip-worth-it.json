@@ -1,0 +1,21 @@
+{
+  "id": "is-voip-worth-it",
+  "title": "Is VoIP Worth It for a Small Business?",
+  "description": "A practical look at when internet-based business phone service can reduce cost and improve flexibility.",
+  "category": "VoIP",
+  "path": "is-voip-worth-it",
+  "quickAnswer": "VoIP is often worth it when your team needs remote calling, voicemail-to-email, call routing, and lower per-user costs, but quality depends on internet reliability and provider setup.",
+  "bestFor": ["Teams with remote or hybrid staff", "Businesses paying high legacy phone bills", "Companies that need call routing or analytics", "Teams comfortable managing cloud software"],
+  "notBestFor": ["Locations with unreliable internet", "Organizations with strict on-premise phone requirements", "Teams that only need one basic line"],
+  "scenario": {
+    "title": "Example Cost Scenario",
+    "details": ["25 users", "$750/month legacy phone bill", "$20-$35/user/month VoIP estimate", "Potential savings depend on taxes, devices, and contract terms"]
+  },
+  "factors": ["User count", "Internet reliability", "Desk phones vs softphones", "International calling", "CRM integrations"],
+  "faqs": [
+    { "question": "Does VoIP require new phones?", "answer": "Not always. Some teams use existing compatible phones, adapters, or softphone apps." },
+    { "question": "Is VoIP call quality reliable?", "answer": "It can be reliable with adequate bandwidth, network quality, and proper configuration." }
+  ],
+  "relatedQuestions": ["how-many-phone-lines-do-i-need", "should-i-choose-voip-or-pbx"],
+  "ctaPlacementId": "question-inline"
+}

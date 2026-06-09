@@ -1,0 +1,23 @@
+{
+  "siteUrl": "https://businessphoneadvisor.example",
+  "defaultTitle": "Business Phone Advisor - Compare VoIP and Phone System Options",
+  "defaultDescription": "Compare business phone calculators, VoIP buying guides, provider options, and educational phone system questions.",
+  "defaultOgImage": "/og-image.svg",
+  "googleSiteVerification": "",
+  "bingSiteVerification": "",
+  "indexNowKey": "",
+  "enableIndexing": true,
+  "enableSitemap": true,
+  "enableRobots": true,
+  "enableOpenGraph": true,
+  "enableStructuredData": true,
+  "ogImages": {
+    "home": "/og-image.svg",
+    "tools": "/og-image.svg",
+    "questions": "/og-image.svg",
+    "comparisons": "/og-image.svg",
+    "guides": "/og-image.svg",
+    "providers": "/og-image.svg",
+    "default": "/og-image.svg"
+  }
+}

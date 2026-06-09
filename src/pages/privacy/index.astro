@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteSettings } from "@/lib/content";
+---
+
+<BaseLayout title="Privacy Policy" description="Privacy policy for Solar Savings Advisor.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">Privacy Policy</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">Last updated June 8, 2026.</p>
+    </div>
+  </section>
+
+  <article class="container-wide prose-solar py-12">
+    <p>{siteSettings.domain} provides educational solar calculators, guides, and comparison resources.</p>
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">Information You Provide</h2>
+    <p>Calculator inputs and report details may be saved in your browser local storage so the site can reuse the same ZIP code, electric bill, and solar profile fields across pages. This first static version does not require an account.</p>
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">Partner Links</h2>
+    <p>Some links may send you to partners or quote request experiences. Those partners may collect information under their own privacy policies.</p>
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">Contact</h2>
+    <p>Questions can be sent to {siteSettings.email}.</p>
+  </article>
+</BaseLayout>

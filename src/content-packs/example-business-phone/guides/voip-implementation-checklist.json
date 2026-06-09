@@ -1,0 +1,13 @@
+{
+  "id": "voip-implementation-checklist",
+  "title": "VoIP Implementation Checklist",
+  "description": "Prepare your network, phone numbers, devices, and staff before switching providers.",
+  "path": "voip-implementation-checklist",
+  "keyTakeaways": ["Audit phone numbers", "Check bandwidth and network quality", "Plan porting dates", "Train users before launch"],
+  "sections": [
+    { "title": "Before Cutover", "content": "Document numbers, users, ring groups, voicemail boxes, emergency addresses, and integrations." },
+    { "title": "After Launch", "content": "Monitor call quality, support tickets, missed calls, and user adoption for the first few weeks." }
+  ],
+  "faqs": [{ "question": "How long does number porting take?", "answer": "It varies by carrier and provider. Ask for an expected timeline before scheduling launch." }],
+  "bannerPlacementId": "guide-banner"
+}

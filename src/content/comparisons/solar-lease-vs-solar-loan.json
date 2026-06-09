@@ -1,0 +1,79 @@
+{
+  "id": "solar-lease-vs-solar-loan",
+  "title": "Solar Lease vs Solar Loan",
+  "path": "solar-lease-vs-solar-loan",
+  "description": "Leases reduce upfront friction, while loans let you own the panels and usually keep more long-term value.",
+  "optionA": "Solar Lease",
+  "optionB": "Solar Loan",
+  "winnerSide": "B",
+  "winnerSummary": "Solar loans usually come out ahead for homeowners who want ownership, tax benefits, and better long-term savings.",
+  "prosA": [
+    "Low upfront cost",
+    "Maintenance may be bundled",
+    "Simple monthly payment"
+  ],
+  "consA": [
+    "No system ownership",
+    "Usually no tax credit for homeowner",
+    "Can complicate home sale"
+  ],
+  "prosB": [
+    "You own the system",
+    "Tax credit may apply",
+    "Better long-term savings"
+  ],
+  "consB": [
+    "Credit approval required",
+    "You manage ownership",
+    "Interest adds cost"
+  ],
+  "bestForA": "Homeowners focused on low upfront commitment.",
+  "bestForB": "Homeowners who want ownership and better long-term value.",
+  "costConsiderations": "Review escalators, transfer terms, ownership, tax credit eligibility, and total lifetime payments.",
+  "tableRows": [
+    {
+      "feature": "Ownership",
+      "optionA": "Provider",
+      "optionB": "Homeowner",
+      "winner": "B"
+    },
+    {
+      "feature": "Upfront Cost",
+      "optionA": "Low",
+      "optionB": "Low to moderate",
+      "winner": "tie"
+    },
+    {
+      "feature": "Tax Credit",
+      "optionA": "Usually provider",
+      "optionB": "May be homeowner",
+      "winner": "B"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Is a lease easier?",
+      "answer": "It can be easier upfront, but read escalation and transfer terms carefully."
+    },
+    {
+      "question": "Which option is easier when selling a home?",
+      "answer": "Owned systems financed with a loan are often simpler for buyers to evaluate than leases, but loan payoff terms and lease transfer rules both need review before listing."
+    },
+    {
+      "question": "Who gets incentives with a lease?",
+      "answer": "The system owner generally receives ownership-based incentives. In a lease, that is usually the leasing company rather than the homeowner."
+    }
+  ],
+  "monetizationPlacementId": "comparison-affiliate",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar financing resources",
+    "Consumer Financial Protection Bureau financing education",
+    "EnergySage solar equipment and financing education"
+  ]
+}

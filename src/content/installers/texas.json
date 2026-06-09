@@ -1,0 +1,68 @@
+{
+  "id": "texas",
+  "stateName": "Texas",
+  "stateDescription": "Texas solar economics vary by utility and retail electric provider, so quote comparison matters.",
+  "avgCostPerWatt": "$2.50-$3.50",
+  "typicalPayback": "8-12 years",
+  "keyIncentives": [
+    "Federal solar tax credit (verify current amount)",
+    "Property tax exemption may apply",
+    "Utility buyback programs vary widely",
+    "Confirm current net metering, interconnection, and incentive rules with the utility before signing."
+  ],
+  "sampleInstallers": [
+    {
+      "name": "Longhorn Solar",
+      "rating": 4.4,
+      "services": [
+        "Residential Solar",
+        "Battery Backup"
+      ],
+      "financing": [
+        "Cash",
+        "Loan"
+      ],
+      "description": "Texas-based solar installer."
+    },
+    {
+      "name": "Sunrun",
+      "rating": 4.2,
+      "services": [
+        "Solar Panels",
+        "Storage"
+      ],
+      "financing": [
+        "Loan",
+        "Lease",
+        "PPA"
+      ],
+      "description": "National provider serving many Texas markets."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Does Texas have net metering?",
+      "answer": "Texas policies vary by provider and utility. Verify your exact buyback or credit structure."
+    },
+    {
+      "question": "Are these installer listings endorsements?",
+      "answer": "No. Listings are educational examples for comparison. Verify licenses, insurance, reviews, contracts, and current service areas before choosing any installer."
+    },
+    {
+      "question": "What should I compare between installer quotes?",
+      "answer": "Compare equipment, system size, production assumptions, workmanship warranty, financing terms, roof work, monitoring, and the exact utility rate assumptions used."
+    }
+  ],
+  "quotePlacementId": "installer-quote",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "DSIRE state and utility incentive database",
+    "U.S. Department of Energy solar consumer resources",
+    "Public installer profile and market information reviewed for educational context"
+  ]
+}

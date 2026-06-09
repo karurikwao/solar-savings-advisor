@@ -1,0 +1,21 @@
+---
+import JsonLd from "@/components/seo/JsonLd.astro";
+import type { FAQItem } from "@/lib/types";
+
+interface Props {
+  items: FAQItem[];
+}
+
+const { items } = Astro.props;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+---
+
+{items.length > 0 && <JsonLd data={schema} />}

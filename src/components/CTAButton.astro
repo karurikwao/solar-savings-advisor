@@ -1,0 +1,51 @@
+---
+import { isExternalHref, normalizePageSlug, withTrackingParams } from "@/lib/tracking";
+
+interface Props {
+  href: string;
+  label: string;
+  variant?: "orange" | "navy" | "green" | "yellow";
+  class?: string;
+  placementId?: string;
+  pageSlug?: string;
+  offerId?: string;
+  partnerId?: string;
+}
+
+const {
+  href,
+  label,
+  variant = "orange",
+  class: className = "",
+  placementId,
+  pageSlug = normalizePageSlug(Astro.url.pathname),
+  offerId,
+  partnerId,
+} = Astro.props;
+const variants = {
+  orange: "bg-bright-orange text-white hover:bg-orange-600",
+  navy: "bg-deep-navy text-white hover:bg-blue-900",
+  green: "bg-soft-green text-white hover:bg-green-600",
+  yellow: "bg-solar-yellow text-deep-navy hover:bg-yellow-400",
+};
+const trackedHref = withTrackingParams(href, { placementId, pageSlug, offerId, partnerId });
+const isMonetized = Boolean(placementId || offerId || partnerId);
+const opensExternally = isMonetized && isExternalHref(trackedHref, Astro.url.origin);
+---
+
+<a
+  href={trackedHref}
+  class:list={[
+    "focus-ring inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl",
+    variants[variant],
+    className,
+  ]}
+  data-placement-id={placementId}
+  data-offer-id={offerId}
+  data-partner-id={partnerId}
+  target={opensExternally ? "_blank" : undefined}
+  rel={opensExternally ? "sponsored nofollow noopener" : undefined}
+>
+  {label}
+  <span aria-hidden="true">&rarr;</span>
+</a>

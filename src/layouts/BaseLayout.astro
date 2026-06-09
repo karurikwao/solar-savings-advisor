@@ -1,0 +1,87 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import JsonLd from "@/components/seo/JsonLd.astro";
+import WebSiteSchema from "@/components/seo/WebSiteSchema.astro";
+import { seoSettings, siteSettings } from "@/lib/content";
+import { absoluteUrl } from "@/lib/schema";
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  robots?: string;
+  schema?: unknown | unknown[];
+}
+
+const {
+  title = seoSettings.defaultTitle || `${siteSettings.siteName} - Find Out If Solar Is Worth It`,
+  description = seoSettings.defaultDescription || siteSettings.description,
+  canonicalPath = Astro.url.pathname,
+  ogImage,
+  robots,
+  schema = [],
+} = Astro.props;
+const fullTitle = title.includes(siteSettings.siteName) ? title : `${title} | ${siteSettings.siteName}`;
+const siteUrl = seoSettings.siteUrl || siteSettings.siteUrl;
+const canonicalUrl = absoluteUrl(siteUrl, canonicalPath);
+const defaultRobots = seoSettings.enableIndexing ? "index,follow" : "noindex,nofollow";
+const robotsContent = robots ?? defaultRobots;
+const segment = canonicalPath.split("/").filter(Boolean)[0] || "home";
+const ogImageBySection = segment === "compare"
+  ? seoSettings.ogImages?.comparisons
+  : segment === "installers" || segment === "providers"
+    ? seoSettings.ogImages?.providers
+    : seoSettings.ogImages?.[segment];
+const resolvedOgImage = ogImage ?? ogImageBySection ?? seoSettings.defaultOgImage ?? siteSettings.ogImage;
+const absoluteOgImage = absoluteUrl(siteUrl, resolvedOgImage);
+const colors = siteSettings.colors;
+const brandVars = [
+  `--brand-solar-yellow:${colors.solarYellow}`,
+  `--brand-deep-navy:${colors.deepNavy}`,
+  `--brand-bright-orange:${colors.brightOrange}`,
+  `--brand-soft-green:${colors.softGreen}`,
+  `--brand-light-gray:${colors.lightGray}`,
+].join(";");
+const schemaItems = (Array.isArray(schema) ? schema : [schema]).filter(Boolean);
+const isHomepage = canonicalPath === "/";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    <link rel="canonical" href={canonicalUrl} />
+    {seoSettings.googleSiteVerification && <meta name="google-site-verification" content={seoSettings.googleSiteVerification} />}
+    {seoSettings.bingSiteVerification && <meta name="msvalidate.01" content={seoSettings.bingSiteVerification} />}
+    {seoSettings.enableOpenGraph && (
+      <>
+        <meta property="og:type" content={isHomepage ? "website" : "article"} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={absoluteOgImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={absoluteOgImage} />
+      </>
+    )}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {isHomepage && <WebSiteSchema />}
+    {schemaItems.map((item) => <JsonLd data={item} />)}
+  </head>
+  <body class="min-h-screen" style={brandVars}>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,27 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteSettings } from "@/lib/content";
+---
+
+<BaseLayout title="About" description="About Solar Savings Advisor.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">About {siteSettings.siteName}</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">{siteSettings.tagline}</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <article class="prose-solar">
+      <h2 class="text-2xl font-black text-deep-navy">Our Role</h2>
+      <p class="mt-3">Solar Savings Advisor helps homeowners estimate solar savings, compare common financing choices, and prepare better questions before talking to installers.</p>
+      <p>We publish calculators, guides, comparison pages, and state installer resources for educational use. We are not a licensed installer, utility, lender, tax professional, or legal advisor.</p>
+      <h2 class="mt-8 text-2xl font-black text-deep-navy">How We Make Money</h2>
+      <p class="mt-3">{siteSettings.disclosureText}</p>
+      <DisclosureNote />
+    </article>
+    <AdSlot placementId="bottom-lead" compact />
+  </section>
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import Icon from "@/components/Icon.astro";
+import { disclosureSettings, siteSettings } from "@/lib/content";
+import { getCalculatorDefinition } from "@/lib/calculators";
+
+interface Props {
+  calculatorType: string;
+  title: string;
+  description: string;
+  resultPlacementId?: string;
+}
+
+const {
+  calculatorType,
+  title,
+  description,
+  resultPlacementId = "calculator-results",
+} = Astro.props;
+const definition = getCalculatorDefinition(calculatorType);
+const profileKey = siteSettings.profile?.storageKey ?? `${siteSettings.siteId ?? "advisorSite"}.profile.v1`;
+const reportPath = siteSettings.routes?.reportPath ?? "/solar-report/";
+const disclaimer = siteSettings.calculatorDisclaimerText ?? disclosureSettings.calculatorDisclaimerText;
+
+if (!definition) {
+  throw new Error(`Calculator type "${calculatorType}" is not registered in src/lib/calculators/index.ts`);
+}
+---
+
+<section
+  class="grid gap-6 md:grid-cols-2"
+  data-calculator={calculatorType}
+  data-profile-key={profileKey}
+  data-result-placement-id={resultPlacementId}
+  data-report-path={reportPath}
+  data-offer-id={definition.resultOfferId}
+  data-partner-id={definition.resultPartnerId}
+  data-result-button-label={definition.resultButtonLabel}
+  data-disclaimer={disclaimer}
+>
+  <div class="surface-card border-bright-orange/20">
+    <div class="border-b border-gray-100 bg-gradient-to-r from-orange-50 to-yellow-50 p-6">
+      <h2 class="text-xl font-black text-deep-navy">{title}</h2>
+      <p class="mt-1 text-sm text-gray-600">{description}</p>
+    </div>
+    <div class="space-y-4 p-6" data-fields></div>
+    <div class="px-6 pb-6">
+      <button type="button" class="focus-ring w-full rounded-xl bg-bright-orange px-6 py-3 font-bold text-white shadow-lg hover:bg-orange-600" data-calculate>
+        Calculate
+      </button>
+      <p class="mt-3 text-center text-xs text-gray-500">{disclaimer}</p>
+    </div>
+  </div>
+
+  <div class="surface-card border-soft-green/20">
+    <div class="border-b border-gray-100 bg-gradient-to-r from-green-50 to-blue-50 p-6">
+      <h2 class="text-xl font-black text-deep-navy">Your Estimates</h2>
+      <p class="mt-1 text-sm text-gray-600">Results based on your inputs</p>
+    </div>
+    <div class="p-6" data-results>
+      <div class="flex min-h-64 flex-col items-center justify-center text-center text-gray-400">
+        <Icon name="sun" class="h-10 w-10" />
+        <p class="mt-2 text-sm">Fill in the form and click Calculate to see estimates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mt-8">
+  <AdSlot placementId={resultPlacementId} />
+</div>
+
+<script>
+  import { hydrateCalculatorPanels } from "@/lib/calculators/client";
+
+  hydrateCalculatorPanels();
+</script>

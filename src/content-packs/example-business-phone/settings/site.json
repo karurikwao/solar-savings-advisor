@@ -1,0 +1,113 @@
+{
+  "siteId": "businessPhoneAdvisor",
+  "siteName": "Business Phone Advisor",
+  "siteShortName": "Phone Advisor",
+  "nicheName": "Business Phone Systems",
+  "audienceName": "Small business owners comparing VoIP, phone systems, and providers",
+  "domain": "BusinessPhoneAdvisor.example",
+  "siteUrl": "https://businessphoneadvisor.example",
+  "tagline": "Compare business phone options before you sign a contract.",
+  "description": "Estimate phone system costs, compare providers, and learn what to ask before choosing business communications software.",
+  "email": "hello@businessphoneadvisor.example",
+  "ogImage": "/og-image.svg",
+  "logo": {
+    "primaryText": "Business Phone",
+    "secondaryText": "Advisor",
+    "icon": "phone"
+  },
+  "primaryCTA": {
+    "label": "Estimate Monthly Cost",
+    "href": "/tools/business-phone-savings-calculator/",
+    "placementId": "home-hero",
+    "offerId": "phone-system-checklist",
+    "partnerId": "advisor-site"
+  },
+  "secondaryCTA": {
+    "label": "Compare Providers",
+    "href": "/providers/",
+    "placementId": "home-hero",
+    "offerId": "phone-provider-comparison",
+    "partnerId": "phone-provider-partners"
+  },
+  "colors": {
+    "solarYellow": "#FACC15",
+    "deepNavy": "#111827",
+    "brightOrange": "#2563EB",
+    "softGreen": "#10B981",
+    "lightGray": "#F3F4F6"
+  },
+  "routes": {
+    "toolsBase": "/tools/",
+    "questionsBase": "/questions/",
+    "comparisonsBase": "/compare/",
+    "guidesBase": "/guides/",
+    "providersBase": "/providers/",
+    "providerLabel": "Providers",
+    "providerSingularLabel": "Provider",
+    "reportPath": "/solar-report/",
+    "reportLabel": "Advisor Report",
+    "solutionsPath": "/providers/",
+    "solutionsLabel": "Providers"
+  },
+  "providerDirectory": {
+    "indexTitle": "Business Phone Providers",
+    "indexDescription": "Provider-style listings for VoIP, UCaaS, and small business phone systems.",
+    "metricOneLabel": "Typical monthly price",
+    "metricTwoLabel": "Setup timeline",
+    "notesLabel": "Selection Notes",
+    "listingsLabel": "Sample Provider Listings",
+    "servicesLabel": "Capabilities",
+    "financingLabel": "Contract Options"
+  },
+  "profile": {
+    "storageKey": "businessPhoneAdvisor.profile.v1",
+    "fields": [
+      { "id": "businessSize", "label": "Business Size", "type": "text", "placeholder": "25 users" },
+      { "id": "currentMonthlyCost", "label": "Current Monthly Cost", "type": "text", "placeholder": "750" },
+      { "id": "newMonthlyCost", "label": "Target Monthly Cost", "type": "text", "placeholder": "550" }
+    ]
+  },
+  "leadCapture": {
+    "enabled": true,
+    "defaultEndpoint": "",
+    "mockStorageKey": "businessPhoneAdvisor.mockLead.v1"
+  },
+  "analytics": {
+    "enabled": false,
+    "provider": "",
+    "measurementId": ""
+  },
+  "admin": {
+    "showInNavigation": false
+  },
+  "socialLinks": [],
+  "footerText": "Static advisor-site template content for business phone comparisons.",
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Calculators", "href": "/tools/" },
+    { "label": "Questions", "href": "/questions/" },
+    { "label": "Compare", "href": "/compare/" },
+    { "label": "Providers", "href": "/providers/" },
+    { "label": "Guides", "href": "/guides/" }
+  ],
+  "footer": {
+    "resources": [
+      { "href": "/tools/", "label": "Calculators" },
+      { "href": "/providers/", "label": "Providers" }
+    ],
+    "explore": [
+      { "href": "/questions/", "label": "Questions" },
+      { "href": "/compare/", "label": "Comparisons" },
+      { "href": "/guides/", "label": "Guides" }
+    ],
+    "company": [
+      { "href": "/privacy/", "label": "Privacy Policy" },
+      { "href": "/affiliate-disclosure/", "label": "Affiliate Disclosure" },
+      { "href": "/disclaimer/", "label": "Disclaimer" }
+    ]
+  },
+  "disclosureText": "BusinessPhoneAdvisor.example may earn compensation from partner links or quote requests.",
+  "affiliateDisclosureText": "BusinessPhoneAdvisor.example may earn compensation from partner links or quote requests.",
+  "estimateDisclaimer": "Business phone cost estimates are educational only. Actual pricing, fees, taxes, contract terms, integrations, and provider availability vary.",
+  "calculatorDisclaimerText": "Business phone calculator results are educational estimates only and are not quotes or purchasing recommendations."
+}

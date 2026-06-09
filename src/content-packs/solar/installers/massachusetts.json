@@ -1,0 +1,68 @@
+{
+  "id": "massachusetts",
+  "stateName": "Massachusetts",
+  "stateDescription": "Massachusetts can be a strong solar market despite winter seasonality because electricity rates are often high.",
+  "avgCostPerWatt": "$3.50-$4.50",
+  "typicalPayback": "6-9 years",
+  "keyIncentives": [
+    "Federal solar tax credit (verify current amount)",
+    "SMART or successor program details should be verified",
+    "Net metering rules vary by utility and system size",
+    "Confirm current net metering, interconnection, and incentive rules with the utility before signing."
+  ],
+  "sampleInstallers": [
+    {
+      "name": "BlueWave Solar",
+      "rating": 4.7,
+      "services": [
+        "Solar Panels",
+        "Energy Storage"
+      ],
+      "financing": [
+        "Loan",
+        "Cash",
+        "Lease"
+      ],
+      "description": "Massachusetts installer with storage options."
+    },
+    {
+      "name": "SunPower",
+      "rating": 4.6,
+      "services": [
+        "Residential Solar",
+        "Monitoring"
+      ],
+      "financing": [
+        "Loan",
+        "Cash"
+      ],
+      "description": "Premium equipment and long warranty positioning."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Does winter ruin Massachusetts solar returns?",
+      "answer": "No. Production is lower in winter, but annual savings and utility rates drive the economics."
+    },
+    {
+      "question": "Are these installer listings endorsements?",
+      "answer": "No. Listings are educational examples for comparison. Verify licenses, insurance, reviews, contracts, and current service areas before choosing any installer."
+    },
+    {
+      "question": "What should I compare between installer quotes?",
+      "answer": "Compare equipment, system size, production assumptions, workmanship warranty, financing terms, roof work, monitoring, and the exact utility rate assumptions used."
+    }
+  ],
+  "quotePlacementId": "installer-quote",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "DSIRE state and utility incentive database",
+    "U.S. Department of Energy solar consumer resources",
+    "Public installer profile and market information reviewed for educational context"
+  ]
+}

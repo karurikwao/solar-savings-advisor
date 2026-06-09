@@ -1,0 +1,171 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import { siteSettings } from "@/lib/content";
+
+const profileKey = siteSettings.profile?.storageKey ?? `${siteSettings.siteId ?? "advisorSite"}.profile.v1`;
+---
+
+<section class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]" data-report-form data-profile-key={profileKey}>
+  <div class="surface-card overflow-hidden">
+    <div class="border-b border-gray-100 bg-gradient-to-r from-orange-50 to-yellow-50 p-6">
+      <p class="text-xs font-bold uppercase tracking-wider text-bright-orange">Solar report</p>
+      <h2 class="mt-2 text-2xl font-black text-deep-navy">Personal Solar Readiness Report</h2>
+      <p class="mt-2 text-sm leading-relaxed text-gray-600">Your saved profile fills the form automatically.</p>
+    </div>
+
+    <div class="space-y-6 p-6">
+      <div>
+        <h3 class="mb-3 text-sm font-black uppercase tracking-wider text-deep-navy">1. Home basics</h3>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="text-sm font-bold text-deep-navy">ZIP Code<input data-report-field="zip" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" placeholder="90210" /></label>
+          <label class="text-sm font-bold text-deep-navy">State<input data-report-field="state" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" placeholder="CA" /></label>
+          <label class="text-sm font-bold text-deep-navy">Monthly Bill<input data-report-field="monthlyBill" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" placeholder="150" /></label>
+          <label class="text-sm font-bold text-deep-navy">Electricity Rate<input data-report-field="electricityRate" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" placeholder="0.15" /></label>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-black uppercase tracking-wider text-deep-navy">2. Roof and ownership</h3>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="text-sm font-bold text-deep-navy">
+            Roof Sun
+            <select data-report-field="sunExposure" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3">
+              <option value="">Select sun</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+          <label class="text-sm font-bold text-deep-navy">
+            Homeowner
+            <select data-report-field="ownership" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3">
+              <option value="">Select</option>
+              <option value="own">Own</option>
+              <option value="rent">Rent</option>
+              <option value="hoa">Own with HOA</option>
+            </select>
+          </label>
+          <label class="text-sm font-bold text-deep-navy">Home Size<input data-report-field="homeSize" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" placeholder="2000" /></label>
+          <label class="text-sm font-bold text-deep-navy">Roof Age<input data-report-field="roofAge" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" placeholder="8" /></label>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-black uppercase tracking-wider text-deep-navy">3. Preferences</h3>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="text-sm font-bold text-deep-navy">
+            Financing
+            <select data-report-field="financingPreference" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3">
+              <option value="">Select financing</option>
+              <option value="cash">Cash</option>
+              <option value="loan">Loan</option>
+              <option value="lease">Lease/PPA</option>
+              <option value="unsure">Not sure</option>
+            </select>
+          </label>
+          <label class="text-sm font-bold text-deep-navy">
+            Battery Interest
+            <select data-report-field="batteryInterest" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3">
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="maybe">Maybe</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <button type="button" class="focus-ring w-full rounded-xl bg-bright-orange px-6 py-3 font-bold text-white shadow-lg hover:bg-orange-600" data-generate-report>
+        Generate Report
+      </button>
+      <DisclosureNote label="Estimate" />
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    <div class="surface-card min-h-96 p-6" data-report-results>
+      <div class="flex h-full min-h-80 flex-col items-center justify-center text-center text-gray-400">
+        <p class="text-sm">Your report will appear here.</p>
+      </div>
+    </div>
+    <AdSlot placementId="report-results" compact />
+  </div>
+</section>
+
+<script>
+  const readProfile = (profileKey) => {
+    try {
+      return JSON.parse(localStorage.getItem(profileKey) || "{}");
+    } catch {
+      return {};
+    }
+  };
+  const writeProfile = (profileKey, updates) => {
+    const next = { ...readProfile(profileKey), ...updates };
+    localStorage.setItem(profileKey, JSON.stringify(next));
+    return next;
+  };
+  const num = (value, fallback) => {
+    const parsed = Number.parseFloat(value);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+  };
+  const money = (value) => `$${Math.round(value).toLocaleString()}`;
+  const sunMultiplier = (value) => value === "high" ? 1.2 : value === "low" ? 0.7 : 1;
+
+  document.querySelectorAll("[data-report-form]").forEach((form) => {
+    const profileKey = form.getAttribute("data-profile-key") || "advisorSite.profile.v1";
+    const profile = readProfile(profileKey);
+    const values = { ...profile };
+    const result = form.querySelector("[data-report-results]");
+
+    form.querySelectorAll("[data-report-field]").forEach((field) => {
+      const key = field.getAttribute("data-report-field");
+      if (key && values[key]) field.value = values[key];
+      const save = () => {
+        if (!key) return;
+        values[key] = field.value;
+        writeProfile(profileKey, { [key]: field.value });
+      };
+      field.addEventListener("input", save);
+      field.addEventListener("change", save);
+    });
+
+    form.querySelector("[data-generate-report]")?.addEventListener("click", () => {
+      const bill = num(values.monthlyBill, 150);
+      const rate = num(values.electricityRate, 0.15);
+      const sun = sunMultiplier(values.sunExposure);
+      const monthlySavings = Math.round(bill * 0.7 * sun);
+      const annualSavings = monthlySavings * 12;
+      const systemSize = Math.round(((bill / rate) * 0.8 / 150) * sun * 10) / 10;
+      const estimatedCost = Math.round(systemSize * 1000 * 3.2);
+      const roofAge = num(values.roofAge, 10);
+      const ownershipPenalty = values.ownership === "rent" ? 25 : 0;
+      const roofPenalty = roofAge > 18 ? 10 : 0;
+      const score = Math.max(35, Math.min(98, Math.round(68 + (sun - 1) * 30 + (bill > 180 ? 10 : 0) - ownershipPenalty - roofPenalty)));
+      const payback = annualSavings > 0 ? Math.round((estimatedCost * 0.7) / annualSavings) : 0;
+      const nextSteps = [
+        "Compare at least three quotes before signing.",
+        "Ask each installer for production assumptions and warranty terms.",
+        values.batteryInterest === "yes" ? "Request a solar-plus-battery quote and a solar-only quote." : "Price solar first, then decide whether a battery changes the value.",
+      ];
+
+      if (!result) return;
+      result.innerHTML = `
+        <p class="text-xs font-bold uppercase tracking-wider text-soft-green">Readiness score</p>
+        <div class="mt-3 flex items-end gap-3">
+          <span class="text-6xl font-black text-deep-navy">${score}</span>
+          <span class="mb-2 text-sm font-bold text-gray-500">/ 100</span>
+        </div>
+        <div class="mt-6 grid gap-3">
+          <div class="rounded-xl bg-green-50 p-4"><p class="text-sm text-gray-600">Estimated system size</p><p class="text-2xl font-black text-deep-navy">${systemSize} kW</p></div>
+          <div class="rounded-xl bg-yellow-50 p-4"><p class="text-sm text-gray-600">Estimated annual savings</p><p class="text-2xl font-black text-deep-navy">${money(annualSavings)}</p></div>
+          <div class="rounded-xl bg-orange-50 p-4"><p class="text-sm text-gray-600">Estimated net payback</p><p class="text-2xl font-black text-deep-navy">${payback || "N/A"} years</p></div>
+        </div>
+        <h3 class="mt-6 text-lg font-black text-deep-navy">Next steps</h3>
+        <ul class="mt-3 space-y-2 text-sm leading-relaxed text-gray-600">${nextSteps.map((step) => `<li>${step}</li>`).join("")}</ul>
+        <a class="mt-6 block rounded-xl bg-deep-navy px-6 py-3 text-center font-bold text-white" href="mailto:?subject=Solar%20Readiness%20Report&body=My%20estimated%20solar%20readiness%20score%20is%20${score}.">Email My Report</a>
+      `;
+    });
+  });
+</script>

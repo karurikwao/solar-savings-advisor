@@ -1,0 +1,57 @@
+{
+  "id": "solar-tax-credit-guide",
+  "title": "Solar Tax Credit Guide",
+  "description": "Learn about federal and state solar tax credits and how to verify current eligibility.",
+  "path": "solar-tax-credit-guide",
+  "keyTakeaways": [
+    "Tax credits can reduce effective solar costs",
+    "You usually must own the system",
+    "Eligibility and percentages can change",
+    "A tax professional should verify your situation",
+    "Save signed contracts, paid invoices, and equipment documents before tax season"
+  ],
+  "sections": [
+    {
+      "title": "What the Credit Does",
+      "content": "Solar tax credits may offset a portion of qualifying installation costs. Rules and amounts change, so verify current guidance before relying on any incentive."
+    },
+    {
+      "title": "State and Utility Incentives",
+      "content": "Some states and utilities offer rebates, SRECs, exemptions, or performance incentives. Availability depends on location and program budget."
+    },
+    {
+      "title": "How to Prepare",
+      "content": "Keep contracts, invoices, equipment details, and installer documentation for your tax professional."
+    },
+    {
+      "title": "What to Verify Before You Sign",
+      "content": "Confirm that the quote separates equipment, labor, roofing, battery, and financing costs. Ask which items the installer believes are eligible, then have a tax professional verify because eligibility depends on current rules and your tax situation."
+    },
+    {
+      "title": "Why Incentive Pages Need Updates",
+      "content": "Federal, state, utility, and SREC-style programs can change when budgets, legislation, or utility tariffs change. Treat any calculator result as a planning estimate until you verify current program documents."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can leased systems claim homeowner credits?",
+      "answer": "Usually no. The system owner typically claims credits, so verify your contract structure."
+    },
+    {
+      "question": "Can I rely on an installer to calculate my credit?",
+      "answer": "Use installer estimates as planning inputs only. A tax professional should confirm eligibility, forms, timing, and carryforward rules for your household."
+    }
+  ],
+  "bannerPlacementId": "guide-banner",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar homeowner resources",
+    "IRS residential clean energy credit guidance",
+    "DSIRE state and utility incentive database"
+  ]
+}

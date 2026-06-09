@@ -1,0 +1,254 @@
+{
+  "placements": [
+    {
+      "placementId": "home-hero",
+      "enabled": true,
+      "label": "Homepage hero CTA",
+      "templateArea": "homepage.hero",
+      "allowedTypes": ["offer", "ad", "promo"],
+      "adPlacementIds": ["home-hero"],
+      "offerIds": ["free-solar-report"],
+      "priority": 100
+    },
+    {
+      "placementId": "homepage-inline",
+      "enabled": true,
+      "label": "Homepage inline CTA",
+      "templateArea": "homepage.inline",
+      "allowedTypes": ["offer", "ad", "promo"],
+      "adPlacementIds": ["question-inline"],
+      "offerIds": ["free-solar-report"],
+      "priority": 88
+    },
+    {
+      "placementId": "homepage-promo",
+      "enabled": true,
+      "label": "Homepage bottom promo panel",
+      "templateArea": "homepage.bottom",
+      "allowedTypes": ["promo", "offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report"],
+      "priority": 90
+    },
+    {
+      "placementId": "tools-index-hero",
+      "enabled": true,
+      "label": "Tools index hero",
+      "templateArea": "tools.index.hero",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["calculator-results"],
+      "offerIds": ["free-solar-report"],
+      "priority": 86
+    },
+    {
+      "placementId": "calculator-results",
+      "enabled": true,
+      "label": "Calculator results CTA",
+      "templateArea": "tools.detail.results",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["calculator-results"],
+      "offerIds": ["free-solar-report"],
+      "priority": 95
+    },
+    {
+      "placementId": "tools-detail-sidebar",
+      "enabled": true,
+      "label": "Tool detail sidebar",
+      "templateArea": "tools.detail.sidebar",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report"],
+      "priority": 68
+    },
+    {
+      "placementId": "questions-index-hero",
+      "enabled": true,
+      "label": "Questions index hero",
+      "templateArea": "questions.index.hero",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["question-inline"],
+      "offerIds": ["free-solar-report"],
+      "priority": 72
+    },
+    {
+      "placementId": "question-inline",
+      "enabled": true,
+      "label": "Question detail inline CTA",
+      "templateArea": "questions.detail.inline",
+      "allowedTypes": ["ad", "offer"],
+      "adPlacementIds": ["question-inline"],
+      "offerIds": ["free-solar-report"],
+      "priority": 80
+    },
+    {
+      "placementId": "question-sidebar",
+      "enabled": true,
+      "label": "Question detail sidebar",
+      "templateArea": "questions.detail.sidebar",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report"],
+      "priority": 66
+    },
+    {
+      "placementId": "question-bottom",
+      "enabled": true,
+      "label": "Question detail bottom CTA",
+      "templateArea": "questions.detail.bottom",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report"],
+      "priority": 62
+    },
+    {
+      "placementId": "compare-index-hero",
+      "enabled": true,
+      "label": "Comparison index hero",
+      "templateArea": "compare.index.hero",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["comparison-affiliate"],
+      "offerIds": ["installer-comparison"],
+      "priority": 78
+    },
+    {
+      "placementId": "comparison-affiliate",
+      "enabled": true,
+      "label": "Comparison detail sidebar card",
+      "templateArea": "compare.detail.sidebar",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["comparison-affiliate"],
+      "offerIds": ["installer-comparison"],
+      "priority": 80
+    },
+    {
+      "placementId": "compare-table",
+      "enabled": true,
+      "label": "Comparison table affiliate buttons",
+      "templateArea": "compare.detail.table",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["comparison-affiliate"],
+      "offerIds": ["installer-comparison"],
+      "priority": 74
+    },
+    {
+      "placementId": "compare-bottom",
+      "enabled": true,
+      "label": "Comparison detail bottom CTA",
+      "templateArea": "compare.detail.bottom",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report", "installer-comparison"],
+      "priority": 58
+    },
+    {
+      "placementId": "guides-index-hero",
+      "enabled": true,
+      "label": "Guides index hero",
+      "templateArea": "guides.index.hero",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["guide-banner"],
+      "offerIds": ["free-solar-report"],
+      "priority": 72
+    },
+    {
+      "placementId": "guide-banner",
+      "enabled": true,
+      "label": "Guide detail inline banner",
+      "templateArea": "guides.detail.inline",
+      "allowedTypes": ["ad", "offer"],
+      "adPlacementIds": ["guide-banner"],
+      "offerIds": ["free-solar-report"],
+      "priority": 70
+    },
+    {
+      "placementId": "guide-bottom",
+      "enabled": true,
+      "label": "Guide detail bottom CTA",
+      "templateArea": "guides.detail.bottom",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report"],
+      "priority": 56
+    },
+    {
+      "placementId": "providers-index-hero",
+      "enabled": true,
+      "label": "Providers index hero",
+      "templateArea": "providers.index.hero",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["installer-quote"],
+      "offerIds": ["installer-comparison"],
+      "priority": 76
+    },
+    {
+      "placementId": "installer-quote",
+      "enabled": true,
+      "label": "Provider detail quote buttons",
+      "templateArea": "providers.detail.card",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["installer-quote"],
+      "offerIds": ["installer-comparison"],
+      "priority": 75
+    },
+    {
+      "placementId": "providers-detail-bottom",
+      "enabled": true,
+      "label": "Provider detail bottom CTA",
+      "templateArea": "providers.detail.bottom",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["installer-comparison", "free-solar-report"],
+      "priority": 57
+    },
+    {
+      "placementId": "report-hero",
+      "enabled": true,
+      "label": "Report page hero CTA",
+      "templateArea": "report.hero",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["home-hero"],
+      "offerIds": ["free-solar-report"],
+      "priority": 82
+    },
+    {
+      "placementId": "report-results",
+      "enabled": true,
+      "label": "Report results CTA",
+      "templateArea": "report.results",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["installer-comparison", "free-solar-report"],
+      "priority": 70
+    },
+    {
+      "placementId": "bottom-lead",
+      "enabled": true,
+      "label": "Bottom lead form CTA",
+      "templateArea": "global.bottom",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report"],
+      "priority": 60
+    },
+    {
+      "placementId": "global-footer",
+      "enabled": true,
+      "label": "Global footer CTA",
+      "templateArea": "global.footer",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["free-solar-report"],
+      "priority": 50
+    },
+    {
+      "placementId": "partner-card",
+      "enabled": true,
+      "label": "Partner cards",
+      "templateArea": "global.partners",
+      "allowedTypes": ["offer", "ad"],
+      "adPlacementIds": ["bottom-lead"],
+      "offerIds": ["installer-comparison", "free-solar-report"],
+      "priority": 40
+    }
+  ]
+}

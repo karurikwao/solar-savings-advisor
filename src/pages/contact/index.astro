@@ -1,0 +1,30 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import CTAButton from "@/components/CTAButton.astro";
+import LeadCaptureForm from "@/components/LeadCaptureForm.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteSettings } from "@/lib/content";
+---
+
+<BaseLayout title="Contact" description="Contact Solar Savings Advisor.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">Contact</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">Questions about the site, content, partner listings, or disclosures can be sent by email.</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <div class="surface-card p-6">
+      <h2 class="text-2xl font-black text-deep-navy">Email Us</h2>
+      <p class="mt-3 text-gray-600">For support, corrections, affiliate questions, or partnership inquiries:</p>
+      <div class="mt-6">
+        <CTAButton href={`mailto:${siteSettings.email}`} label={siteSettings.email} />
+      </div>
+    </div>
+    <div class="space-y-6">
+      <AdSlot placementId="bottom-lead" compact />
+      <LeadCaptureForm title="Lead Capture Test Form" subtitle="Use this as the static placeholder before connecting a production endpoint." placementId="bottom-lead" pageSlug="contact" />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,56 @@
+{
+  "id": "how-long-do-solar-panels-last",
+  "title": "How Long Do Solar Panels Last?",
+  "description": "Most solar panels are designed to keep producing electricity for decades with gradual performance decline.",
+  "category": "Maintenance",
+  "path": "how-long-do-solar-panels-last",
+  "quickAnswer": "Solar panels commonly last 25-30 years or more, though output gradually declines over time.",
+  "bestFor": [
+    "Long-term homeowners",
+    "Quality equipment",
+    "Good installation practices"
+  ],
+  "notBestFor": [
+    "Poor roof condition",
+    "Low-quality equipment",
+    "No maintenance plan"
+  ],
+  "scenario": {
+    "title": "Lifetime Example",
+    "details": [
+      "25-year production warranty",
+      "Gradual annual degradation",
+      "Inverter may need replacement sooner than panels"
+    ]
+  },
+  "factors": [
+    "Panel warranty",
+    "Inverter warranty",
+    "Weather exposure",
+    "Installation quality",
+    "Monitoring and maintenance"
+  ],
+  "faqs": [
+    {
+      "question": "Do panels stop working after 25 years?",
+      "answer": "Not usually. Many panels still produce power after 25 years, just at reduced output."
+    }
+  ],
+  "relatedQuestions": [
+    "is-solar-worth-it",
+    "solar-maintenance-guide",
+    "does-solar-increase-home-value"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

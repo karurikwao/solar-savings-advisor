@@ -1,0 +1,135 @@
+---
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import { disclosureSettings, siteSettings } from "@/lib/content";
+import { normalizePageSlug } from "@/lib/tracking";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  placementId?: string;
+  pageSlug?: string;
+  endpoint?: string;
+}
+
+const {
+  title = "Request Quote Prep",
+  subtitle = "Share basic contact details when you are ready to connect this static form to a CRM, webhook, or form service.",
+  placementId = "bottom-lead",
+  pageSlug = normalizePageSlug(Astro.url.pathname),
+  endpoint = siteSettings.leadCapture?.defaultEndpoint ?? "",
+} = Astro.props;
+const mockStorageKey = siteSettings.leadCapture?.mockStorageKey ?? `${siteSettings.siteId ?? "advisorSite"}.mockLead.v1`;
+const sourceId = siteSettings.siteId ?? "advisor-site";
+const nicheName = siteSettings.nicheName ?? "Advisor";
+const providerLabel = siteSettings.routes?.providerLabel ?? "Providers";
+---
+
+<section class="surface-card p-6" data-lead-form data-endpoint={endpoint} data-mock-storage-key={mockStorageKey}>
+  <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Lead capture placeholder</p>
+  <h2 class="mt-2 text-2xl font-black text-deep-navy">{title}</h2>
+  <p class="mt-2 text-sm leading-relaxed text-gray-600">{subtitle}</p>
+
+  <form class="mt-6 grid gap-4" data-lead-form-fields>
+    <input type="hidden" name="placementId" value={placementId} />
+    <input type="hidden" name="pageSlug" value={pageSlug} />
+    <input type="hidden" name="source" value={sourceId} />
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <label class="text-sm font-bold text-deep-navy">
+        Name
+        <input name="name" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" autocomplete="name" placeholder="Jane Smith" />
+      </label>
+      <label class="text-sm font-bold text-deep-navy">
+        Email
+        <input name="email" type="email" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" autocomplete="email" placeholder="jane@example.com" />
+      </label>
+      <label class="text-sm font-bold text-deep-navy">
+        Phone
+        <input name="phone" type="tel" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" autocomplete="tel" placeholder="(555) 555-5555" />
+      </label>
+      <label class="text-sm font-bold text-deep-navy">
+        ZIP Code
+        <input name="zip" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3" autocomplete="postal-code" inputmode="numeric" placeholder="90210" />
+      </label>
+    </div>
+
+    <label class="text-sm font-bold text-deep-navy">
+      Interest
+      <select name="interest" class="mt-1.5 w-full rounded-xl border border-gray-200 px-4 py-3">
+        <option value="primary">{nicheName} options</option>
+        <option value="provider-comparison">{providerLabel} comparison</option>
+        <option value="pricing">Pricing or savings estimate</option>
+        <option value="implementation">Implementation questions</option>
+      </select>
+    </label>
+
+    <label class="flex items-start gap-3 text-sm leading-relaxed text-gray-600">
+      <input name="consent" type="checkbox" value="yes" class="mt-1 h-4 w-4 rounded border-gray-300" required />
+      <span>I agree that this placeholder form may be connected later to a quote, CRM, webhook, or form provider and that estimates are educational only.</span>
+    </label>
+
+    <button type="submit" class="focus-ring rounded-xl bg-bright-orange px-6 py-3 font-bold text-white shadow-lg hover:bg-orange-600" data-lead-submit>
+      Save Lead Placeholder
+    </button>
+    <p class="text-sm font-bold" data-lead-status aria-live="polite"></p>
+  </form>
+
+  <div class="mt-5">
+    <DisclosureNote label="Lead capture" text={disclosureSettings.leadCaptureDisclaimer} />
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll("[data-lead-form]").forEach((wrapper) => {
+    const form = wrapper.querySelector("[data-lead-form-fields]");
+    const status = wrapper.querySelector("[data-lead-status]");
+    const submit = wrapper.querySelector("[data-lead-submit]");
+    const endpoint = wrapper.getAttribute("data-endpoint") || "";
+    const mockStorageKey = wrapper.getAttribute("data-mock-storage-key") || "advisorSite.mockLead.v1";
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      if (status) {
+        status.className = "text-sm font-bold text-gray-500";
+        status.textContent = endpoint ? "Submitting lead..." : "Saving mock lead locally...";
+      }
+      if (submit) submit.setAttribute("disabled", "true");
+
+      try {
+        // Production integration point:
+        // Replace the blank endpoint with a webhook, CRM intake URL, or static form provider.
+        // Keep consent, disclosure, spam controls, and provider privacy terms in place before sending real leads.
+        if (endpoint) {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Lead endpoint returned ${response.status}`);
+          }
+        } else {
+          localStorage.setItem(mockStorageKey, JSON.stringify({ ...payload, savedAt: new Date().toISOString() }));
+        }
+
+        if (status) {
+          status.className = "text-sm font-bold text-soft-green";
+          status.textContent = endpoint
+            ? "Lead submitted to the configured endpoint."
+            : "Mock lead saved locally. Configure an endpoint before production lead capture.";
+        }
+        form.reset();
+      } catch {
+        if (status) {
+          status.className = "text-sm font-bold text-bright-orange";
+          status.textContent = "Lead submission failed. Check the configured endpoint before using this in production.";
+        }
+      } finally {
+        if (submit) submit.removeAttribute("disabled");
+      }
+    });
+  });
+</script>

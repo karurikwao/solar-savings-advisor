@@ -1,0 +1,63 @@
+{
+  "offers": [
+    {
+      "id": "free-solar-report",
+      "enabled": true,
+      "title": "Free Solar Readiness Report",
+      "subtitle": "Estimate fit score, system size, savings, and next steps.",
+      "buttonText": "Start Free Report",
+      "destinationUrl": "/solar-report/",
+      "partnerId": "solar-savings-advisor",
+      "partnerName": "Solar Savings Advisor",
+      "disclosureLabel": "Educational estimate",
+      "placementIds": [
+        "home-hero",
+        "homepage-inline",
+        "homepage-promo",
+        "tools-index-hero",
+        "calculator-results",
+        "tools-detail-sidebar",
+        "questions-index-hero",
+        "question-inline",
+        "question-sidebar",
+        "question-bottom",
+        "guide-banner",
+        "guides-index-hero",
+        "guide-bottom",
+        "report-hero",
+        "report-results",
+        "bottom-lead",
+        "global-footer",
+        "partner-card"
+      ],
+      "priority": 100,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    },
+    {
+      "id": "installer-comparison",
+      "enabled": true,
+      "title": "Compare Installer Options",
+      "subtitle": "Review sample installers, financing options, and questions to ask.",
+      "buttonText": "Compare Installers",
+      "destinationUrl": "/installers/",
+      "partnerId": "installer-partners",
+      "partnerName": "Installer partners",
+      "disclosureLabel": "Lead generation",
+      "placementIds": [
+        "compare-index-hero",
+        "comparison-affiliate",
+        "compare-table",
+        "compare-bottom",
+        "providers-index-hero",
+        "installer-quote",
+        "providers-detail-bottom",
+        "report-results",
+        "partner-card"
+      ],
+      "priority": 80,
+      "startDate": "2026-01-01",
+      "endDate": "2030-12-31"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "should-i-choose-voip-or-pbx",
+  "title": "Should I Choose VoIP or PBX?",
+  "description": "Compare cloud VoIP and PBX-style systems for common small business needs.",
+  "category": "Systems",
+  "path": "should-i-choose-voip-or-pbx",
+  "quickAnswer": "Cloud VoIP is usually simpler for distributed teams, while PBX-style systems can fit organizations that need more control over on-premise hardware or specialized call flows.",
+  "bestFor": ["Teams comparing system architecture", "Businesses with multiple locations", "Companies balancing control and ease of management"],
+  "notBestFor": ["Teams that already chose a provider", "Businesses with no internet reliability concerns"],
+  "scenario": {
+    "title": "Example Decision Scenario",
+    "details": ["Two office locations", "Hybrid staff", "Need call routing and voicemail", "Prefer minimal hardware"]
+  },
+  "factors": ["Remote work needs", "Hardware ownership", "IT support", "Call flow complexity", "Integration needs"],
+  "faqs": [
+    { "question": "Can PBX systems be cloud-hosted?", "answer": "Yes. Some vendors offer hosted PBX-style services, so compare exact capabilities rather than labels alone." }
+  ],
+  "relatedQuestions": ["is-voip-worth-it", "how-many-phone-lines-do-i-need"],
+  "ctaPlacementId": "question-inline"
+}

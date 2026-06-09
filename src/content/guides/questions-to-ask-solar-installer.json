@@ -1,0 +1,56 @@
+{
+  "id": "questions-to-ask-solar-installer",
+  "title": "Questions to Ask a Solar Installer",
+  "description": "Key questions to ask before committing to a solar installation.",
+  "path": "questions-to-ask-solar-installer",
+  "keyTakeaways": [
+    "Ask for total installed cost per watt",
+    "Compare equipment and workmanship warranties",
+    "Review production guarantees",
+    "Understand financing and cancellation terms"
+  ],
+  "sections": [
+    {
+      "title": "Pricing Questions",
+      "content": "Ask for total installed cost, cash price, financed price, dealer fees, and what is excluded."
+    },
+    {
+      "title": "Equipment Questions",
+      "content": "Ask which panels, inverters, batteries, monitoring, and mounting systems are included."
+    },
+    {
+      "title": "Contract Questions",
+      "content": "Ask about timelines, cancellation, roof work, production guarantees, and warranty service."
+    },
+    {
+      "title": "Questions About Production Estimates",
+      "content": "Ask which shade model, weather data, degradation assumption, and utility rate plan the estimate uses. A credible proposal should explain why the projected kWh output is realistic for your roof."
+    },
+    {
+      "title": "Questions About Contract Risk",
+      "content": "Ask who handles permits, interconnection, utility approvals, roof penetrations, workmanship warranty claims, and equipment replacements if the original installer is unavailable."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How many quotes should I get?",
+      "answer": "At least three quotes is a good starting point for comparing pricing and scope."
+    },
+    {
+      "question": "Should I get more than one solar quote?",
+      "answer": "Yes. Comparing at least two or three quotes helps reveal pricing differences, equipment tradeoffs, and financing assumptions that may not be obvious in a single proposal."
+    }
+  ],
+  "bannerPlacementId": "guide-banner",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar homeowner resources",
+    "IRS residential clean energy credit guidance",
+    "DSIRE state and utility incentive database"
+  ]
+}

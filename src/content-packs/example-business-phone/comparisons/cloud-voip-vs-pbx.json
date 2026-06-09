@@ -1,0 +1,24 @@
+{
+  "id": "cloud-voip-vs-pbx",
+  "title": "Cloud VoIP vs PBX",
+  "path": "cloud-voip-vs-pbx",
+  "description": "Compare cloud-hosted business phone service with PBX-style systems.",
+  "optionA": "Cloud VoIP",
+  "optionB": "PBX",
+  "winnerSide": "A",
+  "winnerSummary": "Cloud VoIP is often easier for small businesses to deploy and manage, while PBX can fit more specialized infrastructure needs.",
+  "prosA": ["Fast setup", "Remote-friendly", "Lower hardware burden", "Easy feature updates"],
+  "consA": ["Depends on internet quality", "Recurring per-user pricing", "Provider lock-in risk"],
+  "prosB": ["More infrastructure control", "Can fit specialized call flows", "May reuse existing hardware"],
+  "consB": ["More maintenance", "Higher setup complexity", "Less flexible for remote teams"],
+  "bestForA": "Small businesses that want simple administration and remote calling.",
+  "bestForB": "Organizations with specialized infrastructure or on-premise control needs.",
+  "costConsiderations": "Compare monthly user fees, setup costs, phones, taxes, integrations, support, and contract commitments.",
+  "tableRows": [
+    { "feature": "Setup Speed", "optionA": "Fast", "optionB": "Slower", "winner": "A" },
+    { "feature": "Remote Work", "optionA": "Strong", "optionB": "Varies", "winner": "A" },
+    { "feature": "Hardware Control", "optionA": "Lower", "optionB": "Higher", "winner": "B" }
+  ],
+  "faqs": [{ "question": "Is PBX outdated?", "answer": "Not always. PBX-style systems can still fit organizations with specific infrastructure requirements." }],
+  "monetizationPlacementId": "comparison-affiliate"
+}

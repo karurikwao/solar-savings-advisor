@@ -1,0 +1,50 @@
+---
+import CTAButton from "@/components/CTAButton.astro";
+import { resolvePlacement } from "@/lib/content";
+import { normalizePageSlug } from "@/lib/tracking";
+
+interface Props {
+  placementId: string;
+  compact?: boolean;
+  pageSlug?: string;
+}
+
+const { placementId, compact = false, pageSlug = normalizePageSlug(Astro.url.pathname) } = Astro.props;
+const slot = resolvePlacement(placementId);
+const accent = slot?.type === "offer" ? "text-soft-green" : "text-bright-orange";
+const border = slot?.type === "offer" ? "border-soft-green/20 bg-gradient-to-br from-green-50 to-blue-50" : "border-bright-orange/20 bg-gradient-to-br from-orange-50 to-yellow-50";
+const ctaVariant = slot?.type === "offer" ? "green" : "orange";
+---
+
+{slot && (
+  <aside
+    class:list={[
+      "surface-card",
+      border,
+      compact ? "min-h-44 p-5" : "min-h-56 p-8",
+    ]}
+    data-placement-id={placementId}
+    data-selected-type={slot.type}
+    data-selected-id={slot.id}
+  >
+    <p class:list={["mb-2 text-xs font-bold uppercase tracking-wider", accent]}>
+      {slot.disclosureLabel}
+    </p>
+    <h3 class:list={["font-bold text-deep-navy", compact ? "text-lg" : "text-2xl"]}>
+      {slot.title}
+    </h3>
+    <p class="mt-2 text-sm leading-relaxed text-gray-600">{slot.subtitle}</p>
+    <div class="mt-5">
+      <CTAButton
+        href={slot.destinationUrl}
+        label={slot.buttonText}
+        variant={ctaVariant}
+        placementId={placementId}
+        pageSlug={pageSlug}
+        offerId={slot.id}
+        partnerId={slot.partnerId}
+      />
+    </div>
+    <p class="mt-4 text-xs text-gray-500">Partner: {slot.partnerName}</p>
+  </aside>
+)}

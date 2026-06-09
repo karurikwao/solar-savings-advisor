@@ -1,0 +1,134 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import AffiliateOfferCard from "@/components/AffiliateOfferCard.astro";
+import CTAButton from "@/components/CTAButton.astro";
+import Icon from "@/components/Icon.astro";
+import PartnerCard from "@/components/PartnerCard.astro";
+import ProfileCapture from "@/components/ProfileCapture.astro";
+import PromoPanel from "@/components/PromoPanel.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { comparisons, guides, partnerList, questions, resolvePlacement, siteSettings } from "@/lib/content";
+import { getToolPath, tools } from "@/lib/tools";
+
+const homepagePromo = resolvePlacement("homepage-promo");
+const nicheName = siteSettings.nicheName ?? "Advisor";
+const primaryCTA = siteSettings.primaryCTA ?? {
+  label: "Calculate Savings",
+  href: "/tools/solar-savings-calculator/",
+  placementId: "home-hero",
+  offerId: "free-solar-report",
+  partnerId: "solar-savings-advisor",
+};
+const secondaryCTA = siteSettings.secondaryCTA ?? {
+  label: "Get Solar Report",
+  href: siteSettings.routes?.reportPath ?? "/solar-report/",
+  placementId: "home-hero",
+  offerId: "free-solar-report",
+  partnerId: "solar-savings-advisor",
+};
+---
+
+<BaseLayout>
+  <section class="bg-gradient-to-br from-white via-yellow-50 to-orange-50">
+    <div class="container-wide grid gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-16">
+      <div>
+        <p class="mb-4 inline-flex rounded-full bg-solar-yellow/30 px-4 py-2 text-xs font-black uppercase tracking-wider text-deep-navy">
+          {nicheName} calculators, guides, and quote prep
+        </p>
+        <h1 class="max-w-3xl text-4xl font-black leading-tight text-deep-navy md:text-6xl">
+          {siteSettings.tagline}
+        </h1>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-gray-700">{siteSettings.description}</p>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <CTAButton href={primaryCTA.href} label={primaryCTA.label} placementId={primaryCTA.placementId} offerId={primaryCTA.offerId} partnerId={primaryCTA.partnerId} />
+          <CTAButton href={secondaryCTA.href} label={secondaryCTA.label} variant="navy" placementId={secondaryCTA.placementId} offerId={secondaryCTA.offerId} partnerId={secondaryCTA.partnerId} />
+        </div>
+      </div>
+      <ProfileCapture title="Start With Your Numbers" subtitle="Your details stay in the browser and carry into every calculator." />
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <div class="grid gap-6 lg:grid-cols-[2fr_1fr]">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {tools.map((tool) => (
+          <a href={`/tools/${getToolPath(tool)}/`} class="surface-card group p-6 transition hover:-translate-y-1 hover:shadow-xl">
+            <span class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-bright-orange/10 text-bright-orange">
+              <Icon name={tool.icon} class="h-6 w-6" />
+            </span>
+            <h2 class="text-lg font-black text-deep-navy">{tool.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-gray-600">{tool.description}</p>
+          </a>
+        ))}
+      </div>
+      <AdSlot placementId="home-hero" />
+    </div>
+  </section>
+
+  <section class="bg-light-gray py-12">
+    <div class="container-wide grid gap-8 lg:grid-cols-3">
+      <div>
+        <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Popular questions</p>
+        <h2 class="mt-2 text-3xl font-black text-deep-navy">Clear answers for {nicheName.toLowerCase()} decisions</h2>
+      </div>
+      <div class="grid gap-4 lg:col-span-2 sm:grid-cols-2">
+        {questions.slice(0, 4).map((question) => (
+          <a href={`/questions/${question.path}/`} class="surface-card p-5 transition hover:-translate-y-1 hover:shadow-xl">
+            <p class="text-xs font-bold uppercase tracking-wider text-soft-green">{question.category}</p>
+            <h3 class="mt-2 font-black text-deep-navy">{question.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-600">{question.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-2">
+    <div>
+      <p class="text-xs font-black uppercase tracking-wider text-bright-orange">Compare</p>
+      <h2 class="mt-2 text-3xl font-black text-deep-navy">Side-by-side buying guidance</h2>
+      <div class="mt-6 grid gap-4">
+        {comparisons.slice(0, 3).map((item) => (
+          <a href={`/compare/${item.path}/`} class="rounded-xl border border-gray-200 p-5 transition hover:border-bright-orange hover:bg-orange-50">
+            <h3 class="font-black text-deep-navy">{item.title}</h3>
+            <p class="mt-2 text-sm text-gray-600">{item.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+    <div>
+      <p class="text-xs font-black uppercase tracking-wider text-soft-green">Guides</p>
+      <h2 class="mt-2 text-3xl font-black text-deep-navy">Practical prep before quotes</h2>
+      <div class="mt-6 grid gap-4">
+        {guides.slice(0, 3).map((guide) => (
+          <a href={`/guides/${guide.path}/`} class="rounded-xl border border-gray-200 p-5 transition hover:border-soft-green hover:bg-green-50">
+            <h3 class="font-black text-deep-navy">{guide.title}</h3>
+            <p class="mt-2 text-sm text-gray-600">{guide.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-wide pb-12">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <AffiliateOfferCard placementId="bottom-lead" />
+      {partnerList.map((partner) => <PartnerCard partner={partner} />)}
+    </div>
+  </section>
+
+  {homepagePromo && (
+    <section class="container-wide pb-16">
+      <PromoPanel
+        title={homepagePromo.title}
+        subtitle={homepagePromo.subtitle}
+        buttonText={homepagePromo.buttonText}
+        href={homepagePromo.destinationUrl}
+        variant="navy"
+        placementId="homepage-promo"
+        offerId={homepagePromo.id}
+        partnerId={homepagePromo.partnerId}
+      />
+    </section>
+  )}
+</BaseLayout>

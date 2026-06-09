@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteSettings } from "@/lib/content";
+---
+
+<BaseLayout title="Terms of Service" description="Terms of service for Solar Savings Advisor.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">Terms of Service</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">Last updated June 8, 2026.</p>
+    </div>
+  </section>
+
+  <article class="container-wide prose-solar py-12">
+    <p>By using {siteSettings.domain}, you agree to use the calculators, guides, and listings for informational purposes only.</p>
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">Estimates</h2>
+    <p>Calculator and report outputs are estimates. They are not quotes, guarantees, or professional recommendations.</p>
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">Third-Party Links</h2>
+    <p>We may link to third-party sites or partners. We are not responsible for their pricing, services, claims, or policies.</p>
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">Contact</h2>
+    <p>Questions can be sent to {siteSettings.email}.</p>
+  </article>
+</BaseLayout>

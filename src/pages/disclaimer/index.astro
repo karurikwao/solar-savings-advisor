@@ -1,0 +1,22 @@
+---
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteSettings } from "@/lib/content";
+---
+
+<BaseLayout title="Disclaimer" description="Educational estimate disclaimer for Solar Savings Advisor.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">Disclaimer</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">Please verify costs, incentives, and quotes with qualified professionals.</p>
+    </div>
+  </section>
+
+  <article class="container-wide prose-solar py-12">
+    <DisclosureNote text={siteSettings.estimateDisclaimer} label="Solar estimate disclaimer" />
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">No Professional Advice</h2>
+    <p>The site provides educational content only. It is not tax, legal, electrical, engineering, lending, or installation advice.</p>
+    <h2 class="mt-8 text-2xl font-black text-deep-navy">Verify Current Programs</h2>
+    <p>Solar incentives, net metering rules, financing terms, utility rates, product warranties, and local permitting requirements can change. Confirm current details before making financial decisions.</p>
+  </article>
+</BaseLayout>

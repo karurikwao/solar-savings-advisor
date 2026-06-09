@@ -1,0 +1,68 @@
+{
+  "id": "florida",
+  "stateName": "Florida",
+  "stateDescription": "Florida has strong sunlight and many solar installers, but utility details and hurricane resilience matter.",
+  "avgCostPerWatt": "$2.50-$3.50",
+  "typicalPayback": "8-12 years",
+  "keyIncentives": [
+    "Federal solar tax credit (verify current amount)",
+    "Net metering policies should be verified",
+    "Property tax treatment may benefit solar",
+    "Confirm current net metering, interconnection, and incentive rules with the utility before signing."
+  ],
+  "sampleInstallers": [
+    {
+      "name": "Momentum Solar",
+      "rating": 4.3,
+      "services": [
+        "Solar Panels",
+        "Energy Monitoring"
+      ],
+      "financing": [
+        "Loan",
+        "Cash"
+      ],
+      "description": "Custom designed solar systems."
+    },
+    {
+      "name": "Sunrun",
+      "rating": 4.4,
+      "services": [
+        "Solar Panels",
+        "Battery Storage"
+      ],
+      "financing": [
+        "Lease",
+        "PPA",
+        "Loan"
+      ],
+      "description": "Large residential solar and storage provider."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do hurricanes affect solar decisions?",
+      "answer": "Ask installers about wind ratings, mounting, warranties, and roof condition."
+    },
+    {
+      "question": "Are these installer listings endorsements?",
+      "answer": "No. Listings are educational examples for comparison. Verify licenses, insurance, reviews, contracts, and current service areas before choosing any installer."
+    },
+    {
+      "question": "What should I compare between installer quotes?",
+      "answer": "Compare equipment, system size, production assumptions, workmanship warranty, financing terms, roof work, monitoring, and the exact utility rate assumptions used."
+    }
+  ],
+  "quotePlacementId": "installer-quote",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "DSIRE state and utility incentive database",
+    "U.S. Department of Energy solar consumer resources",
+    "Public installer profile and market information reviewed for educational context"
+  ]
+}

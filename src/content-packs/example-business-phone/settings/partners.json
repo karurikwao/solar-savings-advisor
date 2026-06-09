@@ -1,0 +1,22 @@
+{
+  "partners": [
+    {
+      "id": "phone-provider-partners",
+      "name": "Phone Provider Partners",
+      "description": "Placeholder partner group for business phone quote comparisons.",
+      "url": "/providers/",
+      "logoText": "PP",
+      "disclosureLabel": "May compensate us for quote requests",
+      "enabled": true
+    },
+    {
+      "id": "advisor-site",
+      "name": "Business Phone Advisor",
+      "description": "In-house calculators, checklists, and educational guides.",
+      "url": "/tools/",
+      "logoText": "BPA",
+      "disclosureLabel": "Educational tools",
+      "enabled": true
+    }
+  ]
+}

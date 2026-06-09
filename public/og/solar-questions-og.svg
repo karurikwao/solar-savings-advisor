@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Solar questions preview">
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <text x="90" y="170" fill="#FFD700" font-family="Arial, sans-serif" font-size="34" font-weight="700">POPULAR SOLAR QUESTIONS</text>
+  <text x="90" y="265" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="66" font-weight="800">Clear answers before</text>
+  <text x="90" y="340" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="66" font-weight="800">you choose solar</text>
+  <rect x="735" y="130" width="310" height="310" rx="155" fill="#F97316"/>
+  <text x="840" y="322" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="150" font-weight="800">?</text>
+</svg>

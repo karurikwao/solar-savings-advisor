@@ -1,0 +1,41 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import CTAButton from "@/components/CTAButton.astro";
+import Icon from "@/components/Icon.astro";
+import ProfileCapture from "@/components/ProfileCapture.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteSettings } from "@/lib/content";
+import { getToolPath, tools } from "@/lib/tools";
+
+const nicheName = siteSettings.nicheName ?? "Advisor";
+---
+
+<BaseLayout title={`${nicheName} Calculators`} description={`${nicheName} calculators and planning tools.`}>
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">{nicheName} Calculators</h1>
+      <p class="mt-4 max-w-2xl text-lg text-gray-300">Estimate costs, savings, comparisons, and next steps with content-driven calculators.</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[2fr_1fr]">
+    <div class="grid gap-5 sm:grid-cols-2">
+      {tools.map((tool) => (
+        <article class="surface-card p-6">
+          <span class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-bright-orange/10 text-bright-orange">
+            <Icon name={tool.icon} class="h-6 w-6" />
+          </span>
+          <h2 class="text-xl font-black text-deep-navy">{tool.title}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">{tool.description}</p>
+          <div class="mt-5">
+            <CTAButton href={`/tools/${getToolPath(tool)}/`} label="Open Calculator" placementId="tools-index-hero" />
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="space-y-6">
+      <ProfileCapture compact />
+      <AdSlot placementId="tools-index-hero" compact />
+    </div>
+  </section>
+</BaseLayout>

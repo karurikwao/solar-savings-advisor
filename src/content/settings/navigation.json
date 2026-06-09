@@ -1,0 +1,36 @@
+{
+  "primary": [
+    { "label": "Home", "href": "/" },
+    { "label": "Solar Calculator", "href": "/tools/solar-savings-calculator/" },
+    { "label": "Questions", "href": "/questions/" },
+    { "label": "Compare", "href": "/compare/" },
+    { "label": "Solar Batteries", "href": "/solar-batteries/" },
+    { "label": "Installers", "href": "/installers/" },
+    { "label": "Guides", "href": "/guides/" },
+    { "label": "Get My Solar Report", "href": "/solar-report/", "highlight": true }
+  ],
+  "footer": {
+    "resources": [
+      { "href": "/tools/solar-savings-calculator/", "label": "Solar Calculator" },
+      { "href": "/tools/solar-payback-calculator/", "label": "Payback Calculator" },
+      { "href": "/tools/solar-loan-calculator/", "label": "Loan Calculator" },
+      { "href": "/tools/battery-backup-calculator/", "label": "Battery Calculator" },
+      { "href": "/tools/ev-charger-cost-calculator/", "label": "EV Charger Calculator" }
+    ],
+    "explore": [
+      { "href": "/questions/", "label": "Solar Questions" },
+      { "href": "/compare/", "label": "Compare Options" },
+      { "href": "/solar-batteries/", "label": "Solar Batteries" },
+      { "href": "/installers/", "label": "Find Installers" },
+      { "href": "/guides/", "label": "Solar Guides" }
+    ],
+    "company": [
+      { "href": "/about/", "label": "About" },
+      { "href": "/contact/", "label": "Contact" },
+      { "href": "/privacy/", "label": "Privacy Policy" },
+      { "href": "/affiliate-disclosure/", "label": "Affiliate Disclosure" },
+      { "href": "/disclaimer/", "label": "Disclaimer" },
+      { "href": "/terms/", "label": "Terms of Service" }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+---
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { siteSettings } from "@/lib/content";
+---
+
+<BaseLayout title="Affiliate Disclosure" description="Affiliate disclosure for Solar Savings Advisor.">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">Affiliate Disclosure</h1>
+      <p class="mt-4 max-w-3xl text-lg text-gray-300">How compensation may work on this site.</p>
+    </div>
+  </section>
+
+  <article class="container-wide prose-solar py-12">
+    <p>{siteSettings.disclosureText}</p>
+    <p>Compensation may come from quote requests, partner links, sponsored placements, or affiliate offers. Admin-controlled ad and offer slots are labeled with disclosure text from the content files.</p>
+    <DisclosureNote />
+  </article>
+</BaseLayout>

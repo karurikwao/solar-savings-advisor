@@ -1,0 +1,73 @@
+---
+import CTAButton from "@/components/CTAButton.astro";
+import DisclosureNote from "@/components/DisclosureNote.astro";
+import Icon from "@/components/Icon.astro";
+import { disclosureSettings, navigationSettings, siteSettings } from "@/lib/content";
+
+const primary = siteSettings.logo?.primaryText ?? siteSettings.siteName;
+const suffix = siteSettings.logo?.secondaryText ?? "";
+const iconName = siteSettings.logo?.icon ?? "sun";
+const footer = navigationSettings.footer ?? siteSettings.footer;
+const footerGroups = Object.entries(footer).map(([key, links]) => [
+  key.replace(/([A-Z])/g, " $1").replace(/^./, (char) => char.toUpperCase()),
+  links,
+] as const);
+const footerCta = siteSettings.secondaryCTA ?? siteSettings.primaryCTA;
+---
+
+<footer class="bg-deep-navy text-white">
+  <div class="container-wide py-16">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <div class="mb-4 flex items-center gap-2">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-bright-orange to-solar-yellow">
+            <Icon name={iconName} class="h-5 w-5" />
+          </span>
+          <div>
+            <span class="block text-lg font-black leading-tight">{primary}</span>
+            {suffix && <span class="block text-[10px] font-bold uppercase tracking-wider text-bright-orange">{suffix}</span>}
+          </div>
+        </div>
+        <p class="mb-6 text-sm leading-relaxed text-gray-400">{siteSettings.footerText ?? siteSettings.tagline}</p>
+        <div class="flex gap-3">
+          <a href={`mailto:${siteSettings.email}`} class="focus-ring rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-bright-orange">Email</a>
+          <a href="/contact/" class="focus-ring rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-bright-orange">Contact</a>
+        </div>
+      </div>
+
+      {footerGroups.map(([title, links]) => (
+        <div>
+          <h3 class="mb-4 text-sm font-bold uppercase tracking-wider text-solar-yellow">{title}</h3>
+          <ul class="space-y-2">
+            {links.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-gray-400 transition hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 border-t border-white/10 pt-8">
+      <DisclosureNote text={disclosureSettings.estimateDisclaimer ?? siteSettings.estimateDisclaimer} label="Disclaimer" />
+      <div class="mt-6 rounded-xl bg-white/5 p-4 text-xs leading-relaxed text-gray-400">
+        <strong class="text-solar-yellow">Affiliate Disclosure:</strong> {disclosureSettings.affiliateDisclosureText ?? siteSettings.disclosureText}
+      </div>
+      <div class="mt-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <p class="text-sm text-gray-500">© {new Date().getFullYear()} {siteSettings.siteName}. All rights reserved.</p>
+        {footerCta && (
+          <CTAButton
+            href={footerCta.href}
+            label={footerCta.label}
+            placementId="global-footer"
+            offerId={footerCta.offerId}
+            partnerId={footerCta.partnerId}
+          />
+        )}
+      </div>
+    </div>
+  </div>
+</footer>

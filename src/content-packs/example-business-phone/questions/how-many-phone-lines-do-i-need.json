@@ -1,0 +1,20 @@
+{
+  "id": "how-many-phone-lines-do-i-need",
+  "title": "How Many Business Phone Lines Do I Need?",
+  "description": "Estimate line and user needs before requesting provider quotes.",
+  "category": "Planning",
+  "path": "how-many-phone-lines-do-i-need",
+  "quickAnswer": "Most cloud phone systems price by user rather than physical line. Start with active employees who need calling, then add shared numbers, call queues, and conference needs.",
+  "bestFor": ["Teams preparing provider quotes", "Businesses replacing legacy phone lines", "Companies adding call queues or departments"],
+  "notBestFor": ["One-person businesses with only a mobile number", "Teams with highly custom call-center requirements"],
+  "scenario": {
+    "title": "Example Planning Scenario",
+    "details": ["18 staff users", "3 shared department numbers", "1 main auto-attendant", "2 call queues"]
+  },
+  "factors": ["Active users", "Shared numbers", "Call queues", "Conference rooms", "Seasonal staff"],
+  "faqs": [
+    { "question": "Do shared numbers cost extra?", "answer": "Often yes, but pricing varies by provider and plan." }
+  ],
+  "relatedQuestions": ["is-voip-worth-it", "should-i-choose-voip-or-pbx"],
+  "ctaPlacementId": "question-inline"
+}

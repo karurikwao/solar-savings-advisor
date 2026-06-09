@@ -1,0 +1,35 @@
+---
+import CTAButton from "@/components/CTAButton.astro";
+import { getOfferForPlacement } from "@/lib/content";
+import { normalizePageSlug } from "@/lib/tracking";
+
+interface Props {
+  placementId: string;
+  pageSlug?: string;
+}
+
+const { placementId, pageSlug = normalizePageSlug(Astro.url.pathname) } = Astro.props;
+const offer = getOfferForPlacement(placementId);
+---
+
+{offer && (
+  <div class="surface-card border-soft-green/20 p-6">
+    <p class="mb-2 text-xs font-bold uppercase tracking-wider text-soft-green">
+      {offer.disclosureLabel}
+    </p>
+    <h3 class="text-xl font-bold text-deep-navy">{offer.title}</h3>
+    <p class="mt-2 text-sm leading-relaxed text-gray-600">{offer.subtitle}</p>
+    <div class="mt-5">
+      <CTAButton
+        href={offer.destinationUrl}
+        label={offer.buttonText}
+        variant="green"
+        placementId={placementId}
+        pageSlug={pageSlug}
+        offerId={offer.id}
+        partnerId={offer.partnerId}
+      />
+    </div>
+    <p class="mt-4 text-xs text-gray-500">Partner: {offer.partnerName}</p>
+  </div>
+)}

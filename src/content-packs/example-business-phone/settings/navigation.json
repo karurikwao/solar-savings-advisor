@@ -1,0 +1,26 @@
+{
+  "primary": [
+    { "label": "Home", "href": "/" },
+    { "label": "Calculators", "href": "/tools/" },
+    { "label": "Questions", "href": "/questions/" },
+    { "label": "Compare", "href": "/compare/" },
+    { "label": "Providers", "href": "/providers/" },
+    { "label": "Guides", "href": "/guides/" }
+  ],
+  "footer": {
+    "resources": [
+      { "href": "/tools/", "label": "Calculators" },
+      { "href": "/providers/", "label": "Providers" }
+    ],
+    "explore": [
+      { "href": "/questions/", "label": "Questions" },
+      { "href": "/compare/", "label": "Comparisons" },
+      { "href": "/guides/", "label": "Guides" }
+    ],
+    "company": [
+      { "href": "/privacy/", "label": "Privacy Policy" },
+      { "href": "/affiliate-disclosure/", "label": "Affiliate Disclosure" },
+      { "href": "/disclaimer/", "label": "Disclaimer" }
+    ]
+  }
+}

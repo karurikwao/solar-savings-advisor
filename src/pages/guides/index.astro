@@ -1,0 +1,31 @@
+---
+import AdSlot from "@/components/AdSlot.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { guides, siteSettings } from "@/lib/content";
+
+const nicheName = siteSettings.nicheName ?? "Advisor";
+---
+
+<BaseLayout title={`${nicheName} Guides`} description={`${nicheName} buying, comparison, and preparation guides.`}>
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">{nicheName} Guides</h1>
+      <p class="mt-4 max-w-2xl text-lg text-gray-300">Step-by-step guidance for comparing providers, offers, terms, and implementation details.</p>
+    </div>
+  </section>
+
+  <section class="container-wide grid gap-8 py-12 lg:grid-cols-[2fr_1fr]">
+    <div class="grid gap-5 sm:grid-cols-2">
+      {guides.map((guide) => (
+        <a href={`/guides/${guide.path}/`} class="surface-card p-6 transition hover:-translate-y-1 hover:shadow-xl">
+          <h2 class="text-xl font-black text-deep-navy">{guide.title}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">{guide.description}</p>
+          <ul class="mt-4 space-y-2 text-sm text-gray-600">
+            {guide.keyTakeaways.slice(0, 2).map((takeaway) => <li>{takeaway}</li>)}
+          </ul>
+        </a>
+      ))}
+    </div>
+    <AdSlot placementId="guides-index-hero" />
+  </section>
+</BaseLayout>

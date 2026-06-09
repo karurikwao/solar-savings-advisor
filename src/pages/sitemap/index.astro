@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPublicRouteGroups } from "@/lib/public-routes";
+
+const routeGroups = getPublicRouteGroups();
+---
+
+<BaseLayout title="HTML Sitemap" description="A grouped, crawlable index of public Solar Savings Advisor pages." canonicalPath="/sitemap/">
+  <section class="bg-deep-navy py-12 text-white">
+    <div class="container-wide">
+      <h1 class="text-4xl font-black md:text-5xl">HTML Sitemap</h1>
+      <p class="mt-4 max-w-2xl text-lg text-gray-300">Public pages grouped for visitors and search crawlers.</p>
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <div class="grid gap-8 lg:grid-cols-2">
+      {Object.entries(routeGroups).map(([groupName, routes]) => (
+        <section class="surface-card p-6">
+          <h2 class="text-2xl font-black text-deep-navy">{groupName}</h2>
+          <ul class="mt-5 space-y-3">
+            {routes.map((route) => (
+              <li>
+                <a href={route.path} class="font-bold text-deep-navy hover:text-bright-orange">{route.title}</a>
+                {route.description && <p class="mt-1 text-sm text-gray-600">{route.description}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

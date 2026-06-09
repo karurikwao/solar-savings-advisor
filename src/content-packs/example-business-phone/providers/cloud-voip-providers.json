@@ -1,0 +1,14 @@
+{
+  "id": "cloud-voip-providers",
+  "stateName": "Cloud VoIP Providers",
+  "stateDescription": "Cloud phone providers for small teams that need calling, messaging, routing, and remote-friendly management.",
+  "avgCostPerWatt": "$20-$40/user/mo",
+  "typicalPayback": "1-4 weeks setup",
+  "keyIncentives": ["Confirm taxes and regulatory fees", "Ask about number porting support", "Review uptime and support commitments"],
+  "sampleInstallers": [
+    { "name": "RingCentral", "rating": 4.5, "services": ["VoIP", "Messaging", "Meetings"], "financing": ["Monthly", "Annual"], "description": "Cloud communications platform for voice and collaboration." },
+    { "name": "Nextiva", "rating": 4.4, "services": ["VoIP", "CRM features", "Analytics"], "financing": ["Monthly", "Annual"], "description": "Business communications provider with phone and customer experience features." }
+  ],
+  "faqs": [{ "question": "Should I compare more than one provider?", "answer": "Yes. Feature bundles, support, taxes, and contract terms vary widely." }],
+  "quotePlacementId": "installer-quote"
+}

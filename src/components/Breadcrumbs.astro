@@ -1,0 +1,33 @@
+---
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema.astro";
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="mb-6 text-sm">
+  <BreadcrumbSchema items={items} />
+  <ol class="flex flex-wrap items-center gap-2 text-white/70">
+    <li><a href="/" class="hover:text-white">Home</a></li>
+    {items.map((item) => (
+      <>
+        <li aria-hidden="true">/</li>
+        <li>
+          {item.href ? (
+            <a href={item.href} class="hover:text-white">{item.label}</a>
+          ) : (
+            <span class="text-white">{item.label}</span>
+          )}
+        </li>
+      </>
+    ))}
+  </ol>
+</nav>

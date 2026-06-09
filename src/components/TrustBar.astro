@@ -1,0 +1,29 @@
+---
+interface Props {
+  lastUpdated?: string;
+  reviewedBy?: string;
+  factChecked?: boolean;
+  sources?: string[];
+}
+
+const { lastUpdated, reviewedBy, factChecked, sources = [] } = Astro.props;
+const hasTrustData = Boolean(lastUpdated || reviewedBy || factChecked || sources.length);
+---
+
+{hasTrustData && (
+  <aside class="my-6 rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-600">
+    <div class="flex flex-wrap gap-x-5 gap-y-2">
+      {lastUpdated && <p><strong class="text-deep-navy">Last updated:</strong>{" "}{lastUpdated}</p>}
+      {reviewedBy && <p><strong class="text-deep-navy">Reviewed by:</strong>{" "}{reviewedBy}</p>}
+      {factChecked && <p><strong class="text-deep-navy">Fact checked:</strong> Yes</p>}
+    </div>
+    {sources.length > 0 && (
+      <div class="mt-3">
+        <strong class="text-deep-navy">Sources:</strong>
+        <ul class="mt-2 list-disc space-y-1 pl-5">
+          {sources.map((source) => <li>{source}</li>)}
+        </ul>
+      </div>
+    )}
+  </aside>
+)}

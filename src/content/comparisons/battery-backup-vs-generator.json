@@ -1,0 +1,73 @@
+{
+  "id": "battery-backup-vs-generator",
+  "title": "Battery Backup vs Generator",
+  "path": "battery-backup-vs-generator",
+  "description": "Batteries and generators both provide backup power, but they differ in fuel, maintenance, noise, and solar integration.",
+  "optionA": "Battery Backup",
+  "optionB": "Generator",
+  "winnerSide": "tie",
+  "winnerSummary": "Batteries are quiet and pair well with solar; generators can run longer if fuel is available.",
+  "prosA": [
+    "Quiet",
+    "Solar compatible",
+    "Low maintenance",
+    "No onsite combustion"
+  ],
+  "consA": [
+    "Limited duration",
+    "Higher upfront cost",
+    "Load planning required"
+  ],
+  "prosB": [
+    "Long runtime with fuel",
+    "Can support large loads",
+    "Familiar technology"
+  ],
+  "consB": [
+    "Noise",
+    "Fuel storage",
+    "Maintenance",
+    "Emissions"
+  ],
+  "bestForA": "Homeowners wanting clean, quiet backup and solar integration.",
+  "bestForB": "Homeowners needing extended backup for large loads.",
+  "costConsiderations": "Compare installed cost, fuel, maintenance, runtime, transfer equipment, and critical load needs.",
+  "tableRows": [
+    {
+      "feature": "Noise",
+      "optionA": "Quiet",
+      "optionB": "Loud",
+      "winner": "A"
+    },
+    {
+      "feature": "Runtime",
+      "optionA": "Capacity-limited",
+      "optionB": "Fuel-limited",
+      "winner": "tie"
+    },
+    {
+      "feature": "Solar integration",
+      "optionA": "Strong",
+      "optionB": "Limited",
+      "winner": "A"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can batteries replace generators?",
+      "answer": "Sometimes for essential loads, but extended whole-home backup may still need a generator or multiple batteries."
+    }
+  ],
+  "monetizationPlacementId": "comparison-affiliate",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar financing resources",
+    "Consumer Financial Protection Bureau financing education",
+    "EnergySage solar equipment and financing education"
+  ]
+}

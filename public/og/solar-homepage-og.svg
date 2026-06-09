@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Solar Savings Advisor homepage preview">
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <circle cx="965" cy="130" r="88" fill="#FFD700"/>
+  <rect x="90" y="110" width="610" height="360" rx="32" fill="#FFFFFF"/>
+  <rect x="130" y="150" width="210" height="22" rx="11" fill="#F97316"/>
+  <text x="130" y="245" fill="#0F172A" font-family="Arial, sans-serif" font-size="58" font-weight="800">Solar Savings</text>
+  <text x="130" y="318" fill="#0F172A" font-family="Arial, sans-serif" font-size="58" font-weight="800">Advisor</text>
+  <text x="130" y="385" fill="#334155" font-family="Arial, sans-serif" font-size="28">Calculators, comparisons, and quote prep</text>
+  <path d="M790 410h250l-42-180H832z" fill="#22C55E"/>
+  <path d="M832 230h166M816 300h199M800 370h232M875 230l-28 180M943 230l20 180" stroke="#0F172A" stroke-width="8"/>
+</svg>

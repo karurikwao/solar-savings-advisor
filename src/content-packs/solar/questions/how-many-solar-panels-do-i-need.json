@@ -1,0 +1,67 @@
+{
+  "id": "how-many-solar-panels-do-i-need",
+  "title": "How Many Solar Panels Do I Need?",
+  "description": "The number of panels depends on energy usage, panel wattage, roof space, and local sunlight.",
+  "category": "Planning",
+  "path": "how-many-solar-panels-do-i-need",
+  "quickAnswer": "Most homes need enough panels to offset a meaningful share of annual electricity use, but the exact count depends on your bill and roof conditions.",
+  "bestFor": [
+    "You know your monthly bill",
+    "You have annual kWh usage",
+    "Roof has open sunny area"
+  ],
+  "notBestFor": [
+    "Unclear usage data",
+    "Tiny roof area",
+    "Major shade issues"
+  ],
+  "scenario": {
+    "title": "Panel Count Example",
+    "details": [
+      "$150/month bill",
+      "Estimated 5-7 kW system",
+      "Roughly 13-18 modern panels depending on wattage"
+    ]
+  },
+  "factors": [
+    "Annual kWh usage",
+    "Panel wattage",
+    "Sun exposure",
+    "Roof orientation",
+    "Desired offset percentage",
+    "Annual kWh usage from the utility bill",
+    "Panel wattage and inverter design",
+    "Local production estimates for the roof plane"
+  ],
+  "faqs": [
+    {
+      "question": "Can I size solar from my bill?",
+      "answer": "Yes, as a rough starting point. Annual kWh usage from your utility bill is better for final sizing."
+    },
+    {
+      "question": "Is monthly bill amount enough to size a system?",
+      "answer": "Monthly bill amount is useful for a rough estimate, but annual kWh usage is better because rates, fees, and seasonal usage can distort the bill."
+    },
+    {
+      "question": "Can a smaller system still make sense?",
+      "answer": "Yes. A smaller system can make sense when roof space is limited, shade is uneven, or utility rules make exporting excess electricity less valuable."
+    }
+  ],
+  "relatedQuestions": [
+    "is-solar-worth-it",
+    "can-solar-power-my-ac",
+    "how-long-do-solar-panels-last"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

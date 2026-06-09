@@ -1,0 +1,44 @@
+{
+  "id": "solar-installation-process",
+  "title": "Solar Installation Process",
+  "description": "Step-by-step guide to what happens during a solar installation.",
+  "path": "solar-installation-process",
+  "keyTakeaways": [
+    "The process starts with design and site survey",
+    "Permits and interconnection can take time",
+    "Installation is often faster than approval",
+    "Utility permission to operate is required"
+  ],
+  "sections": [
+    {
+      "title": "Site Survey and Design",
+      "content": "Installers inspect roof, electrical panel, shade, and layout before finalizing a design."
+    },
+    {
+      "title": "Permits and Utility Review",
+      "content": "Your installer typically submits permits and interconnection paperwork."
+    },
+    {
+      "title": "Installation and Activation",
+      "content": "After installation and inspection, the utility grants permission to operate."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How long does solar installation take?",
+      "answer": "The physical installation may take a few days, but permitting and utility approval can take weeks or months."
+    }
+  ],
+  "bannerPlacementId": "guide-banner",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy solar homeowner resources",
+    "IRS residential clean energy credit guidance",
+    "DSIRE state and utility incentive database"
+  ]
+}

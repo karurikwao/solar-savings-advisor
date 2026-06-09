@@ -1,0 +1,23 @@
+{
+  "siteUrl": "https://solarsavingsadvisor.com",
+  "defaultTitle": "Solar Savings Advisor - Find Out If Solar Is Worth It",
+  "defaultDescription": "Estimate solar savings, compare solar financing and battery options, and prepare better questions before choosing an installer.",
+  "defaultOgImage": "/og/solar-homepage-og.svg",
+  "googleSiteVerification": "",
+  "bingSiteVerification": "",
+  "indexNowKey": "",
+  "enableIndexing": true,
+  "enableSitemap": true,
+  "enableRobots": true,
+  "enableOpenGraph": true,
+  "enableStructuredData": true,
+  "ogImages": {
+    "home": "/og/solar-homepage-og.svg",
+    "tools": "/og/solar-tools-og.svg",
+    "questions": "/og/solar-questions-og.svg",
+    "comparisons": "/og/solar-comparisons-og.svg",
+    "guides": "/og/solar-guides-og.svg",
+    "providers": "/og/solar-installers-og.svg",
+    "default": "/og/solar-homepage-og.svg"
+  }
+}

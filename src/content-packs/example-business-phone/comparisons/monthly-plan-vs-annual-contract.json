@@ -1,0 +1,24 @@
+{
+  "id": "monthly-plan-vs-annual-contract",
+  "title": "Monthly Plan vs Annual Contract",
+  "path": "monthly-plan-vs-annual-contract",
+  "description": "Compare flexibility and savings when choosing business phone billing terms.",
+  "optionA": "Monthly Plan",
+  "optionB": "Annual Contract",
+  "winnerSide": "tie",
+  "winnerSummary": "Monthly plans preserve flexibility, while annual contracts may lower unit pricing if you are confident in the provider.",
+  "prosA": ["More flexible", "Easier to change providers", "Good for trials"],
+  "consA": ["Higher monthly price", "May lack discounts"],
+  "prosB": ["Potential discount", "Predictable commitment", "Can include onboarding concessions"],
+  "consB": ["Harder to leave", "Contract review needed", "Seat count changes may matter"],
+  "bestForA": "Teams still testing requirements.",
+  "bestForB": "Teams confident in provider fit and seat count.",
+  "costConsiderations": "Compare total term price, cancellation terms, implementation fees, and unused seats.",
+  "tableRows": [
+    { "feature": "Flexibility", "optionA": "Highest", "optionB": "Lower", "winner": "A" },
+    { "feature": "Potential Discount", "optionA": "Lower", "optionB": "Higher", "winner": "B" },
+    { "feature": "Risk", "optionA": "Lower lock-in", "optionB": "More lock-in", "winner": "A" }
+  ],
+  "faqs": [{ "question": "Should I sign a long phone contract?", "answer": "Only after verifying features, support, pricing, taxes, and cancellation terms." }],
+  "monetizationPlacementId": "comparison-affiliate"
+}

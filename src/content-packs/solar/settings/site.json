@@ -1,0 +1,127 @@
+{
+  "siteId": "solarSavingsAdvisor",
+  "siteName": "Solar Savings Advisor",
+  "siteShortName": "Solar Advisor",
+  "nicheName": "Solar Savings",
+  "audienceName": "Homeowners comparing solar panels, batteries, and installer quotes",
+  "domain": "SolarSavingsAdvisor.com",
+  "siteUrl": "https://solarsavingsadvisor.com",
+  "tagline": "Find out if solar is worth it before you sign anything.",
+  "description": "Estimate your solar savings, compare solar options, and learn what to ask before choosing an installer.",
+  "email": "hello@solarsavingsadvisor.com",
+  "ogImage": "/og-image.svg",
+  "logo": {
+    "primaryText": "Solar Savings",
+    "secondaryText": "Advisor",
+    "icon": "sun"
+  },
+  "primaryCTA": {
+    "label": "Calculate Savings",
+    "href": "/tools/solar-savings-calculator/",
+    "placementId": "home-hero",
+    "offerId": "free-solar-report",
+    "partnerId": "solar-savings-advisor"
+  },
+  "secondaryCTA": {
+    "label": "Get Solar Report",
+    "href": "/solar-report/",
+    "placementId": "home-hero",
+    "offerId": "free-solar-report",
+    "partnerId": "solar-savings-advisor"
+  },
+  "colors": {
+    "solarYellow": "#FFD700",
+    "deepNavy": "#0F172A",
+    "brightOrange": "#F97316",
+    "softGreen": "#22C55E",
+    "lightGray": "#F3F4F6"
+  },
+  "routes": {
+    "toolsBase": "/tools/",
+    "questionsBase": "/questions/",
+    "comparisonsBase": "/compare/",
+    "guidesBase": "/guides/",
+    "providersBase": "/installers/",
+    "providersAliasBase": "/providers/",
+    "providerLabel": "Installers",
+    "providerSingularLabel": "Installer",
+    "reportPath": "/solar-report/",
+    "reportLabel": "Solar Report",
+    "solutionsPath": "/solar-batteries/",
+    "solutionsLabel": "Solar Batteries"
+  },
+  "providerDirectory": {
+    "indexTitle": "Solar Installers by State",
+    "indexDescription": "State-by-state solar installer directory and quote preparation guidance.",
+    "metricOneLabel": "Avg cost / watt",
+    "metricTwoLabel": "Typical payback",
+    "notesLabel": "Key Incentives",
+    "listingsLabel": "Sample Installer Listings",
+    "servicesLabel": "Services",
+    "financingLabel": "Financing"
+  },
+  "profile": {
+    "storageKey": "solarSavingsAdvisor.profile.v1",
+    "fields": [
+      { "id": "zip", "label": "ZIP Code", "type": "text", "placeholder": "90210" },
+      { "id": "state", "label": "State", "type": "select", "placeholder": "Select state" },
+      { "id": "monthlyBill", "label": "Monthly Power Bill", "type": "text", "placeholder": "150" },
+      { "id": "electricityRate", "label": "Electricity Rate", "type": "text", "placeholder": "0.15" },
+      { "id": "sunExposure", "label": "Roof Sun", "type": "select", "placeholder": "Select sun" },
+      { "id": "financingPreference", "label": "Financing", "type": "select", "placeholder": "Select financing" }
+    ]
+  },
+  "leadCapture": {
+    "enabled": true,
+    "defaultEndpoint": "",
+    "mockStorageKey": "solarSavingsAdvisor.mockLead.v1"
+  },
+  "analytics": {
+    "enabled": false,
+    "provider": "",
+    "measurementId": ""
+  },
+  "admin": {
+    "showInNavigation": false
+  },
+  "socialLinks": [],
+  "footerText": "Independent educational calculators and quote-prep content for solar shoppers.",
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Solar Calculator", "href": "/tools/solar-savings-calculator/" },
+    { "label": "Questions", "href": "/questions/" },
+    { "label": "Compare", "href": "/compare/" },
+    { "label": "Solar Batteries", "href": "/solar-batteries/" },
+    { "label": "Installers", "href": "/installers/" },
+    { "label": "Guides", "href": "/guides/" },
+    { "label": "Get My Solar Report", "href": "/solar-report/", "highlight": true }
+  ],
+  "footer": {
+    "resources": [
+      { "href": "/tools/solar-savings-calculator/", "label": "Solar Calculator" },
+      { "href": "/tools/solar-payback-calculator/", "label": "Payback Calculator" },
+      { "href": "/tools/solar-loan-calculator/", "label": "Loan Calculator" },
+      { "href": "/tools/battery-backup-calculator/", "label": "Battery Calculator" },
+      { "href": "/tools/ev-charger-cost-calculator/", "label": "EV Charger Calculator" }
+    ],
+    "explore": [
+      { "href": "/questions/", "label": "Solar Questions" },
+      { "href": "/compare/", "label": "Compare Options" },
+      { "href": "/solar-batteries/", "label": "Solar Batteries" },
+      { "href": "/installers/", "label": "Find Installers" },
+      { "href": "/guides/", "label": "Solar Guides" }
+    ],
+    "company": [
+      { "href": "/about/", "label": "About" },
+      { "href": "/contact/", "label": "Contact" },
+      { "href": "/privacy/", "label": "Privacy Policy" },
+      { "href": "/affiliate-disclosure/", "label": "Affiliate Disclosure" },
+      { "href": "/disclaimer/", "label": "Disclaimer" },
+      { "href": "/terms/", "label": "Terms of Service" }
+    ]
+  },
+  "disclosureText": "SolarSavingsAdvisor.com may earn compensation when users request quotes or click partner links. This does not affect our editorial guidance.",
+  "affiliateDisclosureText": "SolarSavingsAdvisor.com may earn compensation when users request quotes or click partner links. This does not affect our editorial guidance.",
+  "estimateDisclaimer": "Solar savings estimates are for educational purposes only. Actual savings, incentives, system costs, and payback periods vary by location, utility rates, roof condition, installer pricing, financing terms, and policy changes. Always verify current incentives and quotes with licensed professionals.",
+  "calculatorDisclaimerText": "Solar calculator results are educational estimates only and are not quotes, guarantees, tax advice, utility forecasts, or installation recommendations."
+}

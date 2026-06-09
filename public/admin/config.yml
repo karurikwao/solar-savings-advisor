@@ -1,0 +1,455 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: settings
+    label: Site Settings
+    files:
+      - name: site
+        label: Site Branding, Routes, and Runtime Settings
+        file: src/content/settings/site.json
+        format: json
+        fields:
+          - { label: Site ID, name: siteId, widget: string, hint: "Used for localStorage keys and tracking source IDs." }
+          - { label: Site Name, name: siteName, widget: string }
+          - { label: Short Name, name: siteShortName, widget: string, required: false }
+          - { label: Niche Name, name: nicheName, widget: string, required: false }
+          - { label: Audience Name, name: audienceName, widget: string, required: false }
+          - { label: Domain, name: domain, widget: string }
+          - { label: Site URL, name: siteUrl, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Description, name: description, widget: text }
+          - { label: Email, name: email, widget: string }
+          - { label: OpenGraph Image, name: ogImage, widget: string }
+          - label: Logo
+            name: logo
+            widget: object
+            fields:
+              - { label: Primary Text, name: primaryText, widget: string }
+              - { label: Secondary Text, name: secondaryText, widget: string, required: false }
+              - { label: Icon, name: icon, widget: string, default: sun }
+          - label: Primary CTA
+            name: primaryCTA
+            widget: object
+            fields: &cta_fields
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: href, widget: string }
+              - { label: Placement ID, name: placementId, widget: string, required: false }
+              - { label: Offer ID, name: offerId, widget: string, required: false }
+              - { label: Partner ID, name: partnerId, widget: string, required: false }
+          - label: Secondary CTA
+            name: secondaryCTA
+            widget: object
+            required: false
+            fields: *cta_fields
+          - label: Brand Colors
+            name: colors
+            widget: object
+            fields:
+              - { label: Accent Yellow, name: solarYellow, widget: string }
+              - { label: Deep Navy, name: deepNavy, widget: string }
+              - { label: CTA Color, name: brightOrange, widget: string }
+              - { label: Success Green, name: softGreen, widget: string }
+              - { label: Light Gray, name: lightGray, widget: string }
+          - label: Routes and Labels
+            name: routes
+            widget: object
+            fields:
+              - { label: Tools Base, name: toolsBase, widget: string, default: /tools/ }
+              - { label: Questions Base, name: questionsBase, widget: string, default: /questions/ }
+              - { label: Comparisons Base, name: comparisonsBase, widget: string, default: /compare/ }
+              - { label: Guides Base, name: guidesBase, widget: string, default: /guides/ }
+              - { label: Providers Base, name: providersBase, widget: string, default: /installers/ }
+              - { label: Providers Alias Base, name: providersAliasBase, widget: string, required: false, default: /providers/ }
+              - { label: Provider Label, name: providerLabel, widget: string, default: Installers }
+              - { label: Provider Singular Label, name: providerSingularLabel, widget: string, default: Installer }
+              - { label: Report Path, name: reportPath, widget: string, default: /solar-report/ }
+              - { label: Report Label, name: reportLabel, widget: string, default: Solar Report }
+              - { label: Solutions Path, name: solutionsPath, widget: string, required: false }
+              - { label: Solutions Label, name: solutionsLabel, widget: string, required: false }
+          - label: Provider Directory Labels
+            name: providerDirectory
+            widget: object
+            fields:
+              - { label: Index Title, name: indexTitle, widget: string }
+              - { label: Index Description, name: indexDescription, widget: text }
+              - { label: Metric One Label, name: metricOneLabel, widget: string }
+              - { label: Metric Two Label, name: metricTwoLabel, widget: string }
+              - { label: Notes Label, name: notesLabel, widget: string }
+              - { label: Listings Label, name: listingsLabel, widget: string }
+              - { label: Services Label, name: servicesLabel, widget: string }
+              - { label: Financing Label, name: financingLabel, widget: string }
+          - label: Shared Profile
+            name: profile
+            widget: object
+            fields:
+              - { label: Storage Key, name: storageKey, widget: string }
+              - label: Fields
+                name: fields
+                widget: list
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: Label, name: label, widget: string }
+                  - { label: Type, name: type, widget: string }
+                  - { label: Placeholder, name: placeholder, widget: string, required: false }
+          - label: Lead Capture
+            name: leadCapture
+            widget: object
+            fields:
+              - { label: Enabled, name: enabled, widget: boolean, default: true }
+              - { label: Default Endpoint, name: defaultEndpoint, widget: string, required: false }
+              - { label: Mock Storage Key, name: mockStorageKey, widget: string }
+          - label: Analytics Placeholder
+            name: analytics
+            widget: object
+            fields:
+              - { label: Enabled, name: enabled, widget: boolean, default: false }
+              - { label: Provider, name: provider, widget: string, required: false }
+              - { label: Measurement ID, name: measurementId, widget: string, required: false }
+          - label: Admin
+            name: admin
+            widget: object
+            fields:
+              - { label: Show Admin in Public Navigation, name: showInNavigation, widget: boolean, default: false }
+          - { label: Footer Text, name: footerText, widget: text, required: false }
+          - { label: Affiliate Disclosure Text, name: affiliateDisclosureText, widget: text, required: false }
+          - { label: Estimate Disclaimer, name: estimateDisclaimer, widget: text }
+          - { label: Calculator Disclaimer, name: calculatorDisclaimerText, widget: text, required: false }
+
+      - name: navigation
+        label: Navigation
+        file: src/content/settings/navigation.json
+        format: json
+        fields:
+          - label: Primary Navigation
+            name: primary
+            widget: list
+            fields: &link_fields
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: href, widget: string }
+              - { label: Highlight, name: highlight, widget: boolean, required: false, default: false }
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - label: Resources
+                name: resources
+                widget: list
+                fields: *link_fields
+              - label: Explore
+                name: explore
+                widget: list
+                fields: *link_fields
+              - label: Company
+                name: company
+                widget: list
+                fields: *link_fields
+
+      - name: disclosures
+        label: Disclosures
+        file: src/content/settings/disclosures.json
+        format: json
+        fields:
+          - { label: Affiliate Disclosure, name: affiliateDisclosureText, widget: text }
+          - { label: Estimate Disclaimer, name: estimateDisclaimer, widget: text }
+          - { label: Calculator Disclaimer, name: calculatorDisclaimerText, widget: text }
+          - { label: Lead Capture Disclaimer, name: leadCaptureDisclaimer, widget: text }
+          - { label: Provider Listing Disclaimer, name: installerListingDisclaimer, widget: text }
+          - { label: Admin Disclosure, name: adminDisclosureText, widget: text }
+
+      - name: seo
+        label: SEO and Indexing
+        file: src/content/settings/seo.json
+        format: json
+        fields:
+          - { label: Site URL, name: siteUrl, widget: string }
+          - { label: Default Title, name: defaultTitle, widget: string }
+          - { label: Default Description, name: defaultDescription, widget: text }
+          - { label: Default OpenGraph Image, name: defaultOgImage, widget: string }
+          - { label: Google Site Verification, name: googleSiteVerification, widget: string, required: false }
+          - { label: Bing Site Verification, name: bingSiteVerification, widget: string, required: false }
+          - { label: IndexNow Key, name: indexNowKey, widget: string, required: false }
+          - { label: Enable Indexing, name: enableIndexing, widget: boolean, default: true }
+          - { label: Enable Sitemap, name: enableSitemap, widget: boolean, default: true }
+          - { label: Enable Robots, name: enableRobots, widget: boolean, default: true }
+          - { label: Enable OpenGraph, name: enableOpenGraph, widget: boolean, default: true }
+          - { label: Enable Structured Data, name: enableStructuredData, widget: boolean, default: true }
+          - label: Section OpenGraph Images
+            name: ogImages
+            widget: object
+            fields:
+              - { label: Home, name: home, widget: string }
+              - { label: Tools, name: tools, widget: string }
+              - { label: Questions, name: questions, widget: string }
+              - { label: Comparisons, name: comparisons, widget: string }
+              - { label: Guides, name: guides, widget: string }
+              - { label: Providers, name: providers, widget: string }
+              - { label: Default, name: default, widget: string }
+
+      - name: ads
+        label: Ad Placements
+        file: src/content/settings/ads.json
+        format: json
+        fields:
+          - label: Slots
+            name: slots
+            widget: list
+            summary: "{{fields.placementId}} - {{fields.title}}"
+            fields: &monetization_fields
+              - { label: Enabled, name: enabled, widget: boolean, default: true }
+              - { label: Title, name: title, widget: string }
+              - { label: Subtitle, name: subtitle, widget: text }
+              - { label: Button Text, name: buttonText, widget: string }
+              - { label: Destination URL, name: destinationUrl, widget: string }
+              - { label: Partner ID, name: partnerId, widget: string, required: false }
+              - { label: Partner Name, name: partnerName, widget: string }
+              - { label: Disclosure Label, name: disclosureLabel, widget: string }
+              - { label: Priority, name: priority, widget: number, value_type: int, default: 50 }
+              - { label: Start Date, name: startDate, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+              - { label: End Date, name: endDate, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+              - { label: Placement ID, name: placementId, widget: string, required: false }
+
+      - name: offers
+        label: Affiliate Offers and CTA Buttons
+        file: src/content/settings/offers.json
+        format: json
+        fields:
+          - label: Offers
+            name: offers
+            widget: list
+            summary: "{{fields.id}} - {{fields.title}}"
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Enabled, name: enabled, widget: boolean, default: true }
+              - { label: Title, name: title, widget: string }
+              - { label: Subtitle, name: subtitle, widget: text }
+              - { label: Button Text, name: buttonText, widget: string }
+              - { label: Destination URL, name: destinationUrl, widget: string }
+              - { label: Partner ID, name: partnerId, widget: string, required: false }
+              - { label: Partner Name, name: partnerName, widget: string }
+              - { label: Disclosure Label, name: disclosureLabel, widget: string }
+              - { label: Placement IDs, name: placementIds, widget: list, field: { label: Placement ID, name: placementId, widget: string } }
+              - { label: Priority, name: priority, widget: number, value_type: int, default: 50 }
+              - { label: Start Date, name: startDate, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+              - { label: End Date, name: endDate, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+
+      - name: placements
+        label: Template Placements
+        file: src/content/settings/placements.json
+        format: json
+        fields:
+          - label: Placements
+            name: placements
+            widget: list
+            summary: "{{fields.placementId}} - {{fields.templateArea}}"
+            fields:
+              - { label: Placement ID, name: placementId, widget: string }
+              - { label: Enabled, name: enabled, widget: boolean, default: true }
+              - { label: Label, name: label, widget: string }
+              - { label: Template Area, name: templateArea, widget: string }
+              - { label: Allowed Types, name: allowedTypes, widget: list, field: { label: Type, name: type, widget: select, options: [ad, offer, promo] } }
+              - { label: Ad Placement IDs, name: adPlacementIds, widget: list, required: false, field: { label: Ad Placement ID, name: adPlacementId, widget: string } }
+              - { label: Offer IDs, name: offerIds, widget: list, required: false, field: { label: Offer ID, name: offerId, widget: string } }
+              - { label: Priority, name: priority, widget: number, value_type: int, default: 50 }
+
+      - name: partners
+        label: Partner Links
+        file: src/content/settings/partners.json
+        format: json
+        fields:
+          - label: Partners
+            name: partners
+            widget: list
+            summary: "{{fields.id}} - {{fields.name}}"
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Name, name: name, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: URL, name: url, widget: string }
+              - { label: Logo Text, name: logoText, widget: string }
+              - { label: Disclosure Label, name: disclosureLabel, widget: string }
+              - { label: Enabled, name: enabled, widget: boolean, default: true }
+
+  - name: tools
+    label: Calculator Tools
+    folder: src/content/tools
+    create: true
+    slug: "{{fields.id}}"
+    extension: json
+    format: json
+    fields:
+      - { label: ID, name: id, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Calculator Type, name: calculatorType, widget: string, hint: "Must exist in src/lib/calculators/index.ts." }
+      - { label: Icon, name: icon, widget: string, default: sun }
+      - { label: Path, name: path, widget: string, required: false }
+      - { label: Category, name: category, widget: string, required: false }
+      - { label: Result Placement ID, name: resultPlacementId, widget: string, default: calculator-results }
+      - { label: Sidebar Placement ID, name: sidebarPlacementId, widget: string, default: tools-detail-sidebar }
+      - { label: Enabled, name: enabled, widget: boolean, required: false, default: true }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - { label: Noindex, name: noindex, widget: boolean, required: false, default: false }
+      - { label: Last Updated, name: lastUpdated, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+      - { label: Reviewed By, name: reviewedBy, widget: string, required: false }
+      - { label: Fact Checked, name: factChecked, widget: boolean, required: false, default: false }
+      - { label: Sources, name: sources, widget: list, required: false, field: { label: Source, name: source, widget: string } }
+
+  - name: questions
+    label: Question Pages
+    folder: src/content/questions
+    create: true
+    slug: "{{fields.id}}"
+    extension: json
+    format: json
+    fields:
+      - { label: ID, name: id, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Category, name: category, widget: string }
+      - { label: Path, name: path, widget: string }
+      - { label: Quick Answer, name: quickAnswer, widget: text }
+      - { label: Best For, name: bestFor, widget: list, field: { label: Item, name: item, widget: string } }
+      - { label: Not Best For, name: notBestFor, widget: list, field: { label: Item, name: item, widget: string } }
+      - label: Scenario
+        name: scenario
+        widget: object
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Details, name: details, widget: list, field: { label: Detail, name: detail, widget: string } }
+      - { label: Factors, name: factors, widget: list, field: { label: Factor, name: factor, widget: string } }
+      - label: FAQs
+        name: faqs
+        widget: list
+        fields: &faq_fields
+          - { label: Question, name: question, widget: string }
+          - { label: Answer, name: answer, widget: text }
+      - { label: Related Question IDs, name: relatedQuestions, widget: list, field: { label: ID, name: id, widget: string } }
+      - { label: CTA Placement ID, name: ctaPlacementId, widget: string, default: question-inline }
+      - { label: Enabled, name: enabled, widget: boolean, required: false, default: true }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - { label: Noindex, name: noindex, widget: boolean, required: false, default: false }
+      - { label: Last Updated, name: lastUpdated, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+      - { label: Reviewed By, name: reviewedBy, widget: string, required: false }
+      - { label: Fact Checked, name: factChecked, widget: boolean, required: false, default: false }
+      - { label: Sources, name: sources, widget: list, required: false, field: { label: Source, name: source, widget: string } }
+
+  - name: comparisons
+    label: Comparison Pages
+    folder: src/content/comparisons
+    create: true
+    slug: "{{fields.id}}"
+    extension: json
+    format: json
+    fields:
+      - { label: ID, name: id, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Path, name: path, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Option A, name: optionA, widget: string }
+      - { label: Option B, name: optionB, widget: string }
+      - { label: Winner Side, name: winnerSide, widget: select, options: [A, B, tie] }
+      - { label: Winner Summary, name: winnerSummary, widget: text }
+      - { label: Pros A, name: prosA, widget: list, field: { label: Pro, name: pro, widget: string } }
+      - { label: Cons A, name: consA, widget: list, field: { label: Con, name: con, widget: string } }
+      - { label: Pros B, name: prosB, widget: list, field: { label: Pro, name: pro, widget: string } }
+      - { label: Cons B, name: consB, widget: list, field: { label: Con, name: con, widget: string } }
+      - { label: Best For A, name: bestForA, widget: text }
+      - { label: Best For B, name: bestForB, widget: text }
+      - { label: Cost Considerations, name: costConsiderations, widget: text }
+      - label: Table Rows
+        name: tableRows
+        widget: list
+        fields:
+          - { label: Feature, name: feature, widget: string }
+          - { label: Option A, name: optionA, widget: string }
+          - { label: Option B, name: optionB, widget: string }
+          - { label: Winner, name: winner, widget: select, options: [A, B, tie] }
+      - { label: FAQs, name: faqs, widget: list, fields: *faq_fields }
+      - { label: Monetization Placement ID, name: monetizationPlacementId, widget: string, default: comparison-affiliate }
+      - { label: Enabled, name: enabled, widget: boolean, required: false, default: true }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - { label: Noindex, name: noindex, widget: boolean, required: false, default: false }
+      - { label: Last Updated, name: lastUpdated, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+      - { label: Reviewed By, name: reviewedBy, widget: string, required: false }
+      - { label: Fact Checked, name: factChecked, widget: boolean, required: false, default: false }
+      - { label: Sources, name: sources, widget: list, required: false, field: { label: Source, name: source, widget: string } }
+
+  - name: guides
+    label: Guide Pages
+    folder: src/content/guides
+    create: true
+    slug: "{{fields.id}}"
+    extension: json
+    format: json
+    fields:
+      - { label: ID, name: id, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Path, name: path, widget: string }
+      - { label: Key Takeaways, name: keyTakeaways, widget: list, field: { label: Takeaway, name: takeaway, widget: string } }
+      - label: Sections
+        name: sections
+        widget: list
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Content, name: content, widget: text }
+      - { label: FAQs, name: faqs, widget: list, fields: *faq_fields }
+      - { label: Banner Placement ID, name: bannerPlacementId, widget: string, default: guide-banner }
+      - { label: Enabled, name: enabled, widget: boolean, required: false, default: true }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - { label: Noindex, name: noindex, widget: boolean, required: false, default: false }
+      - { label: Last Updated, name: lastUpdated, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+      - { label: Reviewed By, name: reviewedBy, widget: string, required: false }
+      - { label: Fact Checked, name: factChecked, widget: boolean, required: false, default: false }
+      - { label: Sources, name: sources, widget: list, required: false, field: { label: Source, name: source, widget: string } }
+
+  - name: installers
+    label: Providers / Installer Directory Listings
+    folder: src/content/installers
+    create: true
+    slug: "{{fields.id}}"
+    extension: json
+    format: json
+    fields: &provider_fields
+      - { label: ID, name: id, widget: string }
+      - { label: Directory Page Name, name: stateName, widget: string }
+      - { label: Directory Description, name: stateDescription, widget: text }
+      - { label: Metric One Value, name: avgCostPerWatt, widget: string }
+      - { label: Metric Two Value, name: typicalPayback, widget: string }
+      - { label: Notes, name: keyIncentives, widget: list, field: { label: Note, name: note, widget: string } }
+      - label: Sample Listings
+        name: sampleInstallers
+        widget: list
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Rating, name: rating, widget: number, value_type: float }
+          - { label: Services / Capabilities, name: services, widget: list, field: { label: Service, name: service, widget: string } }
+          - { label: Financing / Contract Options, name: financing, widget: list, field: { label: Option, name: option, widget: string } }
+          - { label: Description, name: description, widget: text }
+      - { label: FAQs, name: faqs, widget: list, fields: *faq_fields }
+      - { label: Quote Placement ID, name: quotePlacementId, widget: string, default: installer-quote }
+      - { label: Enabled, name: enabled, widget: boolean, required: false, default: true }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
+      - { label: Noindex, name: noindex, widget: boolean, required: false, default: false }
+      - { label: Last Updated, name: lastUpdated, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+      - { label: Reviewed By, name: reviewedBy, widget: string, required: false }
+      - { label: Fact Checked, name: factChecked, widget: boolean, required: false, default: false }
+      - { label: Sources, name: sources, widget: list, required: false, field: { label: Source, name: source, widget: string } }
+
+  - name: providers
+    label: Generic Provider Listings
+    folder: src/content/providers
+    create: true
+    slug: "{{fields.id}}"
+    extension: json
+    format: json
+    fields: *provider_fields

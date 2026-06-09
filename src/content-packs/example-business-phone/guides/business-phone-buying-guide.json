@@ -1,0 +1,13 @@
+{
+  "id": "business-phone-buying-guide",
+  "title": "Business Phone Buying Guide",
+  "description": "A practical checklist for comparing VoIP and business phone providers.",
+  "path": "business-phone-buying-guide",
+  "keyTakeaways": ["Count users before comparing plans", "Confirm taxes and fees", "Test call quality", "Review cancellation terms"],
+  "sections": [
+    { "title": "Start With Users and Call Flow", "content": "List active users, shared numbers, departments, and queues before comparing plan tiers." },
+    { "title": "Compare the Real Monthly Cost", "content": "Ask about taxes, emergency service fees, devices, implementation, support, and contract terms." }
+  ],
+  "faqs": [{ "question": "What should I ask during a demo?", "answer": "Ask about number porting, support response times, uptime history, integrations, taxes, and cancellation terms." }],
+  "bannerPlacementId": "guide-banner"
+}

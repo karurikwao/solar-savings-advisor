@@ -1,0 +1,56 @@
+{
+  "id": "should-i-lease-or-buy-solar-panels",
+  "title": "Should I Lease or Buy Solar Panels?",
+  "description": "Buying typically creates more long-term value, while leasing can reduce upfront cost.",
+  "category": "Financing",
+  "path": "should-i-lease-or-buy-solar-panels",
+  "quickAnswer": "Buying or financing usually offers more long-term savings because you own the system, while leasing can be simpler upfront but limits benefits.",
+  "bestFor": [
+    "Buying: long-term ownership",
+    "Loan: lower upfront cost with ownership",
+    "Cash: highest lifetime savings"
+  ],
+  "notBestFor": [
+    "Lease if you want tax credits",
+    "Lease if home sale transfer is a concern",
+    "Cash if preserving liquidity matters"
+  ],
+  "scenario": {
+    "title": "Financing Example",
+    "details": [
+      "Cash has highest ROI",
+      "Loan spreads costs",
+      "Lease has lower upfront friction but lower upside"
+    ]
+  },
+  "factors": [
+    "Ownership",
+    "Tax credit eligibility",
+    "Monthly payment",
+    "Total lifetime cost",
+    "Home sale transfer"
+  ],
+  "faqs": [
+    {
+      "question": "Can I claim incentives with a lease?",
+      "answer": "Usually the system owner claims incentives. With a lease, that is typically the leasing company."
+    }
+  ],
+  "relatedQuestions": [
+    "solar-lease-vs-solar-loan",
+    "solar-loan-vs-cash",
+    "is-solar-worth-it"
+  ],
+  "ctaPlacementId": "question-inline",
+  "enabled": true,
+  "draft": false,
+  "noindex": false,
+  "lastUpdated": "2026-06-09",
+  "reviewedBy": "Solar Savings Advisor editorial team",
+  "factChecked": true,
+  "sources": [
+    "U.S. Department of Energy homeowner solar resources",
+    "DSIRE state and utility incentive database",
+    "NREL solar performance education"
+  ]
+}

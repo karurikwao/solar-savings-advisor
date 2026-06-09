@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Solar Savings Advisor">
+  <rect width="64" height="64" rx="12" fill="#0F172A"/>
+  <circle cx="40" cy="20" r="11" fill="#FFD700"/>
+  <path d="M12 42h40v6H12zM18 32h28v6H18z" fill="#F97316"/>
+  <path d="M16 49h32" stroke="#22C55E" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,11 @@
+---
+import { seoSettings } from "@/lib/content";
+
+interface Props {
+  data: unknown;
+}
+
+const { data } = Astro.props;
+---
+
+{seoSettings.enableStructuredData && data && <script type="application/ld+json" set:html={JSON.stringify(data)} />}

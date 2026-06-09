@@ -1,0 +1,53 @@
+---
+import CTAButton from "@/components/CTAButton.astro";
+import { normalizePageSlug } from "@/lib/tracking";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  href: string;
+  variant?: "navy" | "orange";
+  placementId?: string;
+  pageSlug?: string;
+  offerId?: string;
+  partnerId?: string;
+}
+
+const {
+  title,
+  subtitle,
+  buttonText,
+  href,
+  variant = "navy",
+  placementId,
+  pageSlug = normalizePageSlug(Astro.url.pathname),
+  offerId,
+  partnerId,
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    "rounded-2xl p-8 text-center shadow-2xl md:p-12",
+    variant === "navy"
+      ? "bg-gradient-to-r from-deep-navy to-blue-900 text-white"
+      : "bg-gradient-to-r from-bright-orange to-solar-yellow text-deep-navy",
+  ]}
+>
+  <h2 class="text-3xl font-bold">{title}</h2>
+  <p class:list={["mx-auto mt-3 max-w-2xl text-lg", variant === "navy" ? "text-gray-300" : "text-deep-navy/80"]}>
+    {subtitle}
+  </p>
+  <div class="mt-7">
+    <CTAButton
+      href={href}
+      label={buttonText}
+      variant={variant === "navy" ? "yellow" : "navy"}
+      placementId={placementId}
+      pageSlug={pageSlug}
+      offerId={offerId}
+      partnerId={partnerId}
+    />
+  </div>
+</section>
